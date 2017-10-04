@@ -1,0 +1,21 @@
+{
+  "name": "cordova-plugin-lottie-splashscreen",
+  "version": "0.1.0",
+  "description": "Lottie Splashscreen Plugin",
+  "cordova": {
+    "id": "cordova-plugin-lottie-splashscreen",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "keywords": [
+    "c",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "Tim Brust <github@timbrust.de>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/cordova": "0.0.34"
+  }
+}
