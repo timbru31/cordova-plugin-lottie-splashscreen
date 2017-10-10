@@ -9,7 +9,8 @@
     ]
   },
   "keywords": [
-    "c",
+    "cordova",
+    "cordova-plugin",
     "ecosystem:cordova",
     "cordova-ios"
   ],

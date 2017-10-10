@@ -25,8 +25,12 @@ import Lottie
     }
 
     func pageDidLoad() {
-        destroyView()
+        let autoHide = commandDelegate?.settings["AutoHideSplashScreen".lowercased()] as? NSString ?? "false"
+        if (autoHide.boolValue) {
+            destroyView()
+        }
     }
+
 
     func destroyView() {
         if (visible) {
