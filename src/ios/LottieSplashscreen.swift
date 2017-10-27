@@ -47,8 +47,16 @@ import Lottie
 
     func createView() {
         if !visible {
-            let remoteURL = "https://www.lottiefiles.com/storage/datafiles/7HMs29Q0NhBUKCp/data.json"
-            animationView = LOTAnimationView(contentsOf: URL(string: remoteURL)!)
+
+            let useRemote = commandDelegate?.settings["LottieRemoteEnabled".lowercased()] as? NSString ?? "false"
+            var animationLocation = commandDelegate?.settings["LottieAnimationLocation".lowercased()] as? String ?? ""
+            if useRemote.boolValue {
+                animationView = LOTAnimationView(contentsOf: URL(string: animationLocation)!)
+            } else {
+                animationLocation = Bundle.main.bundleURL.appendingPathComponent(animationLocation).path
+                animationView = LOTAnimationView(filePath: animationLocation)
+            }
+
             let parentView = self.viewController.view
             parentView?.isUserInteractionEnabled = false
 
