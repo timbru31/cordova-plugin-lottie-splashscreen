@@ -1,0 +1,8 @@
+os: osx
+osx_image: xcode9.1
+
+before_script:
+  - swiftlint version
+
+script:
+  - swiftlint
