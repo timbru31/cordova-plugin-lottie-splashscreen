@@ -31,7 +31,7 @@ import Lottie
         }
     }
 
-    func destroyView() {
+    func destroyView(_ : UITapGestureRecognizer? = nil) {
         if visible {
             let parentView = self.viewController.view
             parentView?.isUserInteractionEnabled = true
@@ -48,15 +48,7 @@ import Lottie
     func createView() {
         if !visible {
 
-            let useRemote = commandDelegate?.settings["LottieRemoteEnabled".lowercased()] as? NSString ?? "false"
-            var animationLocation = commandDelegate?.settings["LottieAnimationLocation".lowercased()] as? String ?? ""
-            if useRemote.boolValue {
-                animationView = LOTAnimationView(contentsOf: URL(string: animationLocation)!)
-            } else {
-                animationLocation = Bundle.main.bundleURL.appendingPathComponent(animationLocation).path
-                animationView = LOTAnimationView(filePath: animationLocation)
-            }
-
+            createAnimationView()
             let parentView = self.viewController.view
             parentView?.isUserInteractionEnabled = false
 
@@ -80,7 +72,24 @@ import Lottie
             parentView?.addSubview(animationViewContainer!)
             animationView?.play()
 
+            let cancelOnTap = commandDelegate?.settings["LottieCancelOnTap".lowercased()] as? NSString ?? "false"
+            if cancelOnTap.boolValue {
+                let gesture = UITapGestureRecognizer(target: self, action: #selector (self.destroyView(_:)))
+                animationViewContainer?.addGestureRecognizer(gesture)
+            }
+
             visible = true
+        }
+    }
+
+    private func createAnimationView() {
+        let useRemote = commandDelegate?.settings["LottieRemoteEnabled".lowercased()] as? NSString ?? "false"
+        var animationLocation = commandDelegate?.settings["LottieAnimationLocation".lowercased()] as? String ?? ""
+        if useRemote.boolValue {
+            animationView = LOTAnimationView(contentsOf: URL(string: animationLocation)!)
+        } else {
+            animationLocation = Bundle.main.bundleURL.appendingPathComponent(animationLocation).path
+            animationView = LOTAnimationView(filePath: animationLocation)
         }
     }
 }
