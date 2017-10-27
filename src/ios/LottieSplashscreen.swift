@@ -55,7 +55,7 @@ import Lottie
             animationViewContainer = UIView()
             animationViewContainer?.frame = (parentView?.bounds)!
             animationViewContainer?.center = (parentView?.center)!
-            let backgroundColor = commandDelegate?.settings["LottieBackgroundColor".lowercased()] as? String
+            let backgroundColor = commandDelegate?.settings["LottieBackgroundColor".uppercased()] as? String
             animationViewContainer?.backgroundColor = UIColor(hex: backgroundColor)
             animationViewContainer?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
