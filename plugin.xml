@@ -5,7 +5,7 @@
     <license>MIT</license>
     <keywords>c</keywords>
 
-    <js-module src="www/lottie-splashscreen.js" name="LottieSplashscreen">
+    <js-module src="dist/www/lottie-splashscreen.js" name="LottieSplashscreen">
         <clobbers target="lottie.splashscreen" />
     </js-module>
 
