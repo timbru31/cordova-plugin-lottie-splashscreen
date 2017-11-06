@@ -79,6 +79,13 @@ import Lottie
                 animationViewContainer?.addGestureRecognizer(gesture)
             }
 
+            let hideTimeout = commandDelegate?.settings["LottieHideTimeout".lowercased()] as? Double ?? 0
+            if hideTimeout > 0 {
+                delayWithSeconds(hideTimeout) {
+                    self.destroyView()
+                }
+            }
+
             visible = true
         }
     }
