@@ -24,6 +24,12 @@ import Lottie
         createView()
     }
 
+    func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            completion()
+        }
+    }
+
     func pageDidLoad() {
         let autoHide = commandDelegate?.settings["AutoHideSplashScreen".lowercased()] as? NSString ?? "false"
         if autoHide.boolValue {
