@@ -6,10 +6,12 @@
   "license": "MIT",
   "scripts": {
     "lint": "tslint -c tslint.json 'www/**/*.ts' && swiftlint",
-    "prebulish": "tsc"
+    "prebulish": "tsc",
+    "release": "standard-release"
   },
   "devDependencies": {
     "@types/cordova": "^0.0.34",
+    "standard-version": "^4.2.0",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1"
   },
