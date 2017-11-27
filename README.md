@@ -10,7 +10,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![npm](https://img.shields.io/npm/v/cordova-plugin-lottie-splashscreen.svg)](https://www.npmjs.com/package/cordova-plugin-lottie-splashscreen)
 
-#### Cordova plugin to show a bodymovin animations as the splashscreen with Airbnb's Lottie wrapper
+#### Cordova plugin to show a bodymovin animations as the splashscreen with [Airbnb's Lottie](https://github.com/airbnb/lottie-ios) wrapper
 
 ### Supported platforms
 
