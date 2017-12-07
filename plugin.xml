@@ -22,7 +22,7 @@
         <source-file src="src/ios/LottieSplashscreen.swift" />
         <source-file src="src/ios/UIColorHelper.swift" />
 
-        <pod name="lottie-ios" version="2.1.4" />
+        <pod name="lottie-ios" version="2.1.5" />
 
         <dependency id="cordova-plugin-cocoapod-support" version="^1.3.0" />
         <dependency id="cordova-plugin-add-swift-support" version="^1.7.0" />
