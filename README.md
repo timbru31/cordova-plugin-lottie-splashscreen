@@ -27,8 +27,11 @@ You need to have [CocoaPods](https://cocoapods.org/) installed because the [lott
 
 ### Installation
 
+#### from npm (recommended)
+`$ cordova plugin add cordova-plugin-cordova-plugin-lottie-splashscreen`
 
-`$ cordova plugin add cordova-plugin-lottie-splashscreen`
+#### from git (unstable)
+`$ cordova plugin add https://github.com/timbru31/cordova-plugin-cordova-plugin-lottie-splashscreen.git`
 
 ### Usage
 
