@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "tslint -c tslint.json 'www/**/*.ts' && swiftlint",
     "prebulish": "tsc",
-    "release": "standard-release"
+    "release": "standard-version"
   },
   "devDependencies": {
     "@types/cordova": "^0.0.34",
@@ -21,6 +21,14 @@
       "ios"
     ]
   },
+  "engines": {
+    "cordovaDependencies": {
+      "0.1.0": {
+        "cordova": ">= 6.4.0",
+        "cordova-ios": ">=4.3.0"
+      }
+    }
+  },
   "keywords": [
     "cordova",
     "cordova-plugin",
@@ -30,5 +38,9 @@
     "lottie-ios",
     "bodymovin",
     "swift"
-  ]
+  ],
+  "repository": "cordova-plugin-lottie-splashscreen",
+  "bugs": {
+    "url": "https://github.com/cordova-plugin-lottie-splashscreen/issues"
+  }
 }
