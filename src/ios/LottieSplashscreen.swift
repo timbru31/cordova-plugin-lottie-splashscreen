@@ -6,22 +6,8 @@ import Lottie
     var visible = false
 
     override func pluginInitialize() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.pageDidLoad),
-            name: NSNotification.Name.CDVPageDidLoad,
-            object: nil)
+        createObservers()
         createView()
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.resumePlaying),
-            name: NSNotification.Name.UIApplicationWillEnterForeground,
-            object: nil)
-    }
-
-    @objc func resumePlaying() {
-        animationView?.play()
     }
 
     @objc(hide:)
@@ -34,12 +20,6 @@ import Lottie
         createView()
     }
 
-    func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            completion()
-        }
-    }
-
     func pageDidLoad() {
         let autoHide = commandDelegate?.settings["AutoHideSplashScreen".lowercased()] as? NSString ?? "false"
         if autoHide.boolValue {
@@ -47,7 +27,13 @@ import Lottie
         }
     }
 
-    func destroyView(_ : UITapGestureRecognizer? = nil) {
+    private func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            completion()
+        }
+    }
+
+    @objc private func destroyView(_ : UITapGestureRecognizer? = nil) {
         if visible {
             let parentView = self.viewController.view
             parentView?.isUserInteractionEnabled = true
@@ -61,37 +47,12 @@ import Lottie
         }
     }
 
-    func createView() {
+    private func createView() {
         if !visible {
-
-            createAnimationView()
             let parentView = self.viewController.view
-            parentView?.isUserInteractionEnabled = false
 
-            animationViewContainer = UIView(frame: UIScreen.main.bounds)
-
-            let backgroundColor = commandDelegate?.settings["LottieBackgroundColor".lowercased()] as? String
-            animationViewContainer?.center = CGPoint(x: UIScreen.main.bounds.midX, y:UIScreen.main.bounds.midY)
-//            animationViewContainer?.autoresizingMask = [.flexibleTopMargin , .flexibleBottomMargin , .flexibleLeftMargin , .flexibleRightMargin]
-//            animationViewContainer?.translatesAutoresizingMaskIntoConstraints = false
-            animationViewContainer?.backgroundColor = UIColor(hex: backgroundColor)
-            animationViewContainer?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-            // animationView.frame = (parentView?.bounds)!
-            // let center = [parent convertPoint:animationViewContainer.center fromView:animationViewContainer.superview];
-            // animationView.center = center
-
-            animationView?.frame = CGRect(origin: (animationViewContainer?.center)!, size: CGSize(width: 200, height: 300))
-//            animationView?.autoresizingMask = [.flexibleTopMargin , .flexibleBottomMargin , .flexibleLeftMargin , .flexibleRightMargin]
-//            animationView?.translatesAutoresizingMaskIntoConstraints = true
-            animationView?.centerXAnchor.constraint(equalTo: (animationViewContainer?.centerXAnchor)!)
-            animationView?.centerYAnchor.constraint(equalTo: (animationViewContainer?.centerYAnchor)!)
-            animationView?.center = (animationViewContainer?.center)!
-            animationView?.loopAnimation = true
-//            animationView?.layer.anchorPoint = (animationView?.center)!
-            print(animationView?.layer.anchorPoint)
-            animationView?.contentMode = .scaleAspectFill
-            animationView?.animationSpeed = 1
+            createAnimationViewContainer()
+            createAnimationView()
 
             animationViewContainer?.addSubview(animationView!)
             parentView?.addSubview(animationViewContainer!)
@@ -114,6 +75,17 @@ import Lottie
         }
     }
 
+    private func createAnimationViewContainer() {
+        let parentView = self.viewController.view
+        parentView?.isUserInteractionEnabled = false
+
+        animationViewContainer = UIView(frame: (parentView?.bounds)!)
+
+        let backgroundColor = commandDelegate?.settings["LottieBackgroundColor".lowercased()] as? String
+        animationViewContainer?.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
+        animationViewContainer?.backgroundColor = UIColor(hex: backgroundColor)
+    }
+
     private func createAnimationView() {
         let useRemote = commandDelegate?.settings["LottieRemoteEnabled".lowercased()] as? NSString ?? "false"
         var animationLocation = commandDelegate?.settings["LottieAnimationLocation".lowercased()] as? String ?? ""
@@ -123,5 +95,39 @@ import Lottie
             animationLocation = Bundle.main.bundleURL.appendingPathComponent(animationLocation).path
             animationView = LOTAnimationView(filePath: animationLocation)
         }
+        animationView?.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        animationView?.center = CGPoint(x: UIScreen.main.bounds.midX , y :UIScreen.main.bounds.midY)
+        animationView?.loopAnimation = true
+        animationView?.contentMode = .scaleAspectFill
+        animationView?.animationSpeed = 1
+    }
+
+    private func createObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.pageDidLoad),
+            name: NSNotification.Name.CDVPageDidLoad,
+            object: nil)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.resumePlaying),
+            name: NSNotification.Name.UIApplicationWillEnterForeground,
+            object: nil)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.deviceOrientationChanged),
+            name: NSNotification.Name.UIDeviceOrientationDidChange,
+            object: nil)
+    }
+
+    @objc private func resumePlaying() {
+        animationView?.play()
+    }
+
+    @objc private func deviceOrientationChanged() {
+        animationView?.center = CGPoint(x: UIScreen.main.bounds.midX , y :UIScreen.main.bounds.midY)
     }
 }
+
