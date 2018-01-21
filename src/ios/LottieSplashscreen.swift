@@ -17,7 +17,11 @@ import Lottie
 
     @objc(show:)
     func show(command: CDVInvokedUrlCommand) {
-        createView()
+        let location = command.arguments.count > 0 ? command.argument(at: 0) : nil
+        let remote = command.arguments.count > 1 ? command.argument(at: 1) : nil
+        let width = command.arguments.count > 2 ? command.argument(at: 2) : nil
+        let height = command.arguments.count > 3 ? command.argument(at: 3) : nil
+        createView(location: location as? String, remote: remote as? Bool, width: width as? Int, height: height as? Int)
     }
 
     func pageDidLoad() {
@@ -27,7 +31,7 @@ import Lottie
         }
     }
 
-    private func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
+    private func delayWithSeconds(_ seconds: Double, completion: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
             completion()
         }
@@ -47,12 +51,12 @@ import Lottie
         }
     }
 
-    private func createView() {
+    private func createView(location: String? = nil, remote: Bool? = nil, width: Int? = nil, height: Int? = nil) {
         if !visible {
             let parentView = self.viewController.view
 
             createAnimationViewContainer()
-            createAnimationView()
+            createAnimationView(location: location, remote: remote, width: width, height: height)
 
             animationViewContainer?.addSubview(animationView!)
             parentView?.addSubview(animationViewContainer!)
@@ -82,21 +86,23 @@ import Lottie
         animationViewContainer = UIView(frame: (parentView?.bounds)!)
 
         let backgroundColor = commandDelegate?.settings["LottieBackgroundColor".lowercased()] as? String
-        animationViewContainer?.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
+        animationViewContainer?.autoresizingMask =[.flexibleWidth, .flexibleHeight, .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
         animationViewContainer?.backgroundColor = UIColor(hex: backgroundColor)
     }
 
-    private func createAnimationView() {
-        let useRemote = commandDelegate?.settings["LottieRemoteEnabled".lowercased()] as? NSString ?? "false"
-        var animationLocation = commandDelegate?.settings["LottieAnimationLocation".lowercased()] as? String ?? ""
-        if useRemote.boolValue {
+    private func createAnimationView(location: String? = nil, remote: Bool? = nil, width: Int? = nil, height: Int? = nil) {
+        let useRemote = remote != nil ? remote! : (commandDelegate?.settings["LottieRemoteEnabled".lowercased()] as? NSString ?? "false").boolValue
+        var animationLocation = location != nil ? location! : commandDelegate?.settings["LottieAnimationLocation".lowercased()] as? String ?? ""
+        if useRemote {
             animationView = LOTAnimationView(contentsOf: URL(string: animationLocation)!)
         } else {
             animationLocation = Bundle.main.bundleURL.appendingPathComponent(animationLocation).path
             animationView = LOTAnimationView(filePath: animationLocation)
         }
-        animationView?.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
-        animationView?.center = CGPoint(x: UIScreen.main.bounds.midX , y :UIScreen.main.bounds.midY)
+        let animationWidth = width != nil ? width! : commandDelegate?.settings["LottieWidth".lowercased()] as? Int ?? 200
+        let animationHeight = height != nil ? height! : commandDelegate?.settings["LottieHeight".lowercased()] as? Int ?? 200
+        animationView?.frame = CGRect(x: 0, y: 0, width: animationWidth, height: animationHeight)
+        animationView?.center = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY)
         animationView?.loopAnimation = true
         animationView?.contentMode = .scaleAspectFill
         animationView?.animationSpeed = 1
@@ -127,7 +133,6 @@ import Lottie
     }
 
     @objc private func deviceOrientationChanged() {
-        animationView?.center = CGPoint(x: UIScreen.main.bounds.midX , y :UIScreen.main.bounds.midY)
+        animationView?.center = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY)
     }
 }
-

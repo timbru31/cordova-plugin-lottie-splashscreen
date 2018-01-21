@@ -23,7 +23,7 @@
 
 #### Prerequisites
 
-You need to have [CocoaPods](https://cocoapods.org/) installed because the [lottie-ios](https://cocoapods.org/pods/lottie-ios) is fetched from there.
+You need to have [CocoaPods](https://cocoapods.org/) installed because the [lottie-ios](https://cocoapods.org/pods/lottie-ios) is fetched from there.  
 `$ sudo gem install cocoapods`
 
 ### Installation
@@ -45,6 +45,8 @@ tbd.
 * LottieCancelOnTap
 * LottieHideTimeout
 * LottieBackgroundColor
+* LottieWidth
+* LottieHeight
 * AutoHideSplashScreen
 
 ---
