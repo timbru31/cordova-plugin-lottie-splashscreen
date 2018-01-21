@@ -68,7 +68,7 @@ import Lottie
                 animationViewContainer?.addGestureRecognizer(gesture)
             }
 
-            let hideTimeout = commandDelegate?.settings["LottieHideTimeout".lowercased()] as? Double ?? 0
+            let hideTimeout = Double(commandDelegate?.settings["LottieHideTimeout".lowercased()] as? String ?? "0")!
             if hideTimeout > 0 {
                 delayWithSeconds(hideTimeout) {
                     self.destroyView()
@@ -99,8 +99,8 @@ import Lottie
             animationLocation = Bundle.main.bundleURL.appendingPathComponent(animationLocation).path
             animationView = LOTAnimationView(filePath: animationLocation)
         }
-        let animationWidth = width != nil ? width! : commandDelegate?.settings["LottieWidth".lowercased()] as? Int ?? 200
-        let animationHeight = height != nil ? height! : commandDelegate?.settings["LottieHeight".lowercased()] as? Int ?? 200
+        let animationWidth = width != nil ? width! : Int(commandDelegate?.settings["LottieWidth".lowercased()] as? String ?? "200")!
+        let animationHeight = height != nil ? height! : Int(commandDelegate?.settings["LottieHeight".lowercased()] as? String ?? "200")!
         animationView?.frame = CGRect(x: 0, y: 0, width: animationWidth, height: animationHeight)
         animationView?.center = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY)
         animationView?.loopAnimation = true
