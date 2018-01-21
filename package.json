@@ -25,6 +25,10 @@
     "cordova",
     "cordova-plugin",
     "ecosystem:cordova",
-    "cordova-ios"
+    "cordova-ios",
+    "lottie",
+    "lottie-ios",
+    "bodymovin",
+    "swift"
   ]
 }

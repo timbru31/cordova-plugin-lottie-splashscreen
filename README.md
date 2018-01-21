@@ -10,7 +10,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![npm](https://img.shields.io/npm/v/cordova-plugin-lottie-splashscreen.svg)](https://www.npmjs.com/package/cordova-plugin-lottie-splashscreen)
 
-#### Cordova plugin to show bodymovin animations as the splashscreen with [Airbnb's Lottie](https://github.com/airbnb/lottie-ios) wrapper
+#### Cordova plugin to show bodymovin animations as the splashscreen with [Airbnb's Lottie](http://airbnb.io/lottie/) wrapper
 
 ### Supported platforms
 
@@ -21,7 +21,7 @@
 * **Android**
 * **macOS**
 
-#### Prerequisites
+#### Prerequisites (iOS only)
 
 You need to have [CocoaPods](https://cocoapods.org/) installed because the [lottie-ios](https://cocoapods.org/pods/lottie-ios) is fetched from there.  
 `$ sudo gem install cocoapods`
@@ -75,7 +75,7 @@ lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, he
     <preference name="LottieCancelOnTap" value="true" />
 ```
 
-* `LottieHideTimeout` (Double, default `0`). Duration in seconds after which the Lotie animation should be hidden.
+* `LottieHideTimeout` (Double, default `0`). Duration in seconds after which the Lottie animation should be hidden.
 ```xml
     <preference name="LottieHideTimeout" value="10" />
 ```
