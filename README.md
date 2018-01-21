@@ -10,13 +10,23 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![npm](https://img.shields.io/npm/v/cordova-plugin-lottie-splashscreen.svg)](https://www.npmjs.com/package/cordova-plugin-lottie-splashscreen)
 
-#### Cordova plugin to show a bodymovin animations as the splashscreen with [Airbnb's Lottie](https://github.com/airbnb/lottie-ios) wrapper
+#### Cordova plugin to show bodymovin animations as the splashscreen with [Airbnb's Lottie](https://github.com/airbnb/lottie-ios) wrapper
 
 ### Supported platforms
 
 * **iOS**
 
+### Planned platforms
+
+* **Android**
+
+#### Prerequisites
+
+You need to have [CocoaPods](https://cocoapods.org/) installed because the [lottie-ios](https://cocoapods.org/pods/lottie-ios) is fetched from there.
+`$ sudo gem install cocoapods`
+
 ### Installation
+
 
 `$ cordova plugin add cordova-plugin-lottie-splashscreen`
 
