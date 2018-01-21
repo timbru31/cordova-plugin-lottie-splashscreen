@@ -38,5 +38,14 @@ You need to have [CocoaPods](https://cocoapods.org/) installed because the [lott
 
 tbd.
 
+### Preferences
+
+* LottieRemoteEnabled
+* LottieAnimationLocation
+* LottieCancelOnTap
+* LottieHideTimeout
+* LottieBackgroundColor
+* AutoHideSplashScreen
+
 ---
 Built by (c) Tim Brust and contributors. Released under the MIT license.

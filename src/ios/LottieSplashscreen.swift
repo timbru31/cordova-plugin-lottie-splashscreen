@@ -12,6 +12,16 @@ import Lottie
             name: NSNotification.Name.CDVPageDidLoad,
             object: nil)
         createView()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.resumePlaying),
+            name: NSNotification.Name.UIApplicationWillEnterForeground,
+            object: nil)
+    }
+
+    @objc func resumePlaying() {
+        animationView?.play()
     }
 
     @objc(hide:)
@@ -59,9 +69,11 @@ import Lottie
             parentView?.isUserInteractionEnabled = false
 
             animationViewContainer = UIView(frame: UIScreen.main.bounds)
+
             let backgroundColor = commandDelegate?.settings["LottieBackgroundColor".lowercased()] as? String
-            animationViewContainer?.autoresizingMask = [.flexibleTopMargin , .flexibleBottomMargin , .flexibleLeftMargin , .flexibleRightMargin]
-            animationViewContainer?.translatesAutoresizingMaskIntoConstraints = true
+            animationViewContainer?.center = CGPoint(x: UIScreen.main.bounds.midX, y:UIScreen.main.bounds.midY)
+//            animationViewContainer?.autoresizingMask = [.flexibleTopMargin , .flexibleBottomMargin , .flexibleLeftMargin , .flexibleRightMargin]
+//            animationViewContainer?.translatesAutoresizingMaskIntoConstraints = false
             animationViewContainer?.backgroundColor = UIColor(hex: backgroundColor)
             animationViewContainer?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
@@ -69,9 +81,15 @@ import Lottie
             // let center = [parent convertPoint:animationViewContainer.center fromView:animationViewContainer.superview];
             // animationView.center = center
 
-            animationView?.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
-            animationView?.center = CGPoint(x: (animationViewContainer?.bounds.midX)!, y: (animationViewContainer?.bounds.midY)!)
+            animationView?.frame = CGRect(origin: (animationViewContainer?.center)!, size: CGSize(width: 200, height: 300))
+//            animationView?.autoresizingMask = [.flexibleTopMargin , .flexibleBottomMargin , .flexibleLeftMargin , .flexibleRightMargin]
+//            animationView?.translatesAutoresizingMaskIntoConstraints = true
+            animationView?.centerXAnchor.constraint(equalTo: (animationViewContainer?.centerXAnchor)!)
+            animationView?.centerYAnchor.constraint(equalTo: (animationViewContainer?.centerYAnchor)!)
+            animationView?.center = (animationViewContainer?.center)!
             animationView?.loopAnimation = true
+//            animationView?.layer.anchorPoint = (animationView?.center)!
+            print(animationView?.layer.anchorPoint)
             animationView?.contentMode = .scaleAspectFill
             animationView?.animationSpeed = 1
 
