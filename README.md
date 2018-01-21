@@ -14,11 +14,12 @@
 
 ### Supported platforms
 
-* **iOS**
+* **iOS (8+)**
 
 ### Planned platforms
 
 * **Android**
+* **macOS**
 
 #### Prerequisites
 

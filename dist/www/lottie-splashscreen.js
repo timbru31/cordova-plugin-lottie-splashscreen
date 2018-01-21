@@ -6,8 +6,8 @@ var LottieSplashscreen = (function () {
     LottieSplashscreen.hide = function (successCallback, errorCallback) {
         cordova_1.exec(successCallback, errorCallback, 'LottieSplashscreen', 'hide', []);
     };
-    LottieSplashscreen.show = function (successCallback, errorCallback) {
-        cordova_1.exec(successCallback, errorCallback, 'LottieSplashscreen', 'hide', []);
+    LottieSplashscreen.show = function (location, remote, successCallback, errorCallback) {
+        cordova_1.exec(successCallback, errorCallback, 'LottieSplashscreen', 'show', [location, remote]);
     };
     return LottieSplashscreen;
 }());
