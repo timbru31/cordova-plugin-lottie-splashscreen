@@ -36,18 +36,69 @@ You need to have [CocoaPods](https://cocoapods.org/) installed because the [lott
 
 ### Usage
 
-tbd.
+This Cordova plugin is meant as a replacement for the stock [cordova-plugin-splashscreen](https://github.com/apache/cordova-plugin-splashscreen).
+
+#### Methods
+
+* lottie.splashscreen.hide
+* lottie.splashscreen.show
+
+##### lottie.splashscreen.hide
+
+This methods hides the current active Lottie splashscreen and destorys the views.
+```js
+lottie.splashscreen.hide()
+```
+
+##### lottie.splashscreen.show
+
+This method shows a Lottie splashscreen. If no arguments are given, it defaults to the `config.xml` values, however you can pass (new) options here to change the behavior on runtime. (For easier reading th TypeScript notation is used)
+
+```ts
+lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, height?: number)
+```
 
 ### Preferences
 
-* LottieRemoteEnabled
-* LottieAnimationLocation
-* LottieCancelOnTap
-* LottieHideTimeout
-* LottieBackgroundColor
-* LottieWidth
-* LottieHeight
-* AutoHideSplashScreen
+* `LottieRemoteEnabled` (Boolean, default `false`). Toggles Lottie's remote mode which allows files to be downloaded/displayed from URLs. Example:
+```xml
+    <preference name="LottieRemoteEnabled" value="true" />
+```
+
+* `LottieAnimationLocation` (String, default `""`). Location of the Lottie JSON file that should be loaded. Can either be a URL (if `LottieRemoteEnabled` is `true`) or a local JSON file.
+```xml
+    <preference name="LottieAnimationLocation" value="https://www.lottiefiles.com/storage/datafiles/N085wuw0PbkS20l/data.json" />
+```
+
+* `LottieCancelOnTap` (Boolean, default `false`). Immediately cancels the Lottie animation when the user taps on the screen.
+```xml
+    <preference name="LottieCancelOnTap" value="true" />
+```
+
+* `LottieHideTimeout` (Double, default `0`). Duration in seconds after which the Lotie animation should be hidden.
+```xml
+    <preference name="LottieHideTimeout" value="10" />
+```
+
+* `LottieBackgroundColor` (String, default `#ffffff`). Background color of the overlay. Can be used with alpha values, too. (For more information see the [8 digits notation of RGB notation](https://drafts.csswg.org/css-color/#hex-notation))
+```xml
+    <preference name="LottieBackgroundColor" value="#fff000a3" />
+```
+
+* `LottieWidth` (Integer, default `200`). Width of the container that's rendering the Lottie animation
+```xml
+    <preference name="LottieWidth" value="750" />
+```
+
+* `LottieHeight` (Integer, default `200`). Height of the container that's rendering the Lottie animation
+```xml
+    <preference name="LottieHeight" value="750" />
+```
+
+* `AutoHideSplashScreen` (Boolean, default `false`). Hides the Lottie splashscreen when the `pageDidLoad` event fired
+```xml
+    <preference name="AutoHideSplashScreen" value="true" />
+```
 
 ---
 Built by (c) Tim Brust and contributors. Released under the MIT license.
