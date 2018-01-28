@@ -1,6 +1,6 @@
 import Lottie
 
-@objc(LottieSplashscreen) class LottieSplashscreen: CDVPlugin {
+@objc(LottieSplashScreen) class LottieSplashScreen: CDVPlugin {
     var animationView: LOTAnimationView?
     var animationViewContainer: UIView?
     var visible = false

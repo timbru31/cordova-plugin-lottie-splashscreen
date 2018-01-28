@@ -10,7 +10,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![npm](https://img.shields.io/npm/v/cordova-plugin-lottie-splashscreen.svg)](https://www.npmjs.com/package/cordova-plugin-lottie-splashscreen)
 
-#### Cordova plugin to show bodymovin animations as the splashscreen with [Airbnb's Lottie](http://airbnb.io/lottie/) wrapper
+#### Cordova plugin to show bodymovin/Lottie animations as the splash screen with [Airbnb's Lottie](http://airbnb.io/lottie/) wrapper
 
 ### Supported platforms
 
@@ -52,7 +52,7 @@ lottie.splashscreen.hide()
 
 ##### lottie.splashscreen.show
 
-This method shows a Lottie splashscreen. If no arguments are given, it defaults to the `config.xml` values, however you can pass (new) options here to change the behavior on runtime. (For easier reading th TypeScript notation is used)
+This method shows a Lottie splash screen. If no arguments are given, it defaults to the `config.xml` values, however you can pass (new) options here to change the behavior on runtime. (For easier reading th TypeScript notation is used)
 
 ```ts
 lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, height?: number)
@@ -95,7 +95,7 @@ lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, he
     <preference name="LottieHeight" value="750" />
 ```
 
-* `AutoHideSplashScreen` (Boolean, default `false`). Hides the Lottie splashscreen when the `pageDidLoad` event fired
+* `AutoHideSplashScreen` (Boolean, default `false`). Hides the Lottie splash screen when the `pageDidLoad` event fired
 ```xml
     <preference name="AutoHideSplashScreen" value="true" />
 ```

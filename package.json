@@ -1,12 +1,13 @@
 {
   "name": "cordova-plugin-lottie-splashscreen",
   "version": "0.1.0",
-  "description": "Lottie Splashscreen Plugin",
+  "description": "LottieSplashScreen Plugin",
   "author": "Tim Brust <github@timbrust.de>",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "lint": "tslint -c tslint.json 'www/**/*.ts' && swiftlint",
-    "prebulish": "tsc",
+    "prepublish": "npm run build",
     "release": "standard-version"
   },
   "devDependencies": {
@@ -41,6 +42,6 @@
   ],
   "repository": "cordova-plugin-lottie-splashscreen",
   "bugs": {
-    "url": "https://github.com/cordova-plugin-lottie-splashscreen/issues"
+    "url": "https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues"
   }
 }

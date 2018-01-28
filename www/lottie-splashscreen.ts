@@ -1,13 +1,13 @@
 import { exec } from 'cordova';
 
-class LottieSplashscreen {
+class LottieSplashScreen {
     static hide() {
-        exec(null as any, null as any, 'LottieSplashscreen', 'hide', []);
+        exec(null as any, null as any, 'LottieSplashScreen', 'hide', []);
     }
 
     static show(location?: string, remote?: boolean, width?: number, height?: number) {
-        exec(null as any, null as any, 'LottieSplashscreen', 'show', [location, remote, width, height]);
+        exec(null as any, null as any, 'LottieSplashScreen', 'show', [location, remote, width, height]);
     }
 }
 
-export = LottieSplashscreen;
+export = LottieSplashScreen;

@@ -1,14 +1,14 @@
 "use strict";
 var cordova_1 = require("cordova");
-var LottieSplashscreen = (function () {
-    function LottieSplashscreen() {
+var LottieSplashScreen = (function () {
+    function LottieSplashScreen() {
     }
-    LottieSplashscreen.hide = function () {
-        cordova_1.exec(null, null, 'LottieSplashscreen', 'hide', []);
+    LottieSplashScreen.hide = function () {
+        cordova_1.exec(null, null, 'LottieSplashScreen', 'hide', []);
     };
-    LottieSplashscreen.show = function (location, remote, width, height) {
-        cordova_1.exec(null, null, 'LottieSplashscreen', 'show', [location, remote, width, height]);
+    LottieSplashScreen.show = function (location, remote, width, height) {
+        cordova_1.exec(null, null, 'LottieSplashScreen', 'show', [location, remote, width, height]);
     };
-    return LottieSplashscreen;
+    return LottieSplashScreen;
 }());
-module.exports = LottieSplashscreen;
+module.exports = LottieSplashScreen;

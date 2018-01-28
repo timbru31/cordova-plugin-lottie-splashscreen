@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-lottie-splashscreen" version="0.1.0">
-    <name>Lottie Splashscreen</name>
-    <description>Lottie Splashscreen Plugin</description>
+    <name>LottieSplashScreen</name>
+    <description>LottieSplashScreen Plugin</description>
     <license>MIT</license>
     <keywords>c</keywords>
 
-    <js-module src="dist/www/lottie-splashscreen.js" name="LottieSplashscreen">
+    <js-module src="dist/www/lottie-splashscreen.js" name="LottieSplashScreen">
         <clobbers target="lottie.splashscreen" />
     </js-module>
 
     <platform name="ios">
         <pods-config use-frameworks="true" />
         <config-file target="config.xml" parent="/*">
-            <feature name="LottieSplashscreen">
-                <param name="ios-package" value="LottieSplashscreen" />
+            <feature name="LottieSplashScreen">
+                <param name="ios-package" value="LottieSplashScreen" />
                 <param name="onload" value="true" />
             </feature>
         </config-file>
 
-        <header-file src="src/ios/LottieSplashscreen-Bridging-Header.h" />
-        <source-file src="src/ios/LottieSplashscreen.swift" />
+        <header-file src="src/ios/LottieSplashScreen-Bridging-Header.h" />
+        <source-file src="src/ios/LottieSplashScreen.swift" />
         <source-file src="src/ios/UIColorHelper.swift" />
 
         <pod name="lottie-ios" version="2.1.5" />
