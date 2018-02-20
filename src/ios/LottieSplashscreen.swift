@@ -24,7 +24,7 @@ import Lottie
         createView(location: location as? String, remote: remote as? Bool, width: width as? Int, height: height as? Int)
     }
 
-    func pageDidLoad() {
+    @objc func pageDidLoad() {
         let autoHide = commandDelegate?.settings["AutoHideSplashScreen".lowercased()] as? NSString ?? "false"
         if autoHide.boolValue {
             destroyView()
