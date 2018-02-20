@@ -7,14 +7,14 @@
   "scripts": {
     "build": "tsc",
     "lint": "tslint -c tslint.json 'www/**/*.ts' && swiftlint",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "release": "standard-version"
   },
   "devDependencies": {
     "@types/cordova": "^0.0.34",
-    "standard-version": "^4.2.0",
-    "tslint": "^5.8.0",
-    "typescript": "^2.6.1"
+    "standard-version": "^4.3.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.2"
   },
   "cordova": {
     "id": "cordova-plugin-lottie-splashscreen",
