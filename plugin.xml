@@ -22,12 +22,13 @@
         <source-file src="src/ios/LottieSplashScreen.swift" />
         <source-file src="src/ios/UIColorHelper.swift" />
 
-        <pod name="lottie-ios" version="2.1.5" />
+        <pod name="lottie-ios" version="2.5.0" />
 
         <dependency id="cordova-plugin-cocoapod-support" version="^1.3.0" />
         <dependency id="cordova-plugin-add-swift-support" version="^1.7.1" />
 
         <!-- This fixes CB-12212 -->
         <hook type="before_prepare" src="hooks/before_prepare_ios.js"/>
+        <hook type="after_plugin_add" src="hooks/update_pod_repo.sh"/>
     </platform>
 </plugin>
