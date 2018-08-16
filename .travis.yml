@@ -1,6 +1,13 @@
 os: osx
 osx_image: xcode9.4
 
+language: node_js
+node_js:
+  - lts/*
+cache:
+  directories:
+    - "node_modules"
+
 before_install:
   - npm install -g greenkeeper-lockfile
 
@@ -9,7 +16,7 @@ before_script:
   - greenkeeper-lockfile-update
 
 script:
-  - swiftlint
+  - npm run lint
 
 after_script:
   - greenkeeper-lockfile-upload
