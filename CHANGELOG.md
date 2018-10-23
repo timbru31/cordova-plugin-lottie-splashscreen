@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.3"></a>
+## [0.1.3](http://cordova-plugin-lottie-splashscreen/compare/v0.1.2...v0.1.3) (2018-10-23)
+
+
+### Bug Fixes
+
+* change hooks to ES5, make file executable ([99caac1](http://cordova-plugin-lottie-splashscreen/commits/99caac1))
+* increase line-length limit to 140 chars ([9ec2c36](http://cordova-plugin-lottie-splashscreen/commits/9ec2c36))
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](http://cordova-plugin-lottie-splashscreen/compare/v0.1.1...v0.1.2) (2018-04-04)
 
