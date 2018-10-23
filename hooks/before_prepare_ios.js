@@ -1,10 +1,12 @@
-const fs = require('fs');
+#!/usr/bin/env node
 
-const xcconfigFile = 'platforms/ios/cordova/build.xcconfig';
-const xcconfigFileContent = fs.readFileSync(xcconfigFile, 'utf-8');
-const codeSignEntitlementsIndex = xcconfigFileContent.search(/^\s?CODE_SIGN_ENTITLEMENTS/gm);
+var fs = require('fs');
+
+var xcconfigFile = 'platforms/ios/cordova/build.xcconfig';
+var xcconfigFileContent = fs.readFileSync(xcconfigFile, 'utf-8');
+var codeSignEntitlementsIndex = xcconfigFileContent.search(/^\s?CODE_SIGN_ENTITLEMENTS/gm);
 
 if (codeSignEntitlementsIndex !== -1) {
-    const updatedXcconfig = xcconfigFileContent.slice(0, codeSignEntitlementsIndex) + '// [CB-12212] ' + xcconfigFileContent.slice(codeSignEntitlementsIndex);
+    var updatedXcconfig = xcconfigFileContent.slice(0, codeSignEntitlementsIndex) + '// [CB-12212] ' + xcconfigFileContent.slice(codeSignEntitlementsIndex);
     fs.writeFileSync(xcconfigFile, updatedXcconfig, 'utf-8');
 }
