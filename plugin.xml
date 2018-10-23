@@ -22,9 +22,9 @@
         <source-file src="src/ios/LottieSplashScreen.swift" />
         <source-file src="src/ios/UIColorHelper.swift" />
 
-        <pod name="lottie-ios" version="2.5.0" />
+        <pod name="lottie-ios" version="2.5.2" />
 
-        <dependency id="cordova-plugin-cocoapod-support" version="^1.3.0" />
+        <dependency id="cordova-plugin-cocoapod-support" version="^1.6.0" />
         <dependency id="cordova-plugin-add-swift-support" version="^1.7.2" />
 
         <!-- This fixes CB-12212 -->
