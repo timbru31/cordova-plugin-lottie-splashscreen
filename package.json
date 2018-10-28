@@ -40,7 +40,7 @@
     "bodymovin",
     "swift"
   ],
-  "repository": "cordova-plugin-lottie-splashscreen",
+  "repository": "timbru31/cordova-plugin-lottie-splashscreen",
   "bugs": {
     "url": "https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues"
   }
