@@ -3,7 +3,7 @@
     <name>LottieSplashScreen</name>
     <description>LottieSplashScreen Plugin</description>
     <license>MIT</license>
-    <keywords>c</keywords>
+    <keywords>cordova,cordova-plugin,cordova-ios,lottie, ottie-ios,bodymovin,swift</keywords>
 
     <js-module src="dist/www/lottie-splashscreen.js" name="LottieSplashScreen">
         <clobbers target="lottie.splashscreen" />
