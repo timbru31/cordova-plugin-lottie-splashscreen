@@ -1,0 +1,9 @@
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+
+repositories() {
+    mavenCentral()
+}
+
+apply plugin: 'kotlin-android'

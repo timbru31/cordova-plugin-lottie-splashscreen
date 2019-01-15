@@ -21,10 +21,15 @@
 * **Android**
 * **macOS**
 
-#### Prerequisites (iOS only)
+#### Prerequisites
 
+#### iOS
 You need to have [CocoaPods](https://cocoapods.org/) installed because the [lottie-ios](https://cocoapods.org/pods/lottie-ios) is fetched from there.  
 `$ sudo gem install cocoapods`
+
+#### Android
+You need to modify the `target=android-27` to `target=android-28` in `platforms/android/project.properties` because AndroidX support is required.  
+Once Cordova has bumped the target SDK version, this is no longer needed. (This will be the case with cordova-android v8)
 
 ### Installation
 
@@ -45,7 +50,7 @@ This Cordova plugin is meant as a replacement for the stock [cordova-plugin-spla
 
 ##### lottie.splashscreen.hide
 
-This methods hides the current active Lottie splashscreen and destorys the views.
+This methods hides the current active Lottie splashscreen and destroys the views.
 ```js
 lottie.splashscreen.hide()
 ```
@@ -65,9 +70,9 @@ lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, he
     <preference name="LottieRemoteEnabled" value="true" />
 ```
 
-* `LottieAnimationLocation` (String, default `""`). Location of the Lottie JSON file that should be loaded. Can either be a URL (if `LottieRemoteEnabled` is `true`) or a local JSON file.
+* `LottieAnimationLocation` (String, default `""`). Location of the Lottie JSON file that should be loaded. Can either be a URL (if `LottieRemoteEnabled` is `true`) or a local JSON file (e.g. `www/lottie/error.json`).
 ```xml
-    <preference name="LottieAnimationLocation" value="https://www.lottiefiles.com/storage/datafiles/N085wuw0PbkS20l/data.json" />
+    <preference name="LottieAnimationLocation" value="https://assets.lottiefiles.com/datafiles/99nA1a7mkSF3Oz8/data.json" />
 ```
 
 * `LottieCancelOnTap` (Boolean, default `false`). Immediately cancels the Lottie animation when the user taps on the screen.
