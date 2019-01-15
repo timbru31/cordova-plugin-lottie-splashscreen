@@ -19,6 +19,7 @@
   "cordova": {
     "id": "cordova-plugin-lottie-splashscreen",
     "platforms": [
+      "android",
       "ios"
     ]
   },

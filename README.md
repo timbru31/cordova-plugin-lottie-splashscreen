@@ -15,10 +15,10 @@
 ### Supported platforms
 
 * **iOS (8+)**
+* **Android**
 
 ### Planned platforms
 
-* **Android**
 * **macOS**
 
 #### Prerequisites
@@ -57,7 +57,7 @@ lottie.splashscreen.hide()
 
 ##### lottie.splashscreen.show
 
-This method shows a Lottie splash screen. If no arguments are given, it defaults to the `config.xml` values, however you can pass (new) options here to change the behavior on runtime. (For easier reading th TypeScript notation is used)
+This method shows a Lottie splash screen. If no arguments are given, it defaults to the `config.xml` values, however you can pass (new) options here to change the behavior on runtime. (For easier reading the TypeScript notation is used)
 
 ```ts
 lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, height?: number)
