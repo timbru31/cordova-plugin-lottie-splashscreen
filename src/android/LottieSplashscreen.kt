@@ -20,7 +20,7 @@ class LottieSplashScreen : CordovaPlugin() {
 
     override fun onMessage(id: String?, data: Any?): Any? {
         if ("onPageFinished".equals(id)) {
-           val autoHide = preferences.getBoolean("AutoHideSplashScreen", true)
+           val autoHide = preferences.getBoolean("LottieAutoHideSplashScreen", false)
             if (autoHide) {
                 destroyView()
             }
