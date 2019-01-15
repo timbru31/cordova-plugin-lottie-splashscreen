@@ -95,6 +95,11 @@ lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, he
     <preference name="LottieHeight" value="750" />
 ```
 
+* `LottieLoopAnimation` (Boolean, default `false`). Loops the animation
+```xml
+    <preference name="LottieLoopAnimation" value="true" />
+```
+
 * `AutoHideSplashScreen` (Boolean, default `false`). Hides the Lottie splash screen when the `pageDidLoad` event fired
 ```xml
     <preference name="AutoHideSplashScreen" value="true" />

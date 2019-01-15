@@ -103,7 +103,7 @@ import Lottie
         let animationHeight = height != nil ? height! : Int(commandDelegate?.settings["LottieHeight".lowercased()] as? String ?? "200")!
         animationView?.frame = CGRect(x: 0, y: 0, width: animationWidth, height: animationHeight)
         animationView?.center = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY)
-        animationView?.loopAnimation = true
+        animationView?.loopAnimation = (commandDelegate?.settings["LottieLoopAnimation".lowercased()] as? NSString ?? "false").boolValue
         animationView?.contentMode = .scaleAspectFill
         animationView?.animationSpeed = 1
     }
