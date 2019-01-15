@@ -21,15 +21,14 @@
 
 * **macOS**
 
-#### Prerequisites
+#### Prerequisites/Warnings
 
 #### iOS
-You need to have [CocoaPods](https://cocoapods.org/) installed because the [lottie-ios](https://cocoapods.org/pods/lottie-ios) is fetched from there.  
+You need to have [CocoaPods](https://cocoapods.org/) installed because [lottie-ios](https://cocoapods.org/pods/lottie-ios) is fetched from there.  
 `$ sudo gem install cocoapods`
 
 #### Android
-You need to modify the `target=android-27` to `target=android-28` in `platforms/android/project.properties` because AndroidX support is required.  
-Once Cordova has bumped the target SDK version, this is no longer needed. (This will be the case with cordova-android v8)
+AndroidX support is required for lottie-android >= 2.8.0. It's currently pinned to v2.7.0 since Cordova has no support for it. Once Cordova is ready for AndroidX the dependency can be upgraded.
 
 ### Installation
 
