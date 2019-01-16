@@ -2,11 +2,13 @@ package de.dustplanet.cordova.lottie
 
 import android.app.Dialog
 import android.os.Handler
-import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieDrawable
-import org.apache.cordova.*
+import org.apache.cordova.CallbackContext
+import org.apache.cordova.CordovaArgs
+import org.apache.cordova.CordovaPlugin
 
 class LottieSplashScreen : CordovaPlugin() {
 
@@ -54,16 +56,21 @@ class LottieSplashScreen : CordovaPlugin() {
             val context = webView.context
 
             animationView = LottieAnimationView(context)
-
-            val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)
-            val location = location ?: preferences.getString("LottieAnimationLocation", "")
-            if (remoteEnabled) {
-                animationView!!.setAnimationFromUrl(location)
-            } else {
-                animationView!!.setAnimation(location)
+            val useHardwareAcceleration = remote ?: preferences.getBoolean("LottieEnableHardwareAcceleration", false)
+            if (useHardwareAcceleration) {
+                animationView!!.setLayerType(View.LAYER_TYPE_HARDWARE, null)
             }
 
-            if (preferences.getBoolean("LottieRemoteEnabled", false)) {
+            val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)
+            val animationLocation = location ?: preferences.getString("LottieAnimationLocation", "")
+            if (remoteEnabled) {
+                animationView!!.setAnimationFromUrl(animationLocation)
+            } else {
+                animationView!!.setAnimation(animationLocation)
+                animationView!!.imageAssetsFolder = preferences.getString("LottieImagesLocation", animationLocation.substring(0, animationLocation.lastIndexOf('/')))
+            }
+
+            if (preferences.getBoolean("LottieLoopAnimation", false)) {
                 animationView!!.repeatCount = LottieDrawable.INFINITE
             }
             animationView!!.scaleType = ImageView.ScaleType.FIT_CENTER

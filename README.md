@@ -69,9 +69,14 @@ lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, he
     <preference name="LottieRemoteEnabled" value="true" />
 ```
 
-* `LottieAnimationLocation` (String, default `""`). Location of the Lottie JSON file that should be loaded. Can either be a URL (if `LottieRemoteEnabled` is `true`) or a local JSON file (e.g. `www/lottie/error.json`).
+* `LottieAnimationLocation` (String, default `""`). Location of the Lottie JSON file that should be loaded. Can either be a URL (if `LottieRemoteEnabled` is `true`) or a local JSON or ZIP file (e.g. `www/lottie/error.json`).
 ```xml
     <preference name="LottieAnimationLocation" value="https://assets.lottiefiles.com/datafiles/99nA1a7mkSF3Oz8/data.json" />
+```
+
+* `LottieImagesLocation` (String, default `path of LottieAnimationLocation`). **Android only!** Location of the Lottie images folder specified by the JSON.
+```xml
+    <preference name="LottieImagesLocation" value="www/lottie/images" />
 ```
 
 * `LottieCancelOnTap` (Boolean, default `false`). Immediately cancels the Lottie animation when the user taps on the screen.
@@ -107,6 +112,11 @@ lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, he
 * `LottieAutoHideSplashScreen` (Boolean, default `false`). Hides the Lottie splash screen when the `pageDidLoad` event fired
 ```xml
     <preference name="LottieAutoHideSplashScreen" value="true" />
+```
+
+* `LottieEnableHardwareAcceleration` (Boolean, default `false`). **Android only!** Enables hardware acceleration for the animation view.
+```xml
+    <preference name="LottieEnableHardwareAcceleration" value="true" />
 ```
 
 ---
