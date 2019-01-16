@@ -41,7 +41,7 @@
         <framework src="lottie-ios" type="podspec" spec="2.5.2" />
         <dependency id="cordova-plugin-add-swift-support" version="^1.7.2" />
 
-        <hook type="before_prepare" src="hooks/ios/code_sign_entitlements.js"/>
+        <hook type="before_prepare" src="hooks/ios/fix_code_sign_entitlements.js"/>
         <hook type="before_plugin_install" src="hooks/ios/update_pod_repo.sh"/>
         <hook type="after_platform_add" src="hooks/ios/patch_podfile.js"/>
         <hook type="after_platform_add" src="hooks/ios/install_pods.sh"/>
