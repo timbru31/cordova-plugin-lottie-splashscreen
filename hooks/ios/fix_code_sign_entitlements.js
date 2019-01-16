@@ -7,6 +7,7 @@ var xcconfigFileContent = fs.readFileSync(xcconfigFile, 'utf-8');
 var codeSignEntitlementsIndex = xcconfigFileContent.search(/^\s?CODE_SIGN_ENTITLEMENTS/gm);
 
 if (codeSignEntitlementsIndex !== -1) {
-    var updatedXcconfig = xcconfigFileContent.slice(0, codeSignEntitlementsIndex) + '// [CB-12212] ' + xcconfigFileContent.slice(codeSignEntitlementsIndex);
+    var updatedXcconfig =
+        xcconfigFileContent.slice(0, codeSignEntitlementsIndex) + '// [CB-12212] ' + xcconfigFileContent.slice(codeSignEntitlementsIndex);
     fs.writeFileSync(xcconfigFile, updatedXcconfig, 'utf-8');
 }

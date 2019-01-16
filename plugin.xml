@@ -27,7 +27,6 @@
     </platform>
 
     <platform name="ios">
-        <pods-config use-frameworks="true" />
         <config-file target="config.xml" parent="/*">
             <feature name="LottieSplashScreen">
                 <param name="ios-package" value="LottieSplashScreen" />
@@ -39,14 +38,12 @@
         <source-file src="src/ios/LottieSplashScreen.swift" />
         <source-file src="src/ios/UIColorHelper.swift" />
 
-        <pod name="lottie-ios" version="2.5.2" />
-
-        <dependency id="cordova-plugin-cocoapod-support" version="^1.6.0" />
+        <framework src="lottie-ios" type="podspec" spec="2.5.2" />
         <dependency id="cordova-plugin-add-swift-support" version="^1.7.2" />
 
-        <!-- This fixes CB-12212 -->
-        <hook type="before_prepare" src="hooks/ios/before_prepare_ios.js"/>
-        <hook type="before_platform_add" src="hooks/ios/update_pods.sh"/>
-        <hook type="after_platform_add" src="hooks/ios/run_pods.sh" />
+        <hook type="before_prepare" src="hooks/ios/code_sign_entitlements.js"/>
+        <hook type="before_plugin_install" src="hooks/ios/update_pod_repo.sh"/>
+        <hook type="after_platform_add" src="hooks/ios/patch_podfile.js"/>
+        <hook type="after_platform_add" src="hooks/ios/install_pods.sh"/>
     </platform>
 </plugin>
