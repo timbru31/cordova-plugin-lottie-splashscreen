@@ -30,16 +30,16 @@ class LottieSplashScreen : CordovaPlugin() {
         return null
     }
 
-    override fun execute(action: String?, args: CordovaArgs?, callbackContext: CallbackContext?): Boolean {
+    override fun execute(action: String, args: CordovaArgs, callbackContext: CallbackContext): Boolean {
         if (action.equals("hide")) {
             destroyView()
             return true
         } else if (action.equals("show")) {
             createView(
-                args?.getString(0),
-                args?.getBoolean(1),
-                args?.getInt(2),
-                args?.getInt(3)
+                if (args.isNull(0)) null else args.getString(0),
+                if (args.isNull(1)) null else args.getBoolean(1),
+                if (args.isNull(2)) null else args.getInt(2),
+                if (args.isNull(3)) null else args.getInt(3)
             )
             return true
         }

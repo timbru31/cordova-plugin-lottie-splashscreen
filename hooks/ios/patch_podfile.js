@@ -10,7 +10,9 @@ fs.readFile(podfile, function(readError, _data) {
     }
 
     var data = _data.toString();
-    data = data.replace("pod 'lottie-ios'", "use_frameworks!\n\tpod 'lottie-ios'");
+    if (data.indexOf('use_frameworks!') === -1) {
+        data = data.replace("pod 'lottie-ios'", "use_frameworks!\n\tpod 'lottie-ios'");
+    }
 
     fs.writeFileSync(podfile, data);
 });
