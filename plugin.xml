@@ -43,7 +43,7 @@
 
         <!-- Regular installation -->
         <pods-config use-frameworks="true" />
-        <dependency id="cordova-plugin-cocoapods-support" version="^1.6.0" />
+        <dependency id="cordova-plugin-cocoapod-support" version="^1.6.0" />
 
         <hook type="before_prepare" src="hooks/ios/fix_code_sign_entitlements.js"/>
         <hook type="before_plugin_install" src="hooks/ios/update_pod_repo.sh"/>
