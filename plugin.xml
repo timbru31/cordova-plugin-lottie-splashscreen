@@ -45,5 +45,7 @@
         <hook type="before_plugin_install" src="hooks/ios/update_pod_repo.sh"/>
         <hook type="after_plugin_install" src="hooks/ios/patch_podfile.js"/>
         <hook type="after_plugin_install" src="hooks/ios/install_pods.sh"/>
+        <hook type="after_platform_add" src="hooks/ios/patch_podfile.js"/>
+        <hook type="after_platform_add" src="hooks/ios/install_pods.sh"/>
     </platform>
 </plugin>
