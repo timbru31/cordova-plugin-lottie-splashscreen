@@ -56,9 +56,10 @@ class LottieSplashScreen : CordovaPlugin() {
             val context = webView.context
 
             animationView = LottieAnimationView(context)
+            animationView!!.enableMergePathsForKitKatAndAbove(true)
             val useHardwareAcceleration = remote ?: preferences.getBoolean("LottieEnableHardwareAcceleration", false)
             if (useHardwareAcceleration) {
-                animationView!!.setLayerType(View.LAYER_TYPE_HARDWARE, null)
+                animationView!!.useHardwareAcceleration(true)
             }
 
             val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)
