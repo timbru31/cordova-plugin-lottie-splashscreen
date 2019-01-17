@@ -2,18 +2,19 @@ package de.dustplanet.cordova.lottie
 
 import android.app.Dialog
 import android.os.Handler
+import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.ImageView
-import com.airbnb.lottie.LottieAnimationView
-import com.airbnb.lottie.LottieDrawable
+import com.airbnb.lottie.*
 import org.apache.cordova.CallbackContext
 import org.apache.cordova.CordovaArgs
 import org.apache.cordova.CordovaPlugin
 
 class LottieSplashScreen : CordovaPlugin() {
 
-    private var splashDialog: Dialog? = null
-    private var animationView: LottieAnimationView? = null
+    private lateinit var splashDialog: Dialog
+    private lateinit var animationView: LottieAnimationView
 
     override fun pluginInitialize() {
         super.initialize(cordova, webView);
@@ -22,7 +23,7 @@ class LottieSplashScreen : CordovaPlugin() {
 
     override fun onMessage(id: String?, data: Any?): Any? {
         if ("onPageFinished".equals(id)) {
-           val autoHide = preferences.getBoolean("LottieAutoHideSplashScreen", false)
+            val autoHide = preferences.getBoolean("LottieAutoHideSplashScreen", false)
             if (autoHide) {
                 destroyView()
             }
@@ -36,10 +37,10 @@ class LottieSplashScreen : CordovaPlugin() {
             return true
         } else if (action.equals("show")) {
             createView(
-                if (args.isNull(0)) null else args.getString(0),
-                if (args.isNull(1)) null else args.getBoolean(1),
-                if (args.isNull(2)) null else args.getInt(2),
-                if (args.isNull(3)) null else args.getInt(3)
+                    if (args.isNull(0)) null else args.getString(0),
+                    if (args.isNull(1)) null else args.getBoolean(1),
+                    if (args.isNull(2)) null else args.getInt(2),
+                    if (args.isNull(3)) null else args.getInt(3)
             )
             return true
         }
@@ -56,51 +57,63 @@ class LottieSplashScreen : CordovaPlugin() {
             val context = webView.context
 
             animationView = LottieAnimationView(context)
-            animationView!!.enableMergePathsForKitKatAndAbove(true)
-            val useHardwareAcceleration = remote ?: preferences.getBoolean("LottieEnableHardwareAcceleration", false)
+            val useHardwareAcceleration = remote
+                    ?: preferences.getBoolean("LottieEnableHardwareAcceleration", false)
             if (useHardwareAcceleration) {
-                animationView!!.useHardwareAcceleration(true)
+                animationView.useHardwareAcceleration(true)
             }
 
             val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)
             val animationLocation = location ?: preferences.getString("LottieAnimationLocation", "")
+            var comp: LottieTask<LottieComposition>
             if (remoteEnabled) {
-                animationView!!.setAnimationFromUrl(animationLocation)
+                comp = LottieCompositionFactory.fromUrl(context, animationLocation)
             } else {
-                animationView!!.setAnimation(animationLocation)
-                animationView!!.imageAssetsFolder = preferences.getString("LottieImagesLocation", animationLocation.substring(0, animationLocation.lastIndexOf('/')))
+                comp = LottieCompositionFactory.fromAsset(context, animationLocation)
+                animationView.imageAssetsFolder = preferences.getString("LottieImagesLocation", animationLocation.substring(0, animationLocation.lastIndexOf('/')))
             }
+
+            comp.addListener { animationView.setComposition(it) }.addFailureListener {
+                Log.e(LOG_TAG, "Animation not loadable!")
+                Log.e(LOG_TAG, Log.getStackTraceString(it))
+                this.destroyView()
+            }
+
+            animationView.enableMergePathsForKitKatAndAbove(true)
 
             if (preferences.getBoolean("LottieLoopAnimation", false)) {
-                animationView!!.repeatCount = LottieDrawable.INFINITE
+                animationView.repeatCount = LottieDrawable.INFINITE
             }
-            animationView!!.scaleType = ImageView.ScaleType.FIT_CENTER
-            animationView!!.setBackgroundColor(ColorHelper.parseColor(preferences.getString("LottieBackgroundColor", "#ffffff")))
+            animationView.scaleType = ImageView.ScaleType.FIT_CENTER
+            animationView.setBackgroundColor(ColorHelper.parseColor(preferences.getString("LottieBackgroundColor", "#ffffff")))
 
             splashDialog = Dialog(context, android.R.style.Theme_Translucent_NoTitleBar)
-            splashDialog!!.setContentView(animationView!!)
-            splashDialog!!.setCancelable(false)
+            splashDialog.setContentView(animationView)
+            splashDialog.setCancelable(false)
             /*splashDialog!!.window.setLayout(
                 convertPixelsToDp(width ?: preferences.getInteger("LottieWidth", 200), this.animationView!!.context),
                 convertPixelsToDp(height ?: preferences.getInteger("LottieHeight", 200), this.animationView!!.context)
             )*/
-            splashDialog!!.show()
+            splashDialog.show()
 
-
-            animationView!!.playAnimation()
-            animationView!!.setOnClickListener {
+            animationView.playAnimation()
+            animationView.setOnClickListener {
                 val cancelOnTap = preferences.getBoolean("LottieCancelOnTap", false)
                 if (cancelOnTap) {
-                    animationView!!.cancelAnimation()
-                    splashDialog!!.dismiss()
+                    animationView.cancelAnimation()
+                    splashDialog.dismiss()
                 }
             }
 
             val delay = preferences.getInteger("LottieHideTimeout", 0)
             if (delay > 0) {
                 val handler = Handler()
-                handler.postDelayed(splashDialog!!::dismiss, delay.toLong() * 1000)
+                handler.postDelayed(splashDialog::dismiss, delay.toLong() * 1000)
             }
         }
+    }
+
+    companion object {
+        private val LOG_TAG = "LottieSplashScreen"
     }
 }
