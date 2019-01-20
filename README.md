@@ -25,7 +25,10 @@
 
 #### iOS
 You need to have [CocoaPods](https://cocoapods.org/) installed because [lottie-ios](https://cocoapods.org/pods/lottie-ios) is fetched from there.  
-`$ sudo gem install cocoapods`
+```sh
+$ sudo gem install cocoapods
+$ pod setup
+```
 
 #### Android
 AndroidX support is required for lottie-android >= 2.8.0. It's currently pinned to v2.7.0 since Cordova has no support for it. Once Cordova is ready for AndroidX the dependency can be upgraded.
