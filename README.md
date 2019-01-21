@@ -132,5 +132,10 @@ lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, he
     <preference name="LottieEnableHardwareAcceleration" value="true" />
 ```
 
+* `LottieScaleType` (String, default `FIT_CENTER`). **Android only!** Scale type of the view. Can be one of the following: https://developer.android.com/reference/android/widget/ImageView.ScaleType
+```xml
+    <preference name="LottieScaleType" value="CENTER_CROP" />
+```
+
 ---
 Built by (c) Tim Brust and contributors. Released under the MIT license.

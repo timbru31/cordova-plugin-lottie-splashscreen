@@ -82,7 +82,8 @@ class LottieSplashScreen : CordovaPlugin() {
             if (preferences.getBoolean("LottieLoopAnimation", false)) {
                 animationView.repeatCount = LottieDrawable.INFINITE
             }
-            animationView.scaleType = ImageView.ScaleType.FIT_CENTER
+
+            animationView.scaleType = ImageView.ScaleType.valueOf(preferences.getString("LottieScaleType", "FIT_CENTER").toUpperCase())
             animationView.setBackgroundColor(ColorHelper.parseColor(preferences.getString("LottieBackgroundColor", "#ffffff")))
 
             splashDialog = Dialog(context, android.R.style.Theme_Translucent_NoTitleBar)
