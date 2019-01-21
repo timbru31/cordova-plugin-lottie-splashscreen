@@ -107,6 +107,16 @@ lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, he
     <preference name="LottieHeight" value="750" />
 ```
 
+* `LottieRelativeSize` (Boolean, default `false`). Uses width and height values as relative values. Specify them as e.g. `0.3` to have 30%.
+```xml
+    <preference name="LottieRelativeSize" value="true" />
+```
+
+* `LottieFullScreen` (Boolean, default `false`). Renders the animation in full screen. Ignores properties above.
+```xml
+    <preference name="LottieFullScreen" value="true" />
+```
+
 * `LottieLoopAnimation` (Boolean, default `false`). Loops the animation
 ```xml
     <preference name="LottieLoopAnimation" value="true" />

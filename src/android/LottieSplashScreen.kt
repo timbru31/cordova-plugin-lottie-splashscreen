@@ -3,8 +3,6 @@ package de.dustplanet.cordova.lottie
 import android.app.Dialog
 import android.os.Handler
 import android.util.Log
-import android.view.View
-import android.view.WindowManager
 import android.widget.ImageView
 import com.airbnb.lottie.*
 import org.apache.cordova.CallbackContext
@@ -17,12 +15,12 @@ class LottieSplashScreen : CordovaPlugin() {
     private lateinit var animationView: LottieAnimationView
 
     override fun pluginInitialize() {
-        super.initialize(cordova, webView);
+        super.initialize(cordova, webView)
         createView()
     }
 
     override fun onMessage(id: String?, data: Any?): Any? {
-        if ("onPageFinished".equals(id)) {
+        if ("onPageFinished" == id) {
             val autoHide = preferences.getBoolean("LottieAutoHideSplashScreen", false)
             if (autoHide) {
                 destroyView()
@@ -32,15 +30,15 @@ class LottieSplashScreen : CordovaPlugin() {
     }
 
     override fun execute(action: String, args: CordovaArgs, callbackContext: CallbackContext): Boolean {
-        if (action.equals("hide")) {
+        if (action == "hide") {
             destroyView()
             return true
-        } else if (action.equals("show")) {
+        } else if (action == "show") {
             createView(
                     if (args.isNull(0)) null else args.getString(0),
                     if (args.isNull(1)) null else args.getBoolean(1),
-                    if (args.isNull(2)) null else args.getInt(2),
-                    if (args.isNull(3)) null else args.getInt(3)
+                    if (args.isNull(2)) null else args.getDouble(2),
+                    if (args.isNull(3)) null else args.getDouble(3)
             )
             return true
         }
@@ -48,11 +46,11 @@ class LottieSplashScreen : CordovaPlugin() {
     }
 
     private fun destroyView() {
-        animationView?.cancelAnimation()
-        splashDialog?.dismiss()
+        animationView.cancelAnimation()
+        splashDialog.dismiss()
     }
 
-    private fun createView(location: String? = null, remote: Boolean? = null, width: Int? = null, height: Int? = null) {
+    private fun createView(location: String? = null, remote: Boolean? = null, width: Double? = null, height: Double? = null) {
         cordova.activity.runOnUiThread {
             val context = webView.context
 
@@ -65,7 +63,7 @@ class LottieSplashScreen : CordovaPlugin() {
 
             val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)
             val animationLocation = location ?: preferences.getString("LottieAnimationLocation", "")
-            var comp: LottieTask<LottieComposition>
+            val comp: LottieTask<LottieComposition>
             if (remoteEnabled) {
                 comp = LottieCompositionFactory.fromUrl(context, animationLocation)
             } else {
@@ -90,10 +88,8 @@ class LottieSplashScreen : CordovaPlugin() {
             splashDialog = Dialog(context, android.R.style.Theme_Translucent_NoTitleBar)
             splashDialog.setContentView(animationView)
             splashDialog.setCancelable(false)
-            /*splashDialog!!.window.setLayout(
-                convertPixelsToDp(width ?: preferences.getInteger("LottieWidth", 200), this.animationView!!.context),
-                convertPixelsToDp(height ?: preferences.getInteger("LottieHeight", 200), this.animationView!!.context)
-            )*/
+
+            calculateAnimationSize(width, height)
             splashDialog.show()
 
             animationView.playAnimation()
@@ -113,7 +109,34 @@ class LottieSplashScreen : CordovaPlugin() {
         }
     }
 
+    private fun calculateAnimationSize(width: Double? = null, height: Double? = null) {
+        val fullScreen = preferences.getBoolean("LottieFullScreen", false)
+        if (!fullScreen) {
+
+            val relativeSize = preferences.getBoolean("LottieRelativeSize", false)
+            if (relativeSize) {
+                val metrics = webView.context.resources.displayMetrics
+                val animationHeight = (metrics.heightPixels * (width
+                        ?: preferences.getDouble("LottieWidth", 0.2))).toInt()
+                val animationWidth = (metrics.widthPixels * (height
+                        ?: preferences.getDouble("LottieHeight", 0.2))).toInt()
+                splashDialog.window.setLayout(animationHeight, animationWidth)
+            } else {
+                splashDialog.window.setLayout(
+                        convertPixelsToDp(width
+                                ?: preferences.getDouble("LottieWidth", 200.0)),
+                        convertPixelsToDp(height
+                                ?: preferences.getDouble("LottieHeight", 200.0))
+                )
+            }
+        }
+    }
+
+    private fun convertPixelsToDp(px: Double): Int {
+        return (px * webView.context.resources.displayMetrics.density).toInt()
+    }
+
     companion object {
-        private val LOG_TAG = "LottieSplashScreen"
+        private const val LOG_TAG = "LottieSplashScreen"
     }
 }
