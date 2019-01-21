@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.1.3...v0.2.0) (2019-01-21)
+
+
+### Bug Fixes
+
+* add missing android references ([e2599dc](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/e2599dc))
+* **ios:** installation via Ionic Appflow ([63bb7fa](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/63bb7fa))
+* add missing keywords to plugin.xml ([f228a0e](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/f228a0e)), closes [#30](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/30)
+* **android:** correctly enable hardware acceleration and merge paths ([008a0cc](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/008a0cc))
+* downgrade lottie-android to 2.7.0 ([937bfe1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/937bfe1))
+* **ios:** always install pods ([059acd4](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/059acd4))
+* add use_frameworks! only once, allow show() without any arguments ([c49c3d1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/c49c3d1))
+* rename AutoHideSplashScreen to LottieAutoHideSplashScreen ([705c49a](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/705c49a))
+* rename LottieSplashscreen.kt to LottieSplashScreen.kt ([34e405a](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/34e405a))
+* typo ([e434190](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/e434190))
+* **ios:** always install pods after after_plugin_install ([e030b48](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/e030b48))
+* **ios:** installation via plugin add only ([74460be](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/74460be))
+* **ios:** naming of fix_code_sign_entitlements ([1c18591](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/1c18591))
+* **ios:** plugin name ([615cfde](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/615cfde))
+
+
+### Features
+
+* add configuration of looping value ([a2574c7](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/a2574c7))
+* **android:** allow folder of images and hardware acceleration to be configured ([8b26e95](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/8b26e95))
+* add relative size and fullscreen support ([4027f6c](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/4027f6c))
+* android support ([da3937b](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/da3937b))
+
+
+
 <a name="0.1.3"></a>
 ## [0.1.3](http://cordova-plugin-lottie-splashscreen/compare/v0.1.2...v0.1.3) (2018-10-23)
 
