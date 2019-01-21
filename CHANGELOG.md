@@ -39,8 +39,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* change hooks to ES5, make file executable ([99caac1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/99caac1))
-* increase line-length limit to 140 chars ([9ec2c36](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/9ec2c36))
+* change hooks to ES5, make file executable ([99caac1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/99caac1))
+* increase line-length limit to 140 chars ([9ec2c36](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/9ec2c36))
 
 
 
@@ -55,7 +55,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* add missing @objc annotation. ([ea69f51](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/ea69f51)), closes [#18](https:/github.com/timbru31//cordova-plugin-lottie-splashscreen/issues/18)
+* add missing @objc annotation. ([ea69f51](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/ea69f51)), closes [#18](https:/github.com/timbru31//cordova-plugin-lottie-splashscreen/issues/18)
 
 
 
@@ -65,22 +65,22 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* add missing method ([7fd8649](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/7fd8649))
-* center when inital lauching ([222661e](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/222661e))
-* correctly center when device rotated ([3a76cce](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/3a76cce))
-* disable code-signing-entitlements to fix building. closes [#14](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/14) ([26e1f66](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/26e1f66))
-* Int/Double reading from config ([eb48e94](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/eb48e94))
-* uppercase background color ([20b04d1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/20b04d1))
-* whitespace ([b5a4697](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/b5a4697))
+* add missing method ([7fd8649](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/7fd8649))
+* center when inital lauching ([222661e](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/222661e))
+* correctly center when device rotated ([3a76cce](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/3a76cce))
+* disable code-signing-entitlements to fix building. closes [#14](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/14) ([26e1f66](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/26e1f66))
+* Int/Double reading from config ([eb48e94](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/eb48e94))
+* uppercase background color ([20b04d1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/20b04d1))
+* whitespace ([b5a4697](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/b5a4697))
 
 
 ### Features
 
-* add autoHide settings toggle ([e55e29e](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/e55e29e))
-* add background color preference, closes [#10](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/10) ([8aed653](https:/github.com/timbru31//cordova-plugin-lottie-splashscreen/commits/8aed653))
-* add hide timeout, closes [#6](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/6) ([346d71e](https:/github.com/timbru31//cordova-plugin-lottie-splashscreen/commits/346d71e))
-* allow installation from git ([97d039f](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/97d039f))
-* hide/cancel animation on tap, closes [#7](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/7) ([34f8627](https:/github.com/timbru31//cordova-plugin-lottie-splashscreen/commits/34f8627))
-* initial commit ([4750bfd](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/4750bfd))
-* make animation location configurable. closes [#3](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/3) ([18dda27](https:/github.com/timbru31//cordova-plugin-lottie-splashscreen/commits/18dda27))
-* programmatically pass in file location ([233a27d](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commits/233a27d))
+* add autoHide settings toggle ([e55e29e](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/e55e29e))
+* add background color preference, closes [#10](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/10) ([8aed653](https:/github.com/timbru31//cordova-plugin-lottie-splashscreen/commit/8aed653))
+* add hide timeout, closes [#6](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/6) ([346d71e](https:/github.com/timbru31//cordova-plugin-lottie-splashscreen/commit/346d71e))
+* allow installation from git ([97d039f](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/97d039f))
+* hide/cancel animation on tap, closes [#7](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/7) ([34f8627](https:/github.com/timbru31//cordova-plugin-lottie-splashscreen/commit/34f8627))
+* initial commit ([4750bfd](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/4750bfd))
+* make animation location configurable. closes [#3](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/3) ([18dda27](https:/github.com/timbru31//cordova-plugin-lottie-splashscreen/commit/18dda27))
+* programmatically pass in file location ([233a27d](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/233a27d))
