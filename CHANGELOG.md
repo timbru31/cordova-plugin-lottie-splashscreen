@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.1"></a>
+## [0.4.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.4.0...v0.4.1) (2019-01-23)
+
+
+### Bug Fixes
+
+* **ios:** correctly generate auto resizing mask ([ab1b8ff](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/ab1b8ff))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.3.0...v0.4.0) (2019-01-21)
 
