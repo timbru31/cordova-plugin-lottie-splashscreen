@@ -98,7 +98,11 @@ import Lottie
         var animationHeight: CGFloat
 
         if ((commandDelegate?.settings["LottieFullScreen".lowercased()] as? NSString ?? "false").boolValue) {
-            animationView?.autoresizingMask = [.flexibleWidth, .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
+            var autoresizingMask: UIViewAutoresizing = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
+            let portrait = UIApplication.shared.statusBarOrientation == UIInterfaceOrientation.portrait || UIApplication.shared.statusBarOrientation == UIInterfaceOrientation.portraitUpsideDown
+            autoresizingMask.insert(portrait ?.flexibleWidth : .flexibleHeight)
+
+            animationView?.autoresizingMask = autoresizingMask
             animationWidth = fullScreenzSize.width
             animationHeight = fullScreenzSize.height
         } else {

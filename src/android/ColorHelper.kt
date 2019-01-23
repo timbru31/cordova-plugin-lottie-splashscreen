@@ -2,6 +2,7 @@ package de.dustplanet.cordova.lottie
 
 import android.support.annotation.ColorInt
 import android.support.annotation.Size
+import java.lang.Long.parseLong
 
 class ColorHelper {
     companion object {
@@ -23,7 +24,7 @@ fun ColorHelper.Companion.parseColor(@Size(min = 1) colorString: String): Int {
         xColorString = xColorString.substring(6, 8) + xColorString.substring(0, 6)
     }
 
-    var color = java.lang.Long.parseLong(xColorString, 16)
+    var color = parseLong(xColorString, 16)
 
     if (xColorString.length == 6) {
         color = color or -0x1000000
