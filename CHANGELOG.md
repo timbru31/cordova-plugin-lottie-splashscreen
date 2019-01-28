@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.2"></a>
+## [0.4.2](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.4.1...v0.4.2) (2019-01-28)
+
+
+### Bug Fixes
+
+* **ios:** restore parent container, set z-index = 1 ([2b3f436](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/2b3f436))
+
+
+
 <a name="0.4.1"></a>
 ## [0.4.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.4.0...v0.4.1) (2019-01-23)
 
