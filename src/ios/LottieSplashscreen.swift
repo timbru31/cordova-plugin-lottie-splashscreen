@@ -2,6 +2,7 @@ import Lottie
 
 @objc(LottieSplashScreen) class LottieSplashScreen: CDVPlugin {
     var animationView: LOTAnimationView?
+    var animationViewContainer: UIView?
     var visible = false
 
     override func pluginInitialize() {
@@ -42,7 +43,9 @@ import Lottie
             parentView?.isUserInteractionEnabled = true
 
             animationView?.removeFromSuperview()
+            animationViewContainer?.removeFromSuperview()
 
+            animationViewContainer = nil
             animationView = nil
             visible = false
         }
@@ -52,15 +55,17 @@ import Lottie
         if !visible {
             let parentView = self.viewController.view
 
+            createAnimationViewContainer()
             createAnimationView(location: location, remote: remote, width: width, height: height)
 
-            parentView?.addSubview(animationView!)
+            animationViewContainer?.addSubview(animationView!)
+            parentView?.addSubview(animationViewContainer!)
             animationView?.play()
 
             let cancelOnTap = commandDelegate?.settings["LottieCancelOnTap".lowercased()] as? NSString ?? "false"
             if cancelOnTap.boolValue {
                 let gesture = UITapGestureRecognizer(target: self, action: #selector (self.destroyView(_:)))
-                animationView?.addGestureRecognizer(gesture)
+                animationViewContainer?.addGestureRecognizer(gesture)
             }
 
             let hideTimeout = Double(commandDelegate?.settings["LottieHideTimeout".lowercased()] as? String ?? "0")!
@@ -72,6 +77,18 @@ import Lottie
 
             visible = true
         }
+    }
+
+    private func createAnimationViewContainer() {
+        let parentView = self.viewController.view
+        parentView?.isUserInteractionEnabled = false
+
+        animationViewContainer = UIView(frame: (parentView?.bounds)!)
+        animationViewContainer?.layer.zPosition = 1
+
+        let backgroundColor = commandDelegate?.settings["LottieBackgroundColor".lowercased()] as? String
+        animationViewContainer?.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
+        animationViewContainer?.backgroundColor = UIColor(hex: backgroundColor)
     }
 
     private func createAnimationView(location: String? = nil, remote: Bool? = nil, width: Int? = nil, height: Int? = nil) {
