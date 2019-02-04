@@ -36,7 +36,7 @@ AndroidX support is required for lottie-android >= 2.8.0. It's currently pinned 
 ### Installation
 
 #### from npm (recommended)
-`$ cordova plugin add cordova-plugin-cordova-plugin-lottie-splashscreen`
+`$ cordova plugin add cordova-plugin-lottie-splashscreen`
 
 #### from git (unstable)
 `$ cordova plugin add https://github.com/timbru31/cordova-plugin-cordova-plugin-lottie-splashscreen.git`
