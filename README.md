@@ -43,7 +43,8 @@ AndroidX support is required for lottie-android >= 2.8.0. It's currently pinned 
 
 ### Usage
 
-This Cordova plugin is meant as a replacement for the stock [cordova-plugin-splashscreen](https://github.com/apache/cordova-plugin-splashscreen).
+This Cordova plugin is meant as a replacement for the stock [cordova-plugin-splashscreen](https://github.com/apache/cordova-plugin-splashscreen).  
+An example project can be found in the `example` folder.
 
 #### Methods
 
