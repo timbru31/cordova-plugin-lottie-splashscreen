@@ -4,10 +4,14 @@ var LottieSplashScreen = (function () {
     function LottieSplashScreen() {
     }
     LottieSplashScreen.hide = function () {
-        cordova_1.exec(null, null, 'LottieSplashScreen', 'hide', []);
+        return new Promise(function (resolve, reject) {
+            cordova_1.exec(resolve, reject, 'LottieSplashScreen', 'hide', []);
+        });
     };
     LottieSplashScreen.show = function (location, remote, width, height) {
-        cordova_1.exec(null, null, 'LottieSplashScreen', 'show', [location, remote, width, height]);
+        return new Promise(function (resolve, reject) {
+            cordova_1.exec(resolve, reject, 'LottieSplashScreen', 'show', [location, remote, width, height]);
+        });
     };
     return LottieSplashScreen;
 }());

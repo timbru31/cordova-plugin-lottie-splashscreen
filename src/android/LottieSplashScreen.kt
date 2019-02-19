@@ -8,6 +8,7 @@ import com.airbnb.lottie.*
 import org.apache.cordova.CallbackContext
 import org.apache.cordova.CordovaArgs
 import org.apache.cordova.CordovaPlugin
+import java.lang.Exception
 
 class LottieSplashScreen : CordovaPlugin() {
 
@@ -31,23 +32,37 @@ class LottieSplashScreen : CordovaPlugin() {
 
     override fun execute(action: String, args: CordovaArgs, callbackContext: CallbackContext): Boolean {
         if (action == "hide") {
-            destroyView()
-            return true
+            return try {
+                destroyView()
+                callbackContext.success()
+                true
+            } catch (e: Exception) {
+                callbackContext.error(e.message)
+                false
+            }
         } else if (action == "show") {
-            createView(
-                    if (args.isNull(0)) null else args.getString(0),
-                    if (args.isNull(1)) null else args.getBoolean(1),
-                    if (args.isNull(2)) null else args.getDouble(2),
-                    if (args.isNull(3)) null else args.getDouble(3)
-            )
-            return true
+            return try {
+                createView(
+                        if (args.isNull(0)) null else args.getString(0),
+                        if (args.isNull(1)) null else args.getBoolean(1),
+                        if (args.isNull(2)) null else args.getDouble(2),
+                        if (args.isNull(3)) null else args.getDouble(3)
+                )
+                callbackContext.success()
+                true
+            } catch (e: Exception) {
+                callbackContext.error(e.message)
+                false
+            }
         }
         return false
     }
 
     private fun destroyView() {
-        animationView.cancelAnimation()
-        splashDialog.dismiss()
+        cordova.activity.runOnUiThread {
+            animationView.cancelAnimation()
+            splashDialog.dismiss()
+        }
     }
 
     private fun createView(location: String? = null, remote: Boolean? = null, width: Double? = null, height: Double? = null) {
