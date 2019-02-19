@@ -53,17 +53,17 @@ An example project can be found in the `example` folder.
 
 ##### lottie.splashscreen.hide
 
-This methods hides the current active Lottie splashscreen and destroys the views.
+This methods hides the current active Lottie splashscreen and destroys the views. Returns a Promise which is resolved with "OK" in the success case or the error message when it's failed.
 ```js
-lottie.splashscreen.hide()
+await lottie.splashscreen.hide()
 ```
 
 ##### lottie.splashscreen.show
 
-This method shows a Lottie splash screen. If no arguments are given, it defaults to the `config.xml` values, however you can pass (new) options here to change the behavior on runtime. (For easier reading the TypeScript notation is used)
+This method shows a Lottie splash screen. If no arguments are given, it defaults to the `config.xml` values, however you can pass (new) options here to change the behavior on runtime. Returns a Promise which is resolved with "OK" in the success case or the error message when it's failed. (For easier reading the TypeScript notation is used)
 
 ```ts
-lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, height?: number)
+await lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, height?: number)
 ```
 
 ### Preferences
