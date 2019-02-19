@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.4.2...v0.5.0) (2019-02-19)
+
+
+### Bug Fixes
+
+* **android:** make sure to run on UI thread ([2d56627](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/2d56627))
+
+
+
 <a name="0.4.2"></a>
 ## [0.4.2](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.4.1...v0.4.2) (2019-01-28)
 
