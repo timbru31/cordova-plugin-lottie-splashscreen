@@ -1,7 +1,7 @@
 package de.dustplanet.cordova.lottie
 
-import android.support.annotation.ColorInt
-import android.support.annotation.Size
+import androidx.annotation.ColorInt
+import androidx.annotation.Size
 import java.lang.Long.parseLong
 
 class ColorHelper {
