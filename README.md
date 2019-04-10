@@ -14,7 +14,7 @@
 
 ### Supported platforms
 
-* **iOS (8+)**
+* **iOS (9+) (with cordova-ios >= 5.0.0 only)**
 * **Android**
 
 ### Planned platforms
@@ -29,6 +29,10 @@ You need to have [CocoaPods](https://cocoapods.org/) installed because [lottie-i
 $ sudo gem install cocoapods
 $ pod setup
 ```
+
+##### Caveats
+With v0.6.0 and newer only **cordova >= 9.0.0** and **cordova-ios >= 5.0.0** are supported.  
+If you can't upgrade please stick to v0.5.X.
 
 #### Android
 AndroidX support is required for lottie-android >= 2.8.0. It's currently pinned to v2.7.0 since Cordova has no support for it. Once Cordova is ready for AndroidX the dependency can be upgraded.

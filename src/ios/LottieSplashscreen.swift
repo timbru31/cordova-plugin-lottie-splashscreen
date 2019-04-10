@@ -1,7 +1,7 @@
 import Lottie
 
 @objc(LottieSplashScreen) class LottieSplashScreen: CDVPlugin {
-    var animationView: LOTAnimationView?
+    var animationView: AnimationView?
     var animationViewContainer: UIView?
     var visible = false
 
@@ -95,18 +95,24 @@ import Lottie
         let useRemote = remote != nil ? remote! : (commandDelegate?.settings["LottieRemoteEnabled".lowercased()] as? NSString ?? "false").boolValue
         var animationLocation = location != nil ? location! : commandDelegate?.settings["LottieAnimationLocation".lowercased()] as? String ?? ""
         if useRemote {
-            animationView = LOTAnimationView(contentsOf: URL(string: animationLocation)!)
+            animationView = AnimationView(url: URL(string: animationLocation)!, closure: { (error) in
+                print(error?.localizedDescription ?? "Error loading URL")
+            })
         } else {
             animationLocation = Bundle.main.bundleURL.appendingPathComponent(animationLocation).path
-            animationView = LOTAnimationView(filePath: animationLocation)
+            animationView = AnimationView(filePath: animationLocation)
         }
 
         calculateAnimationSize(width: width, height: height)
 
-        animationView?.loopAnimation = (commandDelegate?.settings["LottieLoopAnimation".lowercased()] as? NSString ?? "false").boolValue
+        let loop = (commandDelegate?.settings["LottieLoopAnimation".lowercased()] as? NSString ?? "false").boolValue
+        if loop {
+            animationView?.loopMode = .loop
+        }
         animationView?.contentMode = .scaleAspectFit
         animationView?.animationSpeed = 1
         animationView?.autoresizesSubviews = true
+        animationView?.backgroundBehavior = .pauseAndRestore
     }
 
     private func calculateAnimationSize(width: Int? = nil, height: Int? = nil) {
@@ -115,7 +121,7 @@ import Lottie
         var animationHeight: CGFloat
 
         if ((commandDelegate?.settings["LottieFullScreen".lowercased()] as? NSString ?? "false").boolValue) {
-            var autoresizingMask: UIViewAutoresizing = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
+            var autoresizingMask: UIView.AutoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
             let portrait = UIApplication.shared.statusBarOrientation == UIInterfaceOrientation.portrait || UIApplication.shared.statusBarOrientation == UIInterfaceOrientation.portraitUpsideDown
             autoresizingMask.insert(portrait ?.flexibleWidth : .flexibleHeight)
 
@@ -146,19 +152,9 @@ import Lottie
 
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(self.resumePlaying),
-            name: NSNotification.Name.UIApplicationWillEnterForeground,
-            object: nil)
-
-        NotificationCenter.default.addObserver(
-            self,
             selector: #selector(self.deviceOrientationChanged),
-            name: NSNotification.Name.UIDeviceOrientationDidChange,
+            name: UIDevice.orientationDidChangeNotification,
             object: nil)
-    }
-
-    @objc private func resumePlaying() {
-        animationView?.play()
     }
 
     @objc private func deviceOrientationChanged() {
