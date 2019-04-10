@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.6.0-beta.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.5.0...v0.6.0-beta.0) (2019-04-10)
+
+
+### Features
+
+* upgrade to lottie-ios v3 ([3198941](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/3198941)), closes [#50](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/50) [#62](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/62)
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.4.2...v0.5.0) (2019-02-19)
 
