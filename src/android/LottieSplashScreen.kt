@@ -60,7 +60,9 @@ class LottieSplashScreen : CordovaPlugin() {
     private fun destroyView() {
         cordova.activity.runOnUiThread {
             animationView.cancelAnimation()
-            splashDialog.dismiss()
+            if (::splashDialog.isInitialized) {
+                splashDialog.dismiss()
+            }
         }
     }
 
@@ -77,6 +79,11 @@ class LottieSplashScreen : CordovaPlugin() {
 
             val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)
             val animationLocation = location ?: preferences.getString("LottieAnimationLocation", "")
+            if (animationLocation.isNullOrBlank()) {
+                Log.e(LOG_TAG, "LottieAnimationLocation has to be configured!")
+                this.destroyView()
+                return@runOnUiThread
+            }
             val comp: LottieTask<LottieComposition>
             when {
                 remoteEnabled -> comp = LottieCompositionFactory.fromUrl(context, animationLocation)
