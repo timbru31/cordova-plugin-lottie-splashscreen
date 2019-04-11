@@ -6,17 +6,15 @@ import java.lang.Long.parseLong
 
 class ColorHelper {
     companion object {
-        val LOG_TAG = "ColorHelper"
+        const val LOG_TAG = "ColorHelper"
     }
 }
 
 @ColorInt
 fun ColorHelper.Companion.parseColor(@Size(min = 1) colorString: String): Int {
-    var xColorString: String
-    if (colorString[0] == '#') {
-        xColorString = colorString.substring(1)
-    } else {
-        xColorString = colorString
+    var xColorString = when {
+        colorString[0] == '#' -> colorString.substring(1)
+        else -> colorString
     }
 
     // Reverse alpha value
@@ -26,10 +24,9 @@ fun ColorHelper.Companion.parseColor(@Size(min = 1) colorString: String): Int {
 
     var color = parseLong(xColorString, 16)
 
-    if (xColorString.length == 6) {
-        color = color or -0x1000000
-    } else if (xColorString.length != 8) {
-        throw IllegalArgumentException("Unknown color")
+    when {
+        xColorString.length == 6 -> color = color or -0x1000000
+        xColorString.length != 8 -> throw IllegalArgumentException("Unknown color")
     }
     return color.toInt()
 }

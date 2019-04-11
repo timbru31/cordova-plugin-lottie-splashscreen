@@ -31,8 +31,8 @@ class LottieSplashScreen : CordovaPlugin() {
     }
 
     override fun execute(action: String, args: CordovaArgs, callbackContext: CallbackContext): Boolean {
-        if (action == "hide") {
-            return try {
+        when (action) {
+            "hide" -> return try {
                 destroyView()
                 callbackContext.success()
                 true
@@ -40,8 +40,7 @@ class LottieSplashScreen : CordovaPlugin() {
                 callbackContext.error(e.message)
                 false
             }
-        } else if (action == "show") {
-            return try {
+            "show" -> return try {
                 createView(
                         if (args.isNull(0)) null else args.getString(0),
                         if (args.isNull(1)) null else args.getBoolean(1),
@@ -54,8 +53,8 @@ class LottieSplashScreen : CordovaPlugin() {
                 callbackContext.error(e.message)
                 false
             }
+            else -> return false
         }
-        return false
     }
 
     private fun destroyView() {
@@ -79,11 +78,12 @@ class LottieSplashScreen : CordovaPlugin() {
             val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)
             val animationLocation = location ?: preferences.getString("LottieAnimationLocation", "")
             val comp: LottieTask<LottieComposition>
-            if (remoteEnabled) {
-                comp = LottieCompositionFactory.fromUrl(context, animationLocation)
-            } else {
-                comp = LottieCompositionFactory.fromAsset(context, animationLocation)
-                animationView.imageAssetsFolder = preferences.getString("LottieImagesLocation", animationLocation.substring(0, animationLocation.lastIndexOf('/')))
+            when {
+                remoteEnabled -> comp = LottieCompositionFactory.fromUrl(context, animationLocation)
+                else -> {
+                    comp = LottieCompositionFactory.fromAsset(context, animationLocation)
+                    animationView.imageAssetsFolder = preferences.getString("LottieImagesLocation", animationLocation.substring(0, animationLocation.lastIndexOf('/')))
+                }
             }
 
             comp.addListener { animationView.setComposition(it) }.addFailureListener {
@@ -128,7 +128,6 @@ class LottieSplashScreen : CordovaPlugin() {
     private fun calculateAnimationSize(width: Double? = null, height: Double? = null) {
         val fullScreen = preferences.getBoolean("LottieFullScreen", false)
         if (!fullScreen) {
-
             val relativeSize = preferences.getBoolean("LottieRelativeSize", false)
             if (relativeSize) {
                 val metrics = webView.context.resources.displayMetrics
@@ -136,9 +135,9 @@ class LottieSplashScreen : CordovaPlugin() {
                         ?: preferences.getDouble("LottieWidth", 0.2))).toInt()
                 val animationWidth = (metrics.widthPixels * (height
                         ?: preferences.getDouble("LottieHeight", 0.2))).toInt()
-                splashDialog.window.setLayout(animationHeight, animationWidth)
+                splashDialog.window?.setLayout(animationHeight, animationWidth)
             } else {
-                splashDialog.window.setLayout(
+                splashDialog.window?.setLayout(
                         convertPixelsToDp(width
                                 ?: preferences.getDouble("LottieWidth", 200.0)),
                         convertPixelsToDp(height

@@ -24,6 +24,7 @@
         <framework src="com.airbnb.android:lottie:2.7.0" />
 
         <hook type="after_platform_add" src="hooks/android/copy_build_extras.js" />
+        <hook type="after_plugin_add" src="hooks/android/copy_build_extras.js" />
     </platform>
 
     <platform name="ios">
@@ -41,7 +42,7 @@
             <config>
                 <source url="https://github.com/CocoaPods/Specs.git"/>
             </config>
-            <pods>
+            <pods use-frameworks="true">
                 <pod name="lottie-ios" spec="~> 3.0.4" />
             </pods>
         </podspec>
