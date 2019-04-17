@@ -24,6 +24,10 @@ All notable changes to this project will be documented in this file. See [standa
 
 * upgrade to lottie-ios v3 ([3198941](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/3198941)), closes [#50](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/50) [#62](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/62)
 
+## [0.5.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.5.0...v0.5.1) (2019-04-17)
+
+* upgrade swift support plugin ([3f29902](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/3f29902))
+
 
 
 <a name="0.5.0"></a>
