@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.5.0...v0.5.1) (2019-04-17)
+
+
+### Bug Fixes
+
+* upgrade swift support plugin ([3f29902](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/3f29902))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.4.2...v0.5.0) (2019-02-19)
 
