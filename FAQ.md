@@ -61,3 +61,17 @@ Install the cordova-plugin-androidx-adapter plugin
 ```sh
 $ cordova plugin add cordova-plugin-androidx-adapter
 ```
+
+### error: Value for SWIFT_VERSION cannot be empty
+
+```
+error: Value for SWIFT_VERSION cannot be empty. (in target 'HelloCordova')
+
+** BUILD FAILED **
+
+xcodebuild: Command failed with exit code 65
+```
+
+#### Answer
+
+Add the following prefernce to the `config.xml` iOS section: `<preference name="SwiftVersion" value="4.2" />`

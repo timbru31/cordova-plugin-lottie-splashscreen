@@ -11,7 +11,7 @@ import Lottie
     }
 
     @objc(hide:)
-    func hide(command: CDVInvokedUrlCommand) {
+    func hide(command _: CDVInvokedUrlCommand) {
         destroyView()
     }
 
@@ -37,9 +37,9 @@ import Lottie
         }
     }
 
-    @objc private func destroyView(_ : UITapGestureRecognizer? = nil) {
+    @objc private func destroyView(_: UITapGestureRecognizer? = nil) {
         if visible {
-            let parentView = self.viewController.view
+            let parentView = viewController.view
             parentView?.isUserInteractionEnabled = true
 
             animationView?.removeFromSuperview()
@@ -53,7 +53,7 @@ import Lottie
 
     private func createView(location: String? = nil, remote: Bool? = nil, width: Int? = nil, height: Int? = nil) {
         if !visible {
-            let parentView = self.viewController.view
+            let parentView = viewController.view
 
             createAnimationViewContainer()
             createAnimationView(location: location, remote: remote, width: width, height: height)
@@ -64,7 +64,7 @@ import Lottie
 
             let cancelOnTap = commandDelegate?.settings["LottieCancelOnTap".lowercased()] as? NSString ?? "false"
             if cancelOnTap.boolValue {
-                let gesture = UITapGestureRecognizer(target: self, action: #selector (self.destroyView(_:)))
+                let gesture = UITapGestureRecognizer(target: self, action: #selector(destroyView(_:)))
                 animationViewContainer?.addGestureRecognizer(gesture)
             }
 
@@ -80,22 +80,36 @@ import Lottie
     }
 
     private func createAnimationViewContainer() {
-        let parentView = self.viewController.view
+        let parentView = viewController.view
         parentView?.isUserInteractionEnabled = false
 
         animationViewContainer = UIView(frame: (parentView?.bounds)!)
         animationViewContainer?.layer.zPosition = 1
 
         let backgroundColor = commandDelegate?.settings["LottieBackgroundColor".lowercased()] as? String
-        animationViewContainer?.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
+        animationViewContainer?.autoresizingMask = [
+            .flexibleWidth, .flexibleHeight, .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin
+        ]
         animationViewContainer?.backgroundColor = UIColor(hex: backgroundColor)
     }
 
     private func createAnimationView(location: String? = nil, remote: Bool? = nil, width: Int? = nil, height: Int? = nil) {
-        let useRemote = remote != nil ? remote! : (commandDelegate?.settings["LottieRemoteEnabled".lowercased()] as? NSString ?? "false").boolValue
-        var animationLocation = location != nil ? location! : commandDelegate?.settings["LottieAnimationLocation".lowercased()] as? String ?? ""
+        var useRemote: Bool
+        if remote != nil {
+            useRemote = remote!
+        } else {
+            useRemote = (commandDelegate?.settings["LottieRemoteEnabled".lowercased()] as? NSString ?? "false").boolValue
+        }
+
+        var animationLocation: String
+        if location != nil {
+            animationLocation = location!
+        } else {
+            animationLocation = commandDelegate?.settings["LottieAnimationLocation".lowercased()] as? String ?? ""
+        }
+
         if useRemote {
-            animationView = AnimationView(url: URL(string: animationLocation)!, closure: { (error) in
+            animationView = AnimationView(url: URL(string: animationLocation)!, closure: { error in
                 print(error?.localizedDescription ?? "Error loading URL")
             })
         } else {
@@ -120,10 +134,16 @@ import Lottie
         var animationWidth: CGFloat
         var animationHeight: CGFloat
 
-        if ((commandDelegate?.settings["LottieFullScreen".lowercased()] as? NSString ?? "false").boolValue) {
-            var autoresizingMask: UIView.AutoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
-            let portrait = UIApplication.shared.statusBarOrientation == UIInterfaceOrientation.portrait || UIApplication.shared.statusBarOrientation == UIInterfaceOrientation.portraitUpsideDown
-            autoresizingMask.insert(portrait ?.flexibleWidth : .flexibleHeight)
+        let useFullScreen = (commandDelegate?.settings["LottieFullScreen".lowercased()] as? NSString ?? "false").boolValue
+        if useFullScreen {
+            var autoresizingMask: UIView.AutoresizingMask = [
+                .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin
+            ]
+
+            let portrait =
+                UIApplication.shared.statusBarOrientation == UIInterfaceOrientation.portrait ||
+                UIApplication.shared.statusBarOrientation == UIInterfaceOrientation.portraitUpsideDown
+            autoresizingMask.insert(portrait ? .flexibleWidth : .flexibleHeight)
 
             animationView?.autoresizingMask = autoresizingMask
             animationWidth = fullScreenzSize.width
@@ -131,12 +151,23 @@ import Lottie
         } else {
             animationView?.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
 
-            if ((commandDelegate?.settings["LottieRelativeSize".lowercased()] as? NSString ?? "false").boolValue) {
-                animationWidth = fullScreenzSize.width * (width != nil ? CGFloat(width!) : CGFloat(Float(commandDelegate?.settings["LottieWidth".lowercased()] as? String ?? "0.2")!))
-                animationHeight = fullScreenzSize.height * (height != nil ? CGFloat(height!) : CGFloat(Float(commandDelegate?.settings["LottieHeight".lowercased()] as? String ?? "0.2")!))
+            let useRelativeSize = (commandDelegate?.settings["LottieRelativeSize".lowercased()] as? NSString ?? "false").boolValue
+            if useRelativeSize {
+                animationWidth = fullScreenzSize.width *
+                    (width != nil ?
+                        CGFloat(width!) :
+                        CGFloat(Float(commandDelegate?.settings["LottieWidth".lowercased()] as? String ?? "0.2")!))
+                animationHeight = fullScreenzSize.height *
+                    (height != nil ?
+                        CGFloat(height!) :
+                        CGFloat(Float(commandDelegate?.settings["LottieHeight".lowercased()] as? String ?? "0.2")!))
             } else {
-                animationWidth = CGFloat(width != nil ? width! : Int(commandDelegate?.settings["LottieWidth".lowercased()] as? String ?? "200")!)
-                animationHeight = CGFloat(height != nil ? height! : Int(commandDelegate?.settings["LottieHeight".lowercased()] as? String ?? "200")!)
+                animationWidth = CGFloat(width != nil ?
+                    width! :
+                    Int(commandDelegate?.settings["LottieWidth".lowercased()] as? String ?? "200")!)
+                animationHeight = CGFloat(height != nil
+                    ? height! :
+                    Int(commandDelegate?.settings["LottieHeight".lowercased()] as? String ?? "200")!)
             }
         }
         animationView?.frame = CGRect(x: 0, y: 0, width: animationWidth, height: animationHeight)
@@ -146,15 +177,17 @@ import Lottie
     private func createObservers() {
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(self.pageDidLoad),
+            selector: #selector(pageDidLoad),
             name: NSNotification.Name.CDVPageDidLoad,
-            object: nil)
+            object: nil
+        )
 
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(self.deviceOrientationChanged),
+            selector: #selector(deviceOrientationChanged),
             name: UIDevice.orientationDidChangeNotification,
-            object: nil)
+            object: nil
+        )
     }
 
     @objc private func deviceOrientationChanged() {
