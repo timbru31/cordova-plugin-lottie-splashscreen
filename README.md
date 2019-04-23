@@ -16,7 +16,7 @@
 ### Supported platforms
 
 -   **iOS (9+) (with cordova-ios >= 5.0.0 only)**
--   **Android**
+-   **Android (with cordova-android >= 8.0.0 only)**
 
 ### Planned platforms
 
@@ -40,7 +40,10 @@ If you can't upgrade please stick to v0.5.X.
 
 #### Android
 
-AndroidX support is required for lottie-android >= 2.8.0. It's currently pinned to v2.7.0 since Cordova has no support for it. Once Cordova is ready for AndroidX the dependency can be upgraded.
+AndroidX support is required for lottie-android >= 2.8.0.  
+In order to use version >= v0.7.0 you need to configure AndroidX support.  
+In case you do not manually edit Android Studio file, these two plugins might be required: https://github.com/dpa99c/cordova-plugin-androidx and https://github.com/dpa99c/cordova-plugin-androidx-adapter.  
+In the [FAQ](FAQ.md) are some examples with common error messages and how to fix them.
 
 ### Installation
 

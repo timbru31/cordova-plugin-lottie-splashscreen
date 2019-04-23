@@ -74,7 +74,7 @@ class LottieSplashScreen : CordovaPlugin() {
             val useHardwareAcceleration = remote
                     ?: preferences.getBoolean("LottieEnableHardwareAcceleration", false)
             if (useHardwareAcceleration) {
-                animationView.setRenderMode(RenderMode.Hardware)
+                animationView.setRenderMode(RenderMode.HARDWARE)
             }
 
             val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)

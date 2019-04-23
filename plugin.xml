@@ -21,7 +21,7 @@
         <source-file src="src/android/ColorHelper.kt" target-dir="app/src/main/kotlin/de/dustplanet/cordova/lottie" />
 
         <framework src="src/android/build-extras.gradle" custom="true" type="gradleReference"/>
-        <framework src="com.airbnb.android:lottie:2.7.0" />
+        <framework src="com.airbnb.android:lottie:3.0.0" />
 
         <hook type="after_platform_add" src="hooks/android/copy_build_extras.js" />
         <hook type="after_plugin_add" src="hooks/android/copy_build_extras.js" />
