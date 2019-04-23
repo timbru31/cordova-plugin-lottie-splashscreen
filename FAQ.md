@@ -1,4 +1,3 @@
-
 ### Question (Hook failed with error code 127)
 
 The following error message appeared:
@@ -25,6 +24,7 @@ Hook failed with error code 127: /Users/timbru31/work/cordova-plugin-lottie-spla
 ### Answer
 
 It seems that the `pod` gem ins not installed. Fix it with:
+
 ```sh
 $ sudo gem install cocoapods
 $ pod setup
