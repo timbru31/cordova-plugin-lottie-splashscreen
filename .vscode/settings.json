@@ -6,5 +6,7 @@
         "bodymovin",
         "cocoapods",
         "splashscreen"
-    ]
+    ],
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
 }

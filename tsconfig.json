@@ -3,7 +3,6 @@
         "target": "es5",
         "module": "commonjs",
         "outDir": "./dist/www",
-        "baseUrl": "www",
         "removeComments": true,
         "strict": true,
         "noImplicitAny": true,
@@ -16,12 +15,8 @@
         "noFallthroughCasesInSwitch": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "lib": [
-            "es2018",
-            "dom"
-        ]
-    }
+        "typeRoots": ["node_modules/@types"],
+        "lib": ["es2018", "dom"]
+    },
+    "include": ["www/*"]
 }
