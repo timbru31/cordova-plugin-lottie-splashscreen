@@ -1,4 +1,4 @@
-### Question (Hook failed with error code 127)
+### Hook failed with error code 127
 
 The following error message appeared:
 
@@ -21,7 +21,7 @@ Failed to install 'cordova-plugin-lottie-splashscreen': Error: Hook failed with 
 Hook failed with error code 127: /Users/timbru31/work/cordova-plugin-lottie-splashscreen/hooks/ios/update_pod_repo.sh
 ```
 
-### Answer
+#### Answer
 
 It seems that the `pod` gem ins not installed. Fix it with:
 
@@ -29,4 +29,35 @@ It seems that the `pod` gem ins not installed. Fix it with:
 $ sudo gem install cocoapods
 $ pod setup
 $ cordova plugin add cordova-plugin-lottie-splashscreen
+```
+
+### Manifest merger failed
+
+```
+> Manifest merger failed : Attribute application@appComponentFactory value=(android.support.v4.app.CoreComponentFactory) from [com.android.support:support-compat:28.0.0] AndroidManifest.xml:22:18-91
+  	is also present at [androidx.core:core:1.0.0] AndroidManifest.xml:22:18-86 value=(androidx.core.app.CoreComponentFactory).
+  	Suggestion: add 'tools:replace="android:appComponentFactory"' to <application> element at AndroidManifest.xml:5:5-12:19 to override.
+```
+
+#### Answer
+
+Install the cordova-plugin-androidx plugin
+
+```sh
+$ cordova plugin add cordova-plugin-androidx
+```
+
+### error: cannot find symbol
+
+```
+/Users/timbrust/Coding/cordova-hello-world/platforms/android/app/src/main/java/cordova/plugins/Diagnostic_Notifications.java:35: error: cannot find symbol
+import android.support.v4.app.NotificationManagerCompat;
+```
+
+#### Answer
+
+Install the cordova-plugin-androidx-adapter plugin
+
+```sh
+$ cordova plugin add cordova-plugin-androidx-adapter
 ```

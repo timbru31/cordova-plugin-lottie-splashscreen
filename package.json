@@ -26,6 +26,12 @@
   },
   "engines": {
     "cordovaDependencies": {
+      "0.7.0": {
+        "cordova": ">= 9.0.0",
+        "cordova-android": ">=8.0.0",
+        "cordova-ios": ">=5.0.0",
+        "apple-ios": ">=9.0.0"
+      },
       "0.6.0": {
         "cordova": ">= 9.0.0",
         "cordova-android": ">=7.0.0",
