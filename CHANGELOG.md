@@ -27,28 +27,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 -   upgrade to lottie-ios v3 ([9fb8f21](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/9fb8f21)), closes [#50](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/50) [#62](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/62)
 
-# [0.6.0-beta.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.5.0...v0.6.0-beta.1) (2019-04-11)
-
-### Bug Fixes
-
--   do not crash when no animation is loaded ([5d2ec2e](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/5d2ec2e)), closes [#47](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/47)
--   execute install hooks for android always ([a720958](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/a720958)), closes [#43](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/43) [#86](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/86)
-
-### Features
-
--   upgrade to lottie-ios v3 ([9fb8f21](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/9fb8f21)), closes [#50](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/50) [#62](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/62)
-
-# [0.6.0-beta.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.5.0...v0.6.0-beta.1) (2019-04-11)
-
-### Bug Fixes
-
--   do not crash when no animation is loaded ([5d2ec2e](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/5d2ec2e)), closes [#47](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/47)
--   execute install hooks for android always ([a720958](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/a720958)), closes [#43](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/43) [#86](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/86)
-
-### Features
-
--   upgrade to lottie-ios v3 ([9fb8f21](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/9fb8f21)), closes [#50](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/50) [#62](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/62)
-
 # [0.6.0-beta.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.5.0...v0.6.0-beta.0) (2019-04-10)
 
 ### Features
