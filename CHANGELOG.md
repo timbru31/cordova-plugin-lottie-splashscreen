@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.7.0-beta.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.6.0...v0.7.0-beta.0) (2019-04-23)
+
+### Bug Fixes
+
+-   Kotlin compiler warnings ([7ecfdfc](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/7ecfdfc))
+
+### Features
+
+-   updgrade to lottie-android 3.0.0 ([bb8dd2b](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/bb8dd2b))
+-   **android:** migrate ColorHelper to AndroidX ([2b8507b](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/2b8507b))
+-   **android:** migrate LottieSplashScreen to Androix ([cfec4ed](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/cfec4ed))
+
 # [0.6.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.5.1...v0.6.0) (2019-04-23)
 
 # [0.6.0-beta.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.5.0...v0.6.0-beta.1) (2019-04-11)
