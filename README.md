@@ -155,7 +155,7 @@ await lottie.splashscreen.show(location?: string, remote?: boolean, width?: numb
     <preference name="LottieAutoHideSplashScreen" value="true" />
 ```
 
--   `LottieEnableHardwareAcceleration` (Boolean, default `false`). **Android only!** Enables hardware acceleration for the animation view.
+-   `LottieEnableHardwareAcceleration` (Boolean, default `false`). **Android only!** Enables hardware acceleration for the animation view. Not really recommended since Lottie decides automatically whether the hardware mode should be used or not.
 
 ```xml
     <preference name="LottieEnableHardwareAcceleration" value="true" />
