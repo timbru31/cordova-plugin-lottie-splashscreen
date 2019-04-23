@@ -4,7 +4,12 @@ import android.app.Dialog
 import android.os.Handler
 import android.util.Log
 import android.widget.ImageView
-import com.airbnb.lottie.*
+import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieComposition
+import com.airbnb.lottie.LottieCompositionFactory
+import com.airbnb.lottie.LottieDrawable
+import com.airbnb.lottie.LottieTask
+import com.airbnb.lottie.RenderMode
 import org.apache.cordova.CallbackContext
 import org.apache.cordova.CordovaArgs
 import org.apache.cordova.CordovaPlugin
