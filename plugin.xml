@@ -21,7 +21,7 @@
         <source-file src="src/android/ColorHelper.kt" target-dir="app/src/main/kotlin/de/dustplanet/cordova/lottie" />
 
         <framework src="src/android/build-extras.gradle" custom="true" type="gradleReference"/>
-        <framework src="com.airbnb.android:lottie:3.0.0" />
+        <framework src="com.airbnb.android:lottie:3.0.3" />
 
         <hook type="after_platform_add" src="hooks/android/copy_build_extras.js" />
         <hook type="after_plugin_add" src="hooks/android/copy_build_extras.js" />
@@ -43,7 +43,7 @@
                 <source url="https://github.com/CocoaPods/Specs.git"/>
             </config>
             <pods use-frameworks="true">
-                <pod name="lottie-ios" spec="~> 3.0.4" />
+                <pod name="lottie-ios" spec="~> 3.1.0" />
             </pods>
         </podspec>
 
