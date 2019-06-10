@@ -36,6 +36,8 @@ $ pod setup
 ##### Caveats
 
 With v0.6.0 and newer only **cordova >= 9.0.0** and **cordova-ios >= 5.0.0** are supported.  
+You need to specify a valid SwiftVersion (minimum is 4.2) in your `config.xml` (see https://cordova.apache.org/docs/en/latest/config_ref/)
+
 If you can't upgrade please stick to v0.5.X.
 
 #### Android
