@@ -10,8 +10,7 @@ CHANGELOG.md
 FAQ.md
 tsconfig.json
 tslint.json
-.github/main.workflow
-.github/stale.yml
 .vscode/settings.json
 scripts/patch-plugin-xml-version.js
 www/lottie-splashscreen.ts
+.github/
