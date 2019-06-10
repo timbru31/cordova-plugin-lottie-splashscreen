@@ -1,6 +1,15 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [0.7.0-beta.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.7.0-beta.0...v0.7.0-beta.1) (2019-06-10)
+
+### Build System
+
+-   **deps-dev:** bump standard-version from 5.0.2 to 6.0.1 ([09ba249](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/09ba249))
+-   **deps-dev:** bump standard-version from 5.0.2 to 6.0.1 ([#74](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/74)) ([4a3793f](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/4a3793f))
+-   **deps-dev:** bump tslint from 5.16.0 to 5.17.0 ([99c1a4f](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/99c1a4f))
+-   **deps-dev:** bump typescript from 3.4.5 to 3.5.1 ([f747654](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/f747654))
 
 # [0.7.0-beta.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.6.0...v0.7.0-beta.0) (2019-04-23)
 
