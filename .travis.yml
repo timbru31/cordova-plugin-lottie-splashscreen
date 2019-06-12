@@ -9,7 +9,7 @@ cache:
     - "node_modules"
 
 before_script:
-  - curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.32.0/ktlint
+  - curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.33.0/ktlint
   - chmod a+x ktlint
   - swiftlint version
 
