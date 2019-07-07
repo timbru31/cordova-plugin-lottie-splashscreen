@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0-beta.2](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.7.0-beta.1...v0.7.0-beta.2) (2019-07-07)
+
+### Build System
+
+-   **CI:** upgrade ktlint to 0.33.0 ([3ae009a](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/3ae009a))
+-   **deps:** update lottie ([bed9016](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/bed9016))
+-   **deps:** upgrade Kotlin dependency to 1.3.41 ([af129c7](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/af129c7))
+-   **deps:** upgrade Kotlint dependency to 1.3.31 ([5678515](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/5678515))
+-   **deps-dev:** bump tslint from 5.17.0 to 5.18.0 ([1493427](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/1493427))
+-   **deps-dev:** bump TypeScript and TSLint ([8c3b878](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/8c3b878))
+-   **deps-dev:** bump typescript from 3.5.1 to 3.5.2 ([eeec686](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/eeec686))
+
 ## [0.7.0-beta.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.7.0-beta.0...v0.7.0-beta.1) (2019-06-10)
 
 ### Build System
