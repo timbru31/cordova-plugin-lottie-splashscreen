@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0-beta.3](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.7.0-beta.2...v0.7.0-beta.3) (2019-07-19)
+
+### Build System
+
+-   **deps:** upgrade lottie-ios to 3.1.2 ([3afe110](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/3afe110))
+-   add commitlint and prettier configs ([475f364](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/475f364))
+-   **deps:** [security] bump lodash from 4.17.11 to 4.17.14 ([dc4fb9e](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/dc4fb9e))
+-   **deps:** bump lodash.template from 4.4.0 to 4.5.0 ([4a2988b](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/4a2988b))
+-   **deps-dev:** bump typescript from 3.5.2 to 3.5.3 ([1e63803](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/1e63803))
+
 ## [0.7.0-beta.2](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.7.0-beta.1...v0.7.0-beta.2) (2019-07-07)
 
 ### Build System
