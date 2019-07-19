@@ -10,8 +10,11 @@ CHANGELOG.md
 FAQ.md
 tsconfig.json
 tslint.json
-.vscode/settings.json
+.vscode/
 scripts/patch-plugin-xml-version.js
 www/lottie-splashscreen.ts
 .github/
 yarn-error.log
+.huskyrc
+.lintstagedrc
+commitlint.config.js
