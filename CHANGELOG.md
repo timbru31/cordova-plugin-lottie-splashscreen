@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.7.0-beta.3...v0.7.0) (2019-08-06)
+
 ## [0.7.0-beta.3](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.7.0-beta.2...v0.7.0-beta.3) (2019-07-19)
 
 ### Build System
