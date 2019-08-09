@@ -1,4 +1,13 @@
-### Hook failed with error code 127
+# Table of Contents
+
+1. [Hook failed with error code 127](#hook-failed-with-error-code-127)
+2. [Manifest merger failed](#manifest-merger-failed)
+3. [error: cannot find symbol](#error-cannot-find-symbol)
+4. [error: Value for SWIFT_VERSION cannot be empty](#error-value-for-swift_version-cannot-be-empty)
+
+---
+
+## Hook failed with error code 127
 
 The following error message appeared:
 
@@ -21,7 +30,7 @@ Failed to install 'cordova-plugin-lottie-splashscreen': Error: Hook failed with 
 Hook failed with error code 127: /Users/timbru31/work/cordova-plugin-lottie-splashscreen/hooks/ios/update_pod_repo.sh
 ```
 
-#### Answer
+### Answer
 
 It seems that the `pod` gem ins not installed. Fix it with:
 
@@ -31,7 +40,7 @@ $ pod setup
 $ cordova plugin add cordova-plugin-lottie-splashscreen
 ```
 
-### Manifest merger failed
+## Manifest merger failed
 
 ```
 > Manifest merger failed : Attribute application@appComponentFactory value=(android.support.v4.app.CoreComponentFactory) from [com.android.support:support-compat:28.0.0] AndroidManifest.xml:22:18-91
@@ -39,7 +48,7 @@ $ cordova plugin add cordova-plugin-lottie-splashscreen
   	Suggestion: add 'tools:replace="android:appComponentFactory"' to <application> element at AndroidManifest.xml:5:5-12:19 to override.
 ```
 
-#### Answer
+### Answer
 
 Install the cordova-plugin-androidx plugin
 
@@ -47,14 +56,14 @@ Install the cordova-plugin-androidx plugin
 $ cordova plugin add cordova-plugin-androidx
 ```
 
-### error: cannot find symbol
+## error: cannot find symbol
 
 ```
 /Users/timbrust/Coding/cordova-hello-world/platforms/android/app/src/main/java/cordova/plugins/Diagnostic_Notifications.java:35: error: cannot find symbol
 import android.support.v4.app.NotificationManagerCompat;
 ```
 
-#### Answer
+### Answer
 
 Install the cordova-plugin-androidx-adapter plugin
 
@@ -62,7 +71,7 @@ Install the cordova-plugin-androidx-adapter plugin
 $ cordova plugin add cordova-plugin-androidx-adapter
 ```
 
-### error: Value for SWIFT_VERSION cannot be empty
+## error: Value for SWIFT_VERSION cannot be empty
 
 ```
 error: Value for SWIFT_VERSION cannot be empty. (in target 'HelloCordova')
@@ -72,6 +81,6 @@ error: Value for SWIFT_VERSION cannot be empty. (in target 'HelloCordova')
 xcodebuild: Command failed with exit code 65
 ```
 
-#### Answer
+### Answer
 
 Add the following prefernce to the `config.xml` iOS section: `<preference name="SwiftVersion" value="4.2" />`
