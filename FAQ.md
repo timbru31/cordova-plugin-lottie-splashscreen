@@ -32,7 +32,7 @@ Hook failed with error code 127: /Users/timbru31/work/cordova-plugin-lottie-spla
 
 ### Answer
 
-It seems that the `pod` gem ins not installed. Fix it with:
+It seems that the `pod` gem (the [package manager for Swift and Objective-C](https://cocoapods.org/) projects) is not installed. Fix it with:
 
 ```sh
 $ sudo gem install cocoapods
@@ -50,10 +50,11 @@ $ cordova plugin add cordova-plugin-lottie-splashscreen
 
 ### Answer
 
-Install the cordova-plugin-androidx plugin
+Install the add cordova-plugin-androidx and cordova-plugin-androidx-adapter plugins.
 
 ```sh
 $ cordova plugin add cordova-plugin-androidx
+$ cordova plugin add cordova-plugin-androidx-adapter
 ```
 
 ## error: cannot find symbol
@@ -65,9 +66,10 @@ import android.support.v4.app.NotificationManagerCompat;
 
 ### Answer
 
-Install the cordova-plugin-androidx-adapter plugin
+Install the add cordova-plugin-androidx and cordova-plugin-androidx-adapter plugins.
 
 ```sh
+$ cordova plugin add cordova-plugin-androidx
 $ cordova plugin add cordova-plugin-androidx-adapter
 ```
 
@@ -83,4 +85,4 @@ xcodebuild: Command failed with exit code 65
 
 ### Answer
 
-Add the following prefernce to the `config.xml` iOS section: `<preference name="SwiftVersion" value="4.2" />`
+Add the following preference to the `config.xml` iOS section: `<preference name="SwiftVersion" value="4.2" />`.
