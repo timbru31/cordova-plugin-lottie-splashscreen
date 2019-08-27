@@ -1,5 +1,5 @@
 os: osx
-osx_image: xcode10.2
+osx_image: xcode10.3
 
 language: node_js
 node_js:
@@ -9,7 +9,7 @@ cache:
     - "node_modules"
 
 before_script:
-  - curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.33.0/ktlint
+  - curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.34.2/ktlint
   - chmod a+x ktlint
   - swiftlint version
 
