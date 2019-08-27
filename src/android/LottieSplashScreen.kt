@@ -10,10 +10,10 @@ import com.airbnb.lottie.LottieCompositionFactory
 import com.airbnb.lottie.LottieDrawable
 import com.airbnb.lottie.LottieTask
 import com.airbnb.lottie.RenderMode
+import java.lang.Exception
 import org.apache.cordova.CallbackContext
 import org.apache.cordova.CordovaArgs
 import org.apache.cordova.CordovaPlugin
-import java.lang.Exception
 
 class LottieSplashScreen : CordovaPlugin() {
 
