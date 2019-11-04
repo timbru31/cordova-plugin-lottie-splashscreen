@@ -70,12 +70,5 @@
   "repository": "timbru31/cordova-plugin-lottie-splashscreen",
   "bugs": {
     "url": "https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues"
-  },
-  "standard-version": {
-    "scripts": {
-      "prebump": "node scripts/patch-plugin-xml-version.js",
-      "precommit": "git add plugin.xml",
-      "postchangelog": "npx prettier --write CHANGELOG.md"
-    }
   }
 }

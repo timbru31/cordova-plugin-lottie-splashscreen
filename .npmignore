@@ -18,3 +18,4 @@ yarn-error.log
 .huskyrc
 .lintstagedrc
 commitlint.config.js
+.versionrc.json
