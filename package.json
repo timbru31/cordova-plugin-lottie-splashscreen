@@ -74,6 +74,7 @@
   "standard-version": {
     "scripts": {
       "prebump": "node scripts/patch-plugin-xml-version.js",
+      "precommit": "git add plugin.xml",
       "postchangelog": "npx prettier --write CHANGELOG.md"
     }
   }
