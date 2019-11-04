@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.7.0...v0.7.1) (2019-11-04)
+
+### Bug Fixes
+
+-   **android:** ktlint warning ([58e2e4b](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/58e2e4b6d7b8b9a3d4aa81237310925ab5fb3ccc))
+
 ## [0.7.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.7.0-beta.3...v0.7.0) (2019-08-06)
 
 ## [0.7.0-beta.3](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.7.0-beta.2...v0.7.0-beta.3) (2019-07-19)
