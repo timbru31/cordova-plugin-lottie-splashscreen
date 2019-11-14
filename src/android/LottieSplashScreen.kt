@@ -11,6 +11,7 @@ import com.airbnb.lottie.LottieDrawable
 import com.airbnb.lottie.LottieTask
 import com.airbnb.lottie.RenderMode
 import java.lang.Exception
+import java.util.Locale
 import org.apache.cordova.CallbackContext
 import org.apache.cordova.CordovaArgs
 import org.apache.cordova.CordovaPlugin
@@ -73,66 +74,68 @@ class LottieSplashScreen : CordovaPlugin() {
 
     private fun createView(location: String? = null, remote: Boolean? = null, width: Double? = null, height: Double? = null) {
         cordova.activity.runOnUiThread {
-            val context = webView.context
+            if (cordova.activity.isFinishing.not()) {
+                val context = webView.context
 
-            animationView = LottieAnimationView(context)
-            val useHardwareAcceleration = remote
-                    ?: preferences.getBoolean("LottieEnableHardwareAcceleration", false)
-            if (useHardwareAcceleration) {
-                animationView.setRenderMode(RenderMode.HARDWARE)
-            }
-
-            val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)
-            val animationLocation = location ?: preferences.getString("LottieAnimationLocation", "")
-            if (animationLocation.isNullOrBlank()) {
-                Log.e(LOG_TAG, "LottieAnimationLocation has to be configured!")
-                this.destroyView()
-                return@runOnUiThread
-            }
-            val comp: LottieTask<LottieComposition>
-            when {
-                remoteEnabled -> comp = LottieCompositionFactory.fromUrl(context, animationLocation)
-                else -> {
-                    comp = LottieCompositionFactory.fromAsset(context, animationLocation)
-                    animationView.imageAssetsFolder = preferences.getString("LottieImagesLocation", animationLocation.substring(0, animationLocation.lastIndexOf('/')))
+                animationView = LottieAnimationView(context)
+                val useHardwareAcceleration = remote
+                        ?: preferences.getBoolean("LottieEnableHardwareAcceleration", false)
+                if (useHardwareAcceleration) {
+                    animationView.setRenderMode(RenderMode.HARDWARE)
                 }
-            }
 
-            comp.addListener { animationView.setComposition(it) }.addFailureListener {
-                Log.e(LOG_TAG, "Animation not loadable!")
-                Log.e(LOG_TAG, Log.getStackTraceString(it))
-                this.destroyView()
-            }
-
-            animationView.enableMergePathsForKitKatAndAbove(true)
-
-            if (preferences.getBoolean("LottieLoopAnimation", false)) {
-                animationView.repeatCount = LottieDrawable.INFINITE
-            }
-
-            animationView.scaleType = ImageView.ScaleType.valueOf(preferences.getString("LottieScaleType", "FIT_CENTER").toUpperCase())
-            animationView.setBackgroundColor(ColorHelper.parseColor(preferences.getString("LottieBackgroundColor", "#ffffff")))
-
-            splashDialog = Dialog(context, android.R.style.Theme_Translucent_NoTitleBar)
-            splashDialog.setContentView(animationView)
-            splashDialog.setCancelable(false)
-
-            calculateAnimationSize(width, height)
-            splashDialog.show()
-
-            animationView.playAnimation()
-            animationView.setOnClickListener {
-                val cancelOnTap = preferences.getBoolean("LottieCancelOnTap", false)
-                if (cancelOnTap) {
-                    animationView.cancelAnimation()
-                    splashDialog.dismiss()
+                val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)
+                val animationLocation = location ?: preferences.getString("LottieAnimationLocation", "")
+                if (animationLocation.isNullOrBlank()) {
+                    Log.e(LOG_TAG, "LottieAnimationLocation has to be configured!")
+                    this.destroyView()
+                    return@runOnUiThread
                 }
-            }
+                val comp: LottieTask<LottieComposition>
+                when {
+                    remoteEnabled -> comp = LottieCompositionFactory.fromUrl(context, animationLocation)
+                    else -> {
+                        comp = LottieCompositionFactory.fromAsset(context, animationLocation)
+                        animationView.imageAssetsFolder = preferences.getString("LottieImagesLocation", animationLocation.substring(0, animationLocation.lastIndexOf('/')))
+                    }
+                }
 
-            val delay = preferences.getInteger("LottieHideTimeout", 0)
-            if (delay > 0) {
-                val handler = Handler()
-                handler.postDelayed(splashDialog::dismiss, delay.toLong() * 1000)
+                comp.addListener { animationView.setComposition(it) }.addFailureListener {
+                    Log.e(LOG_TAG, "Animation not loadable!")
+                    Log.e(LOG_TAG, Log.getStackTraceString(it))
+                    this.destroyView()
+                }
+
+                animationView.enableMergePathsForKitKatAndAbove(true)
+
+                if (preferences.getBoolean("LottieLoopAnimation", false)) {
+                    animationView.repeatCount = LottieDrawable.INFINITE
+                }
+
+                animationView.scaleType = ImageView.ScaleType.valueOf(preferences.getString("LottieScaleType", "FIT_CENTER").toUpperCase(Locale.getDefault()))
+                animationView.setBackgroundColor(ColorHelper.parseColor(preferences.getString("LottieBackgroundColor", "#ffffff")))
+
+                splashDialog = Dialog(context, android.R.style.Theme_Translucent_NoTitleBar)
+                splashDialog.setContentView(animationView)
+                splashDialog.setCancelable(false)
+
+                calculateAnimationSize(width, height)
+                splashDialog.show()
+
+                animationView.playAnimation()
+                animationView.setOnClickListener {
+                    val cancelOnTap = preferences.getBoolean("LottieCancelOnTap", false)
+                    if (cancelOnTap) {
+                        animationView.cancelAnimation()
+                        splashDialog.dismiss()
+                    }
+                }
+
+                val delay = preferences.getInteger("LottieHideTimeout", 0)
+                if (delay > 0) {
+                    val handler = Handler()
+                    handler.postDelayed(splashDialog::dismiss, delay.toLong() * 1000)
+                }
             }
         }
     }
