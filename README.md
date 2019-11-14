@@ -42,7 +42,7 @@ You need to specify a valid SwiftVersion (minimum is 4.2) in your `config.xml` (
 
 AndroidX support is required for lottie-android >= 2.8.0.  
 In order to use version >= v0.7.0 you need to configure AndroidX support.  
-In case you do not manually edit Android Studio file, these two plugins might be required: https://github.com/dpa99c/cordova-plugin-androidx and https://github.com/dpa99c/cordova-plugin-androidx-adapter.  
+In case you do not manually build the project and edit the files in Android Studio, these two plugins might be required: https://github.com/dpa99c/cordova-plugin-androidx and https://github.com/dpa99c/cordova-plugin-androidx-adapter.  
 In the [FAQ](FAQ.md) are some examples with common error messages and how to fix them.
 
 ### Installation
