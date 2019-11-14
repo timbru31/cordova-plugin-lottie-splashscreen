@@ -6,7 +6,10 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "lint": "tslint -c tslint.json 'www/**/*.ts' && swiftlint",
+    "lint": "npm run lint:android && npm run lint:ios && npm run lint:typescript",
+    "lint:android": "ktlint src/android",
+    "lint:ios": "swiftlint",
+    "lint:typescript": "tslint -c tslint.json 'www/**/*.ts'",
     "prepublishOnly": "npm run build",
     "release": "standard-version -s"
   },
