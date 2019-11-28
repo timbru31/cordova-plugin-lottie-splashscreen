@@ -86,3 +86,13 @@ xcodebuild: Command failed with exit code 65
 ### Answer
 
 Add the following preference to the `config.xml` iOS section: `<preference name="SwiftVersion" value="4.2" />`.
+
+## error: SWIFT_VERSION '5.0' is unsupported, supported versions are: 3.0, 4.0, 4.2. (in target 'lottie-ios')
+
+```
+error: SWIFT_VERSION '5.0' is unsupported, supported versions are: 3.0, 4.0, 4.2. (in target 'lottie-ios')
+```
+
+### Answer
+
+Make sure to set a valid `SwiftVersion` value. For Swift 5 it is `5` and not `5.0`. Please make sure to use a recent Xcode version that supports the desired Swift version, too.
