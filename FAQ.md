@@ -4,6 +4,7 @@
 2. [Manifest merger failed](#manifest-merger-failed)
 3. [error: cannot find symbol](#error-cannot-find-symbol)
 4. [error: Value for SWIFT_VERSION cannot be empty](#error-value-for-swift_version-cannot-be-empty)
+5. [error: SWIFT_VERSION '5.0' is unsupported, supported versions are: 3.0, 4.0, 4.2. (in target 'lottie-ios')](#error-swift_version-50-is-unsupported-supported-versions-are-30-40-42-in-target-lottie-ios)
 
 ---
 
