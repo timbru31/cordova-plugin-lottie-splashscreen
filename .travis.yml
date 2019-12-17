@@ -1,16 +1,42 @@
-os: osx
-osx_image: xcode11.2
-
 language: node_js
 node_js:
   - lts/*
-cache:
-  directories:
-    - 'node_modules'
 
-before_script:
-  - brew install ktlint
-  - swiftlint version
+jobs:
+  include:
+    - language: android
+      android:
+        components:
+          - tools
+          - build-tools-28.0.3
+          - android-28
+      before_script:
+        - nvm install lts/erbium
+      script:
+        # Create a dummy project to see if the application successfully builds
+        - npm i -g cordova
+        - cordova create lottie-smoke-test
+        - cd lottie-smoke-test
+        - cordova platform add android
+        - cordova plugin add cordova-plugin-androidx
+        - cordova plugin add cordova-plugin-androidx-adapter
+        - cordova plugin add $TRAVIS_BUILD_DIR --link
+        - cordova build android
 
-script:
-  - npm run lint
+    - os: osx
+      osx_image: xcode11.2
+      before_script:
+        - brew install ktlint
+        - brew install gnu-sed
+        - swiftlint version
+      script:
+        - npm run lint
+
+        # Create a dummy project to see if the application successfully builds
+        - npm i -g cordova
+        - cordova create lottie-smoke-test
+        - cd lottie-smoke-test
+        - gsed -i '4i\    <preference name="SwiftVersion" value="5" />' config.xml
+        - cordova platform add ios
+        - cordova plugin add $TRAVIS_BUILD_DIR --link
+        - cordova build ios
