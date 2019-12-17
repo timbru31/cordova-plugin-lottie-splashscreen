@@ -43,7 +43,10 @@ var app = {
 
         // Lottie start
         setTimeout(() => {
-            lottie.splashscreen.hide();
+            lottie.splashscreen
+                .hide()
+                .then(_ => console.log('Lottie successfully hid the animation'))
+                .catch(_ => console.error('Uh oh, there was an error hiding the animation'));
         }, 10000);
     }
 };

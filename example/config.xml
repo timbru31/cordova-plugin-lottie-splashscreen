@@ -8,6 +8,7 @@
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <allow-navigation href="*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
@@ -32,11 +33,10 @@
         <preference name="LottieAnimationLocation" value="https://assets.lottiefiles.com/datafiles/40aX5db74VvGPWw/data.json" />
         <preference name="LottieCancelOnTap" value="true" />
         <preference name="LottieFullScreen" value="true" />
+        <preference name="LottieHideTimeout" value="0" />
+        <preference name="SwiftVersion" value="5" />
 
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <plugin name="cordova-plugin-lottie-splashscreen" spec="^0.4.2" />
-    <engine name="android" spec="^7.1.4" />
-    <engine name="ios" spec="^4.5.5" />
 </widget>
