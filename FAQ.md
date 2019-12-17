@@ -37,7 +37,6 @@ It seems that the `pod` gem (the [package manager for Swift and Objective-C](htt
 
 ```sh
 $ sudo gem install cocoapods
-$ pod setup
 $ cordova plugin add cordova-plugin-lottie-splashscreen
 ```
 
@@ -86,7 +85,7 @@ xcodebuild: Command failed with exit code 65
 
 ### Answer
 
-Add the following preference to the `config.xml` iOS section: `<preference name="SwiftVersion" value="4.2" />`.
+Add the following preference to the `config.xml` iOS section: `<preference name="SwiftVersion" value="5" />`.
 
 ## error: SWIFT_VERSION '5.0' is unsupported, supported versions are: 3.0, 4.0, 4.2. (in target 'lottie-ios')
 
