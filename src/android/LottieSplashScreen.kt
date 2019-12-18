@@ -11,7 +11,6 @@ import com.airbnb.lottie.LottieDrawable
 import com.airbnb.lottie.LottieTask
 import com.airbnb.lottie.RenderMode
 import java.lang.Exception
-import java.util.Locale
 import org.apache.cordova.CallbackContext
 import org.apache.cordova.CordovaArgs
 import org.apache.cordova.CordovaPlugin
@@ -23,7 +22,12 @@ class LottieSplashScreen : CordovaPlugin() {
 
     override fun pluginInitialize() {
         super.initialize(cordova, webView)
-        createView()
+        try {
+            createView()
+        } catch (e: Exception) {
+            Log.e(LOG_TAG, e.message)
+            e.printStackTrace()
+        }
     }
 
     override fun onMessage(id: String?, data: Any?): Any? {
@@ -51,9 +55,9 @@ class LottieSplashScreen : CordovaPlugin() {
                         if (args.isNull(0)) null else args.getString(0),
                         if (args.isNull(1)) null else args.getBoolean(1),
                         if (args.isNull(2)) null else args.getDouble(2),
-                        if (args.isNull(3)) null else args.getDouble(3)
+                        if (args.isNull(3)) null else args.getDouble(3),
+                        callbackContext
                 )
-                callbackContext.success()
                 true
             } catch (e: Exception) {
                 callbackContext.error(e.message)
@@ -72,7 +76,10 @@ class LottieSplashScreen : CordovaPlugin() {
         }
     }
 
-    private fun createView(location: String? = null, remote: Boolean? = null, width: Double? = null, height: Double? = null) {
+    private fun createView(location: String? = null, remote: Boolean? = null, width: Double? = null, height: Double? = null, callbackContext: CallbackContext? = null) {
+        if (::splashDialog.isInitialized && splashDialog.isShowing) {
+            throw LottieSplashScreenAnimationAlreadyPlayingException("An animation is already playing, please first hide the current one")
+        }
         cordova.activity.runOnUiThread {
             if (cordova.activity.isFinishing.not()) {
                 val context = webView.context
@@ -89,7 +96,13 @@ class LottieSplashScreen : CordovaPlugin() {
                 if (animationLocation.isNullOrBlank()) {
                     Log.e(LOG_TAG, "LottieAnimationLocation has to be configured!")
                     this.destroyView()
-                    return@runOnUiThread
+                    val invalidURLException = LottieSplashScreenInvalidURLException("The provided animation is invalid")
+                    if (callbackContext != null) {
+                        callbackContext.error(invalidURLException.message)
+                        return@runOnUiThread
+                    } else {
+                        throw invalidURLException
+                    }
                 }
                 val comp: LottieTask<LottieComposition>
                 when {
@@ -104,6 +117,10 @@ class LottieSplashScreen : CordovaPlugin() {
                     Log.e(LOG_TAG, "Animation not loadable!")
                     Log.e(LOG_TAG, Log.getStackTraceString(it))
                     this.destroyView()
+                    if (callbackContext != null) {
+                        val invalidURLException = LottieSplashScreenInvalidURLException("The provided animation is invalid")
+                        callbackContext.error(invalidURLException.message)
+                    }
                 }
 
                 animationView.enableMergePathsForKitKatAndAbove(true)
@@ -112,7 +129,7 @@ class LottieSplashScreen : CordovaPlugin() {
                     animationView.repeatCount = LottieDrawable.INFINITE
                 }
 
-                animationView.scaleType = ImageView.ScaleType.valueOf(preferences.getString("LottieScaleType", "FIT_CENTER").toUpperCase(Locale.getDefault()))
+                animationView.scaleType = ImageView.ScaleType.valueOf(preferences.getString("LottieScaleType", "FIT_CENTER").toUpperCase())
                 animationView.setBackgroundColor(ColorHelper.parseColor(preferences.getString("LottieBackgroundColor", "#ffffff")))
 
                 splashDialog = Dialog(context, android.R.style.Theme_Translucent_NoTitleBar)
