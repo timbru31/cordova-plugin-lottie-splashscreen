@@ -30,7 +30,10 @@
     </platform>
     <platform name="ios">
         <!-- Lottie specific config -->
-        <preference name="LottieAnimationLocation" value="https://assets.lottiefiles.com/datafiles/40aX5db74VvGPWw/data.json" />
+        <!-- <preference name="LottieAnimationLocation" value="https://assets.lottiefiles.com/datafiles/40aX5db74VvGPWw/data.json" /> -->
+        <!-- Alternatively -->
+        <preference name="LottieRemoteEnabled" value="false" />
+        <preference name="LottieAnimationLocation" value="www/lottie/data.json" />
         <preference name="LottieCancelOnTap" value="true" />
         <preference name="LottieFullScreen" value="true" />
         <preference name="LottieHideTimeout" value="0" />
