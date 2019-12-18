@@ -4,6 +4,7 @@ import Lottie
     var animationView: AnimationView?
     var animationViewContainer: UIView?
     var visible = false
+    var callbackId: String?
 
     override func pluginInitialize() {
         createObservers()
@@ -11,8 +12,10 @@ import Lottie
     }
 
     @objc(hide:)
-    func hide(command _: CDVInvokedUrlCommand) {
+    func hide(command: CDVInvokedUrlCommand) {
         destroyView()
+        let result = CDVPluginResult.init(status: CDVCommandStatus_OK)
+        commandDelegate.send(result, callbackId: command.callbackId)
     }
 
     @objc(show:)
@@ -21,7 +24,7 @@ import Lottie
         let remote = command.arguments.count > 1 ? command.argument(at: 1) : nil
         let width = command.arguments.count > 2 ? command.argument(at: 2) : nil
         let height = command.arguments.count > 3 ? command.argument(at: 3) : nil
-        createView(location: location as? String, remote: remote as? Bool, width: width as? Int, height: height as? Int)
+        createView(location: location as? String, remote: remote as? Bool, width: width as? Int, height: height as? Int, callbackId: command.callbackId)
     }
 
     @objc func pageDidLoad() {
@@ -51,16 +54,20 @@ import Lottie
         }
     }
 
-    private func createView(location: String? = nil, remote: Bool? = nil, width: Int? = nil, height: Int? = nil) {
+    private func createView(location: String? = nil, remote: Bool? = nil, width: Int? = nil, height: Int? = nil, callbackId: String? = nil) {
         if !visible {
+            self.callbackId = callbackId
             let parentView = viewController.view
 
             createAnimationViewContainer()
-            createAnimationView(location: location, remote: remote, width: width, height: height)
+            do {
+                try createAnimationView(location: location, remote: remote, width: width, height: height)
+            } catch {
+                processInvalidURLError(error: error)
+            }
 
             animationViewContainer?.addSubview(animationView!)
             parentView?.addSubview(animationViewContainer!)
-            animationView?.play()
 
             let cancelOnTap = commandDelegate?.settings["LottieCancelOnTap".lowercased()] as? NSString ?? "false"
             if cancelOnTap.boolValue {
@@ -75,7 +82,11 @@ import Lottie
                 }
             }
 
+            playAnimation()
             visible = true
+        } else if callbackId != nil {
+            let result = CDVPluginResult.init(status: CDVCommandStatus_ERROR, messageAs: LottieSplashScreenError.animationAlreadyPlaying.localizedDescription)
+            commandDelegate.send(result, callbackId: callbackId)
         }
     }
 
@@ -93,14 +104,7 @@ import Lottie
         animationViewContainer?.backgroundColor = UIColor(hex: backgroundColor)
     }
 
-    private func createAnimationView(location: String? = nil, remote: Bool? = nil, width: Int? = nil, height: Int? = nil) {
-        var useRemote: Bool
-        if remote != nil {
-            useRemote = remote!
-        } else {
-            useRemote = (commandDelegate?.settings["LottieRemoteEnabled".lowercased()] as? NSString ?? "false").boolValue
-        }
-
+    private func createAnimationView(location: String? = nil, remote: Bool? = nil, width: Int? = nil, height: Int? = nil) throws {
         var animationLocation: String
         if location != nil {
             animationLocation = location!
@@ -108,9 +112,15 @@ import Lottie
             animationLocation = commandDelegate?.settings["LottieAnimationLocation".lowercased()] as? String ?? ""
         }
 
-        if useRemote {
-            animationView = AnimationView(url: URL(string: animationLocation)!, closure: { error in
-                print(error?.localizedDescription ?? "Error loading URL")
+        if isRemote(remote: remote) {
+            guard let url = URL(string: animationLocation) else { throw LottieSplashScreenError.invalidURL }
+            animationView = AnimationView(url: url, closure: { error in
+                if error == nil {
+                    self.playAnimation()
+                } else {
+                    self.destroyView()
+                    self.processInvalidURLError(error: error!)
+                }
             })
         } else {
             animationLocation = Bundle.main.bundleURL.appendingPathComponent(animationLocation).path
@@ -174,6 +184,35 @@ import Lottie
         animationView?.center = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY)
     }
 
+    private func playAnimation() {
+        animationView?.play()
+
+        if callbackId != nil {
+            let result = CDVPluginResult.init(status: CDVCommandStatus_OK)
+            commandDelegate.send(result, callbackId: callbackId)
+            callbackId = nil
+        }
+    }
+
+    private func processInvalidURLError(error: Error) {
+        if callbackId != nil {
+            let result = CDVPluginResult.init(status: CDVCommandStatus_ERROR, messageAs: LottieSplashScreenError.invalidURL.localizedDescription)
+            commandDelegate.send(result, callbackId: callbackId)
+        } else {
+            NSLog("Unexpected error: \(error.localizedDescription)")
+        }
+    }
+
+    private func isRemote(remote: Bool?) -> Bool {
+        var useRemote: Bool
+        if remote != nil {
+            useRemote = remote!
+        } else {
+            useRemote = (commandDelegate?.settings["LottieRemoteEnabled".lowercased()] as? NSString ?? "false").boolValue
+        }
+        return useRemote
+    }
+
     private func createObservers() {
         NotificationCenter.default.addObserver(
             self,
@@ -192,5 +231,21 @@ import Lottie
 
     @objc private func deviceOrientationChanged() {
         animationView?.center = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY)
+    }
+}
+
+enum LottieSplashScreenError: Error {
+    case animationAlreadyPlaying
+    case invalidURL
+}
+
+extension LottieSplashScreenError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .animationAlreadyPlaying:
+            return NSLocalizedString("An animation is already playing, please first hide the current one", comment: "")
+        case .invalidURL:
+            return NSLocalizedString("The provided URL is invalid", comment: "")
+        }
     }
 }
