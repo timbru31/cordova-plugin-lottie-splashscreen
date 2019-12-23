@@ -15,8 +15,10 @@
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-lottie-splashscreen": {}
+      "cordova-plugin-androidx": {},
+      "cordova-plugin-androidx-adapter": {},
+      "cordova-plugin-lottie-splashscreen": {},
+      "cordova-plugin-whitelist": {}
     },
     "platforms": [
       "android",
