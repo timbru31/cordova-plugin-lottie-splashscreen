@@ -105,10 +105,19 @@ class LottieSplashScreen : CordovaPlugin() {
                     }
                 }
                 val comp: LottieTask<LottieComposition>
+                val cacheDisabled = preferences.getBoolean("LottieCacheDisabled", false)
                 when {
-                    remoteEnabled -> comp = LottieCompositionFactory.fromUrl(context, animationLocation)
+                    remoteEnabled -> {
+                        comp = LottieCompositionFactory.fromUrl(context, animationLocation, when {
+                            cacheDisabled -> null
+                            else -> "url_$animationLocation"
+                        })
+                    }
                     else -> {
-                        comp = LottieCompositionFactory.fromAsset(context, animationLocation)
+                        comp = LottieCompositionFactory.fromUrl(context, animationLocation, when {
+                            cacheDisabled -> null
+                            else -> "asset_$animationLocation"
+                        })
                         animationView.imageAssetsFolder = preferences.getString("LottieImagesLocation", animationLocation.substring(0, animationLocation.lastIndexOf('/')))
                     }
                 }

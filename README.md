@@ -167,6 +167,12 @@ await lottie.splashscreen.show(location?: string, remote?: boolean, width?: numb
     <preference name="LottieScaleType" value="CENTER_CROP" />
 ```
 
+-   `LottieCacheDisabled` (Boolean, default `false`). Disables caching of animations.
+
+```xml
+    <preference name="LottieCacheDisabled" value="true" />
+```
+
 ---
 
 Built by (c) Tim Brust and contributors. Released under the MIT license.
