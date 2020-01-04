@@ -5,6 +5,7 @@
 3. [error: cannot find symbol](#error-cannot-find-symbol)
 4. [error: Value for SWIFT_VERSION cannot be empty](#error-value-for-swift_version-cannot-be-empty)
 5. [error: SWIFT_VERSION '5.0' is unsupported, supported versions are: 3.0, 4.0, 4.2. (in target 'lottie-ios')](#error-swift_version-50-is-unsupported-supported-versions-are-30-40-42-in-target-lottie-ios)
+6. [Error: pod: Command failed with exit code 1 Error output:](#error-pod-command-failed-with-exit-code-1-error-output)
 
 ---
 
@@ -96,3 +97,29 @@ error: SWIFT_VERSION '5.0' is unsupported, supported versions are: 3.0, 4.0, 4.2
 ### Answer
 
 Make sure to set a valid `SwiftVersion` value. For Swift 5 it is `5` and not `5.0`. Please make sure to use a recent Xcode version that supports the desired Swift version, too.
+
+## Error: pod: Command failed with exit code 1 Error output:
+
+```
+Running command: pod install --verbose
+  Cloning into 'cocoapods-'...
+
+  fatal: repository 'https://cdn.cocoapods.org/' not found
+
+Failed to install 'cordova-plugin-lottie-splashscreen': Error: pod: Command failed with exit code 1 Error output:
+Cloning into 'cocoapods-'...
+  fatal: repository 'https://cdn.cocoapods.org/' not found
+    at ChildProcess.whenDone (/Users/timbrust/Coding/cordova-plugin-lottie-splashscreen/example/node_modules/cordova-common/src/superspawn.js:135:23)
+    at ChildProcess.emit (events.js:305:20)
+    at maybeClose (internal/child_process.js:1028:16)
+    at Socket.<anonymous> (internal/child_process.js:443:11)
+    at Socket.emit (events.js:305:20)
+    at Pipe.<anonymous> (net.js:667:12)
+Failed to restore plugin "cordova-plugin-lottie-splashscreen" from config.xml. You might need to try adding it again. Error: Error: pod: Command failed with exit code 1 Error output:
+Cloning into 'cocoapods-'...
+  fatal: repository 'https://cdn.cocoapods.org/' not found
+```
+
+### Answer
+
+Your CocoaPods installation is outdated and can't use the much faster CDN. Update it with: `sudo gem install cocoapods`
