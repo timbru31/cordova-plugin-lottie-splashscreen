@@ -114,7 +114,7 @@ class LottieSplashScreen : CordovaPlugin() {
                         })
                     }
                     else -> {
-                        comp = LottieCompositionFactory.fromUrl(context, animationLocation, when {
+                        comp = LottieCompositionFactory.fromAsset(context, animationLocation, when {
                             cacheDisabled -> null
                             else -> "asset_$animationLocation"
                         })
