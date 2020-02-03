@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0-beta.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.0-beta.0...v0.8.0-beta.1) (2020-02-03)
+
+### Features
+
+-   remove redundant git add ([c045357](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/c045357415080344a18fe9b6462ea1508b7bf1a7))
+
+### Bug Fixes
+
+-   **android:** restores local JSON loading functionality ([720a589](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/720a589b5b9ef891d8878928bb07f8f324f90039))
+
+### Build System
+
+-   **deps:** bumps lottie-ios to 3.1.6 ([14e86c9](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/14e86c91cbcb27a6186a5f00f40b32d3fa1bb758))
+-   **deps-dev:** bump @commitlint/cli from 8.2.0 to 8.3.3 ([f0f5351](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/f0f5351ae638bb98393b56f09ebd54aa1264f40e))
+-   **deps-dev:** bump @commitlint/cli from 8.3.3 to 8.3.4 ([18e17c6](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/18e17c65ed0400672c77de5ea21c65d5e3e1b917))
+-   **deps-dev:** bump @commitlint/cli from 8.3.4 to 8.3.5 ([10502a5](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/10502a5aba0a4fee63f2464d791197a64997061f))
+-   **deps-dev:** bump @commitlint/config-angular from 8.2.0 to 8.3.0 ([c1a3af9](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/c1a3af9a8bdf2775f01a66db81421be8d279b549))
+-   **deps-dev:** bump @commitlint/config-angular from 8.3.0 to 8.3.4 ([0e08879](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/0e08879d32e96918077bd0bef018fbeaf0f4f1d4))
+-   **deps-dev:** bump husky from 3.1.0 to 4.0.0 ([c68fe9e](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/c68fe9e03d6a10817438ed8a52fb356c22080e24))
+-   **deps-dev:** bump husky from 3.1.0 to 4.0.0 ([#147](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/147)) ([31a7993](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/31a7993d49797f38bf7d0d4f27a9e008102be32e))
+-   **deps-dev:** bump husky from 4.0.0 to 4.0.1 ([dd699b1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/dd699b19cfa956ab5aeb34d2b33e1130545409ba))
+-   **deps-dev:** bump husky from 4.0.1 to 4.0.3 ([653f318](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/653f3189bda9338293e2c4fd2b4349c86c97b526))
+-   **deps-dev:** bump husky from 4.0.10 to 4.2.0 ([9c3c5ee](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/9c3c5eeb753c92a20a19d6b7e0bdcc5823e8902e))
+-   **deps-dev:** bump husky from 4.0.3 to 4.0.6 ([6216b5a](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/6216b5a81a2bbf6396e4cecc398d3ca94c852226))
+-   **deps-dev:** bump husky from 4.0.6 to 4.0.7 ([1048d8b](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/1048d8b174f1b13dbea3b457120d6d02e95fafa0))
+-   **deps-dev:** bump husky from 4.0.7 to 4.0.9 ([3e82e04](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/3e82e04337d5eb26606c978acd4ad69548bb8abf))
+-   **deps-dev:** bump husky from 4.0.9 to 4.0.10 ([3662ec4](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/3662ec460e1049b7ea59af0f1ffb4c42162546da))
+-   **deps-dev:** bump husky from 4.2.0 to 4.2.1 ([873398e](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/873398ece035ece560440ef212daffc91051ae91))
+-   **deps-dev:** bump lint-staged from 10.0.1 to 10.0.2 ([5f60746](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/5f60746baa6655f0bfe9d2d3b8e2976da8ce2d60))
+-   **deps-dev:** bump lint-staged from 10.0.2 to 10.0.3 ([7b88ae2](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/7b88ae25bd956123403a87c40dfd50bb59ccdd30))
+-   **deps-dev:** bump lint-staged from 10.0.3 to 10.0.4 ([7655dc9](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/7655dc910861ce368e63f8a891a2c9c1224c3f10))
+-   **deps-dev:** bump lint-staged from 10.0.4 to 10.0.5 ([b3db150](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/b3db1502ee6a169fa567a55dd791c56d92386b6f))
+-   **deps-dev:** bump lint-staged from 10.0.5 to 10.0.7 ([b6b4ae8](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/b6b4ae84272ea60dba956eca9efc3682c79773f9))
+-   **deps-dev:** bump lint-staged from 9.5.0 to 10.0.1 ([64fa582](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/64fa5829fa2dc78723e28ecd62e8f138e96a8b97))
+-   **deps-dev:** bump lint-staged from 9.5.0 to 10.0.1 ([#161](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/161)) ([607aefb](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/607aefb278fad4c120dccb7a12145eb9daa3f348))
+-   **deps-dev:** bump replace from 1.1.1 to 1.1.2 ([c0ca5f9](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/c0ca5f9b53ad7df40c122b8f68071ad2672f4dbe))
+-   **deps-dev:** bump replace from 1.1.2 to 1.1.3 ([19f1da1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/19f1da170ea125dfaa09e9158835223f96f2a397))
+-   **deps-dev:** bump replace from 1.1.3 to 1.1.5 ([fee5323](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/fee53234188bc53c2218a0e94ba77318f9e07449))
+-   **deps-dev:** bump standard-version from 7.0.1 to 7.1.0 ([796e482](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/796e482d8906a75ef83f40c25af5acf32be8d5b2))
+-   **deps-dev:** bump tslint from 5.20.1 to 6.0.0 ([17c4ea3](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/17c4ea3b1fad7c4cde320b9adaab64a8899d569f))
+-   **deps-dev:** bump typescript from 3.7.4 to 3.7.5 ([f4d7a47](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/f4d7a47dee68aab4cde708d332acb663f7204124))
+
 ## [0.8.0-beta.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.7.1...v0.8.0-beta.0) (2019-12-28)
 
 ### Features
