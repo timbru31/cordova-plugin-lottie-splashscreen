@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0-beta.2](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.0-beta.1...v0.8.0-beta.2) (2020-02-04)
+
+### ⚠ BREAKING CHANGES
+
+-   **android:** Android treats the hide timeout config value now in milliseconds instead of seconds
+
+### Features
+
+-   adds events when animation for animation playing. ref [#133](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/133) ([8516dad](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/8516dad43276fdd984e9bea8f1769a511bf17eb2))
+-   **android:** adds fade out preference. ref [#136](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/136) ([9cc1abb](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/9cc1abb8c639e0875e4ca7aa499505e0f4558385))
+-   **ios:** adds fade out support. closes [#136](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/136) ([9538e8c](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/9538e8c68b5a10bb078986075530e0bb0ec7fac0))
+
+### Code Refactoring
+
+-   **android:** treat hide timeout in milliseconds ([f0eef88](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/f0eef886f42144aa6fd8f8bd9e6d8e4b7445e398))
+
 ## [0.8.0-beta.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.0-beta.0...v0.8.0-beta.1) (2020-02-03)
 
 ### Features
