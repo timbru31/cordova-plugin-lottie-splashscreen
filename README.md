@@ -167,12 +167,6 @@ await lottie.splashscreen.show(location?: string, remote?: boolean, width?: numb
     <preference name="LottieScaleType" value="CENTER_CROP" />
 ```
 
--   `LottieCacheDisabled` (Boolean, default `false`). Disables caching of animations.
-
-```xml
-    <preference name="LottieCacheDisabled" value="true" />
-```
-
 -   `LottieFadeOutDuration` (Double for iOS and Integer for Android, default `0`). Duration for the fade out animation. **CAUTION:** iOS reads this value in **SECONDS**, but e.g., `0.5` is supported. Android reads this value in **MILLISECONDS**! the Set to `0` disable the fade out animation.
 
 ```xml
