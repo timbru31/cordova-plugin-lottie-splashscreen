@@ -199,7 +199,14 @@ import Lottie
     }
 
     private func playAnimation() {
-        animationView?.play()
+        animationView?.play { finished in
+            var event = "lottieAnimationEnd"
+            if !finished {
+                event =  "lottieAnimationCancel"
+            }
+            self.webViewEngine.evaluateJavaScript("document.dispatchEvent(new Event('\(event)'))", completionHandler: nil)
+        }
+        self.webViewEngine.evaluateJavaScript("document.dispatchEvent(new Event('lottieAnimationStart'))", completionHandler: nil)
         sendCallback()
     }
 

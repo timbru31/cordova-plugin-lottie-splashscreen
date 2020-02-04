@@ -1,6 +1,7 @@
 package de.dustplanet.cordova.lottie
 
 import android.R.style
+import android.animation.Animator
 import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
 import android.os.Handler
@@ -156,7 +157,24 @@ class LottieSplashScreen : CordovaPlugin() {
                 calculateAnimationSize(width, height)
                 splashDialog.show()
 
-                animationView.playAnimation()
+                animationView.addAnimatorListener(object : Animator.AnimatorListener {
+                    override fun onAnimationStart(animation: Animator) {
+                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationStart'))", { })
+                    }
+
+                    override fun onAnimationEnd(animation: Animator) {
+                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))", { })
+                    }
+
+                    override fun onAnimationCancel(animation: Animator) {
+                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationCancel'))", { })
+                    }
+
+                    override fun onAnimationRepeat(animation: Animator) {
+                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationRepeat'))", { })
+                    }
+                })
+
                 animationView.setOnClickListener {
                     val cancelOnTap = preferences.getBoolean("LottieCancelOnTap", false)
                     if (cancelOnTap) {
@@ -164,6 +182,8 @@ class LottieSplashScreen : CordovaPlugin() {
                         dismissDialog()
                     }
                 }
+
+                animationView.playAnimation()
 
                 val delay = preferences.getInteger("LottieHideTimeout", 0)
                 if (delay > 0) {

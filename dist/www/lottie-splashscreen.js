@@ -13,6 +13,11 @@ var LottieSplashScreen = (function () {
             cordova_1.exec(resolve, reject, 'LottieSplashScreen', 'show', [location, remote, width, height]);
         });
     };
+    LottieSplashScreen.on = function (event) {
+        return new Promise(function (resolve, _) {
+            document.addEventListener(event, resolve);
+        });
+    };
     return LottieSplashScreen;
 }());
 module.exports = LottieSplashScreen;
