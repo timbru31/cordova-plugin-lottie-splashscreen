@@ -173,6 +173,12 @@ await lottie.splashscreen.show(location?: string, remote?: boolean, width?: numb
     <preference name="LottieFadeOutDuration" value="?" /> <!-- CAUTION: iOS reads this value in **SECONDS**, Android reads this value in **MILLISECONDS**>
 ```
 
+-   `LottieHideAfterAnimationEnd` (Boolean, default `false`). Hides the Lottie splash screen after the animation has been played. Do not use together with `LottieAutoHideSplashScreen` or `LottieLoopAnimation`
+
+```xml
+    <preference name="LottieHideAfterAnimationEnd" value="true" />
+```
+
 ---
 
 Built by (c) Tim Brust and contributors. Released under the MIT license.

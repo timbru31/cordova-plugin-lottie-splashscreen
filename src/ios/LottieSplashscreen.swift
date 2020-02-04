@@ -205,6 +205,10 @@ import Lottie
                 event =  "lottieAnimationCancel"
             }
             self.webViewEngine.evaluateJavaScript("document.dispatchEvent(new Event('\(event)'))", completionHandler: nil)
+            let hideAfterAnimationDone = (self.commandDelegate?.settings["LottieHideAfterAnimationEnd".lowercased()] as? NSString ?? "false").boolValue
+            if hideAfterAnimationDone {
+                self.destroyView()
+            }
         }
         self.webViewEngine.evaluateJavaScript("document.dispatchEvent(new Event('lottieAnimationStart'))", completionHandler: nil)
         sendCallback()

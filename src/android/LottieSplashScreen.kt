@@ -18,6 +18,7 @@ import com.airbnb.lottie.RenderMode
 import org.apache.cordova.CallbackContext
 import org.apache.cordova.CordovaArgs
 import org.apache.cordova.CordovaPlugin
+import java.util.Locale
 
 class LottieSplashScreen : CordovaPlugin() {
     private lateinit var splashDialog: Dialog
@@ -141,7 +142,7 @@ class LottieSplashScreen : CordovaPlugin() {
                     animationView.repeatCount = LottieDrawable.INFINITE
                 }
 
-                animationView.scaleType = ImageView.ScaleType.valueOf(preferences.getString("LottieScaleType", "FIT_CENTER").toUpperCase())
+                animationView.scaleType = ImageView.ScaleType.valueOf(preferences.getString("LottieScaleType", "FIT_CENTER").toUpperCase(Locale.ENGLISH))
                 val color = ColorHelper.parseColor(preferences.getString("LottieBackgroundColor", "#ffffff"))
                 animationView.setBackgroundColor(color)
 
@@ -159,19 +160,23 @@ class LottieSplashScreen : CordovaPlugin() {
 
                 animationView.addAnimatorListener(object : Animator.AnimatorListener {
                     override fun onAnimationStart(animation: Animator) {
-                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationStart'))", { })
+                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationStart'))") { }
                     }
 
                     override fun onAnimationEnd(animation: Animator) {
-                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))", { })
+                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))") { }
+                        val hideAfterAnimationDone = preferences.getBoolean("LottieHideAfterAnimationEnd", false)
+                        when {
+                            hideAfterAnimationDone -> dismissDialog()
+                        }
                     }
 
                     override fun onAnimationCancel(animation: Animator) {
-                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationCancel'))", { })
+                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationCancel'))") { }
                     }
 
                     override fun onAnimationRepeat(animation: Animator) {
-                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationRepeat'))", { })
+                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationRepeat'))") { }
                     }
                 })
 
