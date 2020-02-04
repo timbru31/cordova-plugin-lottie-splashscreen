@@ -18,7 +18,6 @@ import org.apache.cordova.CordovaArgs
 import org.apache.cordova.CordovaPlugin
 import android.view.animation.Animation
 import android.view.animation.AlphaAnimation
-import java.util.concurrent.TimeUnit
 
 class LottieSplashScreen : CordovaPlugin() {
     private lateinit var splashDialog: Dialog
@@ -169,7 +168,7 @@ class LottieSplashScreen : CordovaPlugin() {
                 val delay = preferences.getInteger("LottieHideTimeout", 0)
                 if (delay > 0) {
                     val handler = Handler()
-                    handler.postDelayed({ dismissDialog() }, TimeUnit.SECONDS.toMillis(delay.toLong()))
+                    handler.postDelayed({ dismissDialog() }, delay.toLong())
                 }
             }
         }
