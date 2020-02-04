@@ -13,9 +13,8 @@ import Lottie
 
     @objc(hide:)
     func hide(command: CDVInvokedUrlCommand) {
+        callbackId = command.callbackId
         destroyView()
-        let result = CDVPluginResult.init(status: CDVCommandStatus_OK)
-        commandDelegate.send(result, callbackId: command.callbackId)
     }
 
     @objc(show:)
@@ -42,16 +41,31 @@ import Lottie
 
     @objc private func destroyView(_: UITapGestureRecognizer? = nil) {
         if visible {
-            let parentView = viewController.view
-            parentView?.isUserInteractionEnabled = true
-
-            animationView?.removeFromSuperview()
-            animationViewContainer?.removeFromSuperview()
-
-            animationViewContainer = nil
-            animationView = nil
-            visible = false
+            let fadeOutDuation = Double(commandDelegate?.settings["LottieFadeOutDuration".lowercased()] as? String ?? "0")!
+            if fadeOutDuation > 0 {
+                UIView.animate(withDuration: fadeOutDuation, animations: {
+                    self.animationView?.alpha = 0.0
+                }, completion:{ _ in
+                    self.removeView()
+                })
+            } else {
+                removeView()
+            }
         }
+    }
+
+    private func removeView() {
+        let parentView = viewController.view
+        parentView?.isUserInteractionEnabled = true
+
+        animationView?.removeFromSuperview()
+        animationViewContainer?.removeFromSuperview()
+
+        animationViewContainer = nil
+        animationView = nil
+        visible = false
+
+        sendCallback()
     }
 
     private func createView(location: String? = nil, remote: Bool? = nil, width: Int? = nil, height: Int? = nil, callbackId: String? = nil) {
@@ -186,12 +200,7 @@ import Lottie
 
     private func playAnimation() {
         animationView?.play()
-
-        if callbackId != nil {
-            let result = CDVPluginResult.init(status: CDVCommandStatus_OK)
-            commandDelegate.send(result, callbackId: callbackId)
-            callbackId = nil
-        }
+        sendCallback()
     }
 
     private func processInvalidURLError(error: Error) {
@@ -211,6 +220,14 @@ import Lottie
             useRemote = (commandDelegate?.settings["LottieRemoteEnabled".lowercased()] as? NSString ?? "false").boolValue
         }
         return useRemote
+    }
+
+    private func sendCallback() {
+        if callbackId != nil {
+            let result = CDVPluginResult.init(status: CDVCommandStatus_OK)
+            commandDelegate.send(result, callbackId: callbackId)
+            callbackId = nil
+        }
     }
 
     private func createObservers() {
