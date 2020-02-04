@@ -5,6 +5,8 @@ import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
 import android.os.Handler
 import android.util.Log
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
 import android.widget.ImageView
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieComposition
@@ -12,12 +14,9 @@ import com.airbnb.lottie.LottieCompositionFactory
 import com.airbnb.lottie.LottieDrawable
 import com.airbnb.lottie.LottieTask
 import com.airbnb.lottie.RenderMode
-import java.lang.Exception
 import org.apache.cordova.CallbackContext
 import org.apache.cordova.CordovaArgs
 import org.apache.cordova.CordovaPlugin
-import android.view.animation.Animation
-import android.view.animation.AlphaAnimation
 
 class LottieSplashScreen : CordovaPlugin() {
     private lateinit var splashDialog: Dialog
@@ -94,7 +93,8 @@ class LottieSplashScreen : CordovaPlugin() {
                 }
 
                 val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)
-                val animationLocation = location ?: preferences.getString("LottieAnimationLocation", "")
+                val animationLocation = location
+                        ?: preferences.getString("LottieAnimationLocation", "")
                 if (animationLocation.isNullOrBlank()) {
                     Log.e(LOG_TAG, "LottieAnimationLocation has to be configured!")
                     this.destroyView()
@@ -144,10 +144,10 @@ class LottieSplashScreen : CordovaPlugin() {
                 val color = ColorHelper.parseColor(preferences.getString("LottieBackgroundColor", "#ffffff"))
                 animationView.setBackgroundColor(color)
 
-
                 val fullScreen = preferences.getBoolean("LottieFullScreen", false)
-                splashDialog = Dialog(context, when { fullScreen -> style.Theme_NoTitleBar_Fullscreen
-                    else ->  style.Theme_Translucent_NoTitleBar
+                splashDialog = Dialog(context, when {
+                    fullScreen -> style.Theme_NoTitleBar_Fullscreen
+                    else -> style.Theme_Translucent_NoTitleBar
                 })
                 splashDialog.window?.setBackgroundDrawable(ColorDrawable(color))
                 splashDialog.setContentView(animationView)

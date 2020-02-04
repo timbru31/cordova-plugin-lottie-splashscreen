@@ -45,7 +45,7 @@ import Lottie
             if fadeOutDuation > 0 {
                 UIView.animate(withDuration: fadeOutDuation, animations: {
                     self.animationView?.alpha = 0.0
-                }, completion:{ _ in
+                }, completion: { _ in
                     self.removeView()
                 })
             } else {
