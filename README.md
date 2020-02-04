@@ -107,7 +107,7 @@ await lottie.splashscreen.show(location?: string, remote?: boolean, width?: numb
     <preference name="LottieCancelOnTap" value="true" />
 ```
 
--   `LottieHideTimeout` (Double, default `0`). Duration in seconds after which the Lottie animation should be hidden.
+-   `LottieHideTimeout` (Integer, default `0`). Duration in seconds after which the Lottie animation should be hidden.
 
 ```xml
     <preference name="LottieHideTimeout" value="10" />
@@ -171,6 +171,12 @@ await lottie.splashscreen.show(location?: string, remote?: boolean, width?: numb
 
 ```xml
     <preference name="LottieCacheDisabled" value="true" />
+```
+
+-   `LottieFadeOutDuration` (Integer, default `0`). Duration in milliseconds for the fade out animation. Set to `0` disable the fade out animation.
+
+```xml
+    <preference name="LottieFadeOutDuration" value="500" />
 ```
 
 ---
