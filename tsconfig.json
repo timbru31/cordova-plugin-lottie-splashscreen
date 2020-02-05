@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "declaration": false,
         "target": "es5",
         "module": "commonjs",
         "outDir": "./dist/www",
@@ -16,7 +17,7 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "typeRoots": ["node_modules/@types"],
-        "lib": ["es2018", "dom"]
+        "lib": ["es2020", "dom"]
     },
     "include": ["www/*"]
 }
