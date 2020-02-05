@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0-beta.3](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.0-beta.2...v0.8.0-beta.3) (2020-02-05)
+
+### Features
+
+-   adds preference to hide animation after it has been played. ref [#133](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/133) ([068d457](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/068d457f83bc891274d47e97add550b5799243f4))
+
+### Code Refactoring
+
+-   adds a once method, use callback functions for on events ([72aae6b](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/72aae6b181949ec327ef7bf3eb5e860e1dfd5ed7))
+
 ## [0.8.0-beta.2](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.0-beta.1...v0.8.0-beta.2) (2020-02-04)
 
 ### ⚠ BREAKING CHANGES
