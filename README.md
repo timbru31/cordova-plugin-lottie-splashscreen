@@ -64,6 +64,8 @@ An example project can be found in the `example` folder.
 
 -   lottie.splashscreen.hide
 -   lottie.splashscreen.show
+-   lottie.splashscreen.on
+-   lottie.splashscreen.once
 
 ##### lottie.splashscreen.hide
 
@@ -79,6 +81,26 @@ This method shows a Lottie splash screen. If no arguments are given, it defaults
 
 ```ts
 await lottie.splashscreen.show(location?: string, remote?: boolean, width?: number, height?: number)
+```
+
+##### lottie.splashscreen.on
+
+This method listens to custom lottie events that are dispatched from the native side and invokes a configured callback function. If the `event` parameter is a falsy value, such as `null` or `""`, the method will listen to all Lottie events. (For easier reading the TypeScript notation is used)
+
+```ts
+type LottieEvent = 'lottieAnimationStart' | 'lottieAnimationEnd' | 'lottieAnimationCancel' | 'lottieAnimationRepeat';
+
+lottie.splashscreen.on(event: LottieEvent, callback: (ev: Event) => void);
+```
+
+##### lottie.splashscreen.once
+
+This method listens to a custom lottie event once and resolves the Promise once the event has been called. (For easier reading the TypeScript notation is used)
+
+```ts
+type LottieEvent = 'lottieAnimationStart' | 'lottieAnimationEnd' | 'lottieAnimationCancel' | 'lottieAnimationRepeat';
+
+await lottie.splashscreen.on(event: LottieEvent).then(event => console.log(event));
 ```
 
 ### Preferences
