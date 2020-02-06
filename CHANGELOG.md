@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.0-beta.4...v0.8.0) (2020-02-06)
+
+### ⚠ BREAKING CHANGES
+
+-   CocoaPods >= 1.8.4 required for building
+
+### Performance Improvements
+
+-   use CocoaPods CDN ([6665dfa](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/6665dfabc5565199ea6b49a90ddd0e1295aa85cc))
+
+### Build System
+
+-   fix version bumping and committing ([4fc12fb](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/4fc12fb8754580093c7e2bd13dc6bf7b9ca347d2))
+-   rebuild lockfiles ([4253d45](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/4253d45f0375d4d474347d3aa1a29b736809e59a))
+
 ## [0.8.0-beta.4](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.0-beta.3...v0.8.0-beta.4) (2020-02-05)
 
 ### Build System
