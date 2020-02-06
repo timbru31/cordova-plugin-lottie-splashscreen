@@ -7,7 +7,10 @@ const getNextVersion = currentVersion => {
     return new Promise((resolve, reject) => {
         conventionalRecommendedBump(
             {
-                preset: 'angular'
+                preset: {
+                    name: 'conventional-changelog-conventionalcommits',
+                    preMajor: semver.lt(currentVersion, '1.0.0')
+                }
             },
             (err, release) => {
                 if (err) {

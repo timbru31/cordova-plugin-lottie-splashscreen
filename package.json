@@ -12,7 +12,7 @@
     "lint:ios": "swiftlint",
     "lint:typescript": "tslint -c tslint.json 'www/**/*.ts'",
     "prepublishOnly": "npm run build",
-    "release": "standard-version -s"
+    "release": "standard-version -s -a"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
