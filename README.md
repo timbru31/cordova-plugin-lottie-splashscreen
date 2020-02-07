@@ -100,7 +100,7 @@ This method listens to a custom lottie event once and resolves the Promise once 
 ```ts
 type LottieEvent = 'lottieAnimationStart' | 'lottieAnimationEnd' | 'lottieAnimationCancel' | 'lottieAnimationRepeat';
 
-await lottie.splashscreen.on(event: LottieEvent).then(event => console.log(event));
+await lottie.splashscreen.once(event: LottieEvent).then(event => console.log(event));
 ```
 
 ### Preferences
