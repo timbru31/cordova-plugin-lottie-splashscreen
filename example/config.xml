@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="de.dustplanet.lottie" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="de.dustplanet.lottie" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>LottieDemo</name>
     <description>A sample Apache Cordova application to showcase the cordova-plugin-lottie-splashscreen-plugin</description>
     <author email="github@timbrust.de">timbru31</author>
@@ -25,19 +25,25 @@
         <preference name="LottieEnableHardwareAcceleration" value="true" />
         <preference name="LottieWidth" value="350" />
         <preference name="LottieHeight" value="350" />
+        <preference name="LottieCacheDisabled" value="true" />
 
         <allow-intent href="market:*" />
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
     </platform>
     <platform name="ios">
         <!-- Lottie specific config -->
         <!-- <preference name="LottieAnimationLocation" value="https://assets.lottiefiles.com/datafiles/40aX5db74VvGPWw/data.json" /> -->
         <!-- Alternatively -->
-        <preference name="LottieRemoteEnabled" value="false" />
-        <preference name="LottieAnimationLocation" value="www/lottie/data.json" />
+        <preference name="LottieRemoteEnabled" value="true" />
+        <preference name="LottieAnimationLocation" value="http://172.16.253.79:5000/data.json" />
         <preference name="LottieCancelOnTap" value="true" />
         <preference name="LottieFullScreen" value="true" />
         <preference name="LottieHideTimeout" value="0" />
         <preference name="SwiftVersion" value="5" />
+        <preference name="LottieCacheDisabled" value="true" />
+
 
         <preference name="BackupWebStorage" value="none" />
         <allow-intent href="itms:*" />
