@@ -6,6 +6,7 @@
 4. [error: Value for SWIFT_VERSION cannot be empty](#error-value-for-swift_version-cannot-be-empty)
 5. [error: SWIFT_VERSION '5.0' is unsupported, supported versions are: 3.0, 4.0, 4.2. (in target 'lottie-ios')](#error-swift_version-50-is-unsupported-supported-versions-are-30-40-42-in-target-lottie-ios)
 6. [Error: pod: Command failed with exit code 1 Error output:](#error-pod-command-failed-with-exit-code-1-error-output)
+7. [Hook failed with error code 1](#hook-failed-with-error-code-1)
 
 ---
 
@@ -123,3 +124,20 @@ Cloning into 'cocoapods-'...
 ### Answer
 
 Your CocoaPods installation is outdated and can't use the much faster CDN. Update it with: `sudo gem install cocoapods`
+
+## error: Hook failed with error code 1
+
+```
+Running command: /Users/tim.brust/Coding/ume/cordova-plugin-lottie-splashscreen/example/plugins/cordova-plugin-lottie-splashscreen/hooks/ios/update_pod_repo.sh /Users/tim.brust/Coding/ume/cordova-plugin-lottie-splashscreen/example
+/System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/lib/ruby/2.3.0/rubygems.rb:241:in `bin_path': can't find gem cocoapods (>= 0.a) (Gem::GemNotFoundException) from /usr/local/bin/pod:22:in`<main>'
+Hook failed with error code 1: /Users/tim.brust/Coding/ume/cordova-plugin-lottie-splashscreen/example/plugins/cordova-plugin-lottie-splashscreen/hooks/ios/update_pod_repo.sh
+```
+
+### Answer
+
+It seems that the `pod` gem (the [package manager for Swift and Objective-C](https://cocoapods.org/) projects) is not installed. Fix it with:
+
+```sh
+$ sudo gem install cocoapods
+$ cordova plugin add cordova-plugin-lottie-splashscreen
+```
