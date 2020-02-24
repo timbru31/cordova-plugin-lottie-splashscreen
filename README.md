@@ -201,6 +201,12 @@ await lottie.splashscreen.once(event: LottieEvent).then(event => console.log(eve
     <preference name="LottieHideAfterAnimationEnd" value="true" />
 ```
 
+-   `LottieCacheDisabled` (Boolean, default `false`). Disables caching of animations.
+
+```xml
+    <preference name="LottieCacheDisabled" value="true" />
+```
+
 ---
 
 Built by (c) Tim Brust and contributors. Released under the MIT license.

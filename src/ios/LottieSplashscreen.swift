@@ -127,6 +127,7 @@ import Lottie
         }
 
         if isRemote(remote: remote) {
+            let cacheDisabled = (commandDelegate?.settings["LottieCacheDisabled".lowercased()] as? NSString ?? "false").boolValue
             guard let url = URL(string: animationLocation) else { throw LottieSplashScreenError.invalidURL }
             animationView = AnimationView(url: url, closure: { error in
                 if error == nil {
@@ -135,7 +136,7 @@ import Lottie
                     self.destroyView()
                     self.processInvalidURLError(error: error!)
                 }
-            })
+            }, animationCache: cacheDisabled ? nil : LRUAnimationCache.sharedCache)
         } else {
             animationLocation = Bundle.main.bundleURL.appendingPathComponent(animationLocation).path
             animationView = AnimationView(filePath: animationLocation)
