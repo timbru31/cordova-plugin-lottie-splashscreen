@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.1-beta.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.0...v0.8.1-beta.0) (2020-03-06)
+
+### Features
+
+-   adds feature to disable caching. closes [#139](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/139) ([d8093a6](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/d8093a650f45c3e027c1fdfb597759067ee2e798))
+
+### Bug Fixes
+
+-   adds readonly prop to identify finished animation state. ref [#175](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/175) ([670aee4](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/670aee4b5c05f8fa6421193083d7ee60f6fb38d7))
+
+### Build System
+
+-   **deps:** upgrade Kotlin dependency to 1.3.70 ([7d19792](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/7d19792bcc956e07840033ab37f4c8acac471c70))
+-   **deps-dev:** bump husky from 4.2.1 to 4.2.2 ([7bcb009](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/7bcb009b0546ef06f539eab1cddf70024b285d3f))
+-   **deps-dev:** bump husky from 4.2.2 to 4.2.3 ([edae916](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/edae916c04f0faf27570ad7e6b3a0a449f5a8326))
+-   **deps-dev:** bump lint-staged from 10.0.7 to 10.0.8 ([e081cb9](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/e081cb90bb402c39a2c65297c33ece644f5fcf6d))
+-   **deps-dev:** bump typescript from 3.7.5 to 3.8.2 ([49b928f](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/49b928fa2ede27fc35c96a778a7dbc9ac670a86e))
+-   **deps-dev:** bump typescript from 3.8.2 to 3.8.3 ([04ef527](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/04ef527cb805bff04aa283fbb3e86f84dad26320))
+
 ## [0.8.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.0-beta.4...v0.8.0) (2020-02-06)
 
 ### ⚠ BREAKING CHANGES
