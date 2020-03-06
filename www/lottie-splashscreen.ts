@@ -4,11 +4,14 @@ type LottieEvent = 'lottieAnimationStart' | 'lottieAnimationEnd' | 'lottieAnimat
 const lottieEvents: LottieEvent[] = ['lottieAnimationStart', 'lottieAnimationEnd', 'lottieAnimationRepeat', 'lottieAnimationCancel'];
 
 class LottieSplashScreen {
+    static animationEnded: boolean;
+
     /**
      * Hides the active Lottie animation programmatically.
      * In case that no animation is playing, the Promise is rejected.
      */
     static hide() {
+        this.animationEnded = true;
         return new Promise<string>((resolve, reject) => {
             exec(resolve, reject, 'LottieSplashScreen', 'hide', []);
         });
@@ -24,6 +27,7 @@ class LottieSplashScreen {
      * @param height - Optional. The desired animation height.
      */
     static show(location?: string, remote?: boolean, width?: number, height?: number) {
+        this.animationEnded = false;
         return new Promise<string>((resolve, reject) => {
             exec(resolve, reject, 'LottieSplashScreen', 'show', [location, remote, width, height]);
         });
@@ -56,5 +60,9 @@ class LottieSplashScreen {
         });
     }
 }
+
+LottieSplashScreen.on('lottieAnimationStart', () => (LottieSplashScreen.animationEnded = false));
+LottieSplashScreen.on('lottieAnimationCancel', () => (LottieSplashScreen.animationEnded = true));
+LottieSplashScreen.on('lottieAnimationEnd', () => (LottieSplashScreen.animationEnded = true));
 
 export = LottieSplashScreen;

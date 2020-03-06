@@ -5,11 +5,13 @@ var LottieSplashScreen = (function () {
     function LottieSplashScreen() {
     }
     LottieSplashScreen.hide = function () {
+        this.animationEnded = true;
         return new Promise(function (resolve, reject) {
             cordova_1.exec(resolve, reject, 'LottieSplashScreen', 'hide', []);
         });
     };
     LottieSplashScreen.show = function (location, remote, width, height) {
+        this.animationEnded = false;
         return new Promise(function (resolve, reject) {
             cordova_1.exec(resolve, reject, 'LottieSplashScreen', 'show', [location, remote, width, height]);
         });
@@ -32,4 +34,7 @@ var LottieSplashScreen = (function () {
     };
     return LottieSplashScreen;
 }());
+LottieSplashScreen.on('lottieAnimationStart', function () { return (LottieSplashScreen.animationEnded = false); });
+LottieSplashScreen.on('lottieAnimationCancel', function () { return (LottieSplashScreen.animationEnded = true); });
+LottieSplashScreen.on('lottieAnimationEnd', function () { return (LottieSplashScreen.animationEnded = true); });
 module.exports = LottieSplashScreen;
