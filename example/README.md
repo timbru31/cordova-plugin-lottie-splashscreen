@@ -1,4 +1,4 @@
-# lottie-demo
+# lottie-demo [![Build Status](https://app.bitrise.io/app/526cf252237e5100/status.svg?token=s9RM2-c7LMCinqtbFQaugg&branch=master)](https://app.bitrise.io/app/526cf252237e5100)
 
 ### A small example project to show configruation of the cordova-plugin-lottie-splashscreen plugin.
 
