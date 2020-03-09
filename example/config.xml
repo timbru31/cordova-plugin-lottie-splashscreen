@@ -44,7 +44,6 @@
         <preference name="SwiftVersion" value="5" />
         <preference name="LottieCacheDisabled" value="true" />
 
-
         <preference name="BackupWebStorage" value="none" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
