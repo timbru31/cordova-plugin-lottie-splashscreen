@@ -8,8 +8,8 @@ jobs:
       android:
         components:
           - tools
-          - build-tools-28.0.3
-          - android-28
+          - build-tools-29.0.3
+          - android-29
       before_script:
         - nvm install lts/erbium
       script:
@@ -24,7 +24,7 @@ jobs:
         - cordova build android
 
     - os: osx
-      osx_image: xcode11.2
+      osx_image: xcode11.3
       before_script:
         - brew install ktlint
         - brew install gnu-sed
@@ -36,7 +36,6 @@ jobs:
         - npm i -g cordova
         - cordova create lottie-smoke-test
         - cd lottie-smoke-test
-        - gsed -i '4i\    <preference name="SwiftVersion" value="5" />' config.xml
         - cordova platform add ios
         - cordova plugin add $TRAVIS_BUILD_DIR --link
         - cordova build ios
