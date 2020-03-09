@@ -39,6 +39,7 @@ jobs:
         - npm i -g cordova
         - cordova create lottie-smoke-test
         - cd lottie-smoke-test
+        - gsed -i '4i\    <preference name="SwiftVersion" value="5" />' config.xml
         - cordova platform add ios
         - cordova plugin add $TRAVIS_BUILD_DIR --link
         - cordova build ios
