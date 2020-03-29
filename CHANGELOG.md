@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.1-beta.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.1-beta.0...v0.8.1-beta.1) (2020-03-29)
+
+### Build System
+
+-   **ci:** downgrades Android image back to 28.0.3 and use Bionic ([f4a85e6](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/f4a85e6636e46fa7f02624b26f386c0e875345e9))
+-   **ci:** re-adds Swift version ([010ba33](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/010ba33c5d4df398b4b41dd1b4c5911dcbb48c82))
+-   **ci:** removes Bionic update ([9549f42](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/9549f424259197ed7fc011e4dc1637372faf0d03))
+-   **ci:** updates Xcode and Android images ([dee673b](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/dee673b519c8aafa83fd5acb1c6f403d574b6734))
+-   **deps:** upgrade Kotlin dependency to 1.3.71 ([ecb0d25](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/ecb0d25c7549c3845f8f5b1e5ac09fecb6dc3e0d))
+-   **deps-dev:** bump lint-staged from 10.0.8 to 10.0.9 ([d35d24c](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/d35d24cc3ec13e6c444749f5fe2cf75ee1eb077f))
+-   **deps-dev:** bump prettier from 1.19.1 to 2.0.2 ([2bbd3d0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/2bbd3d0ad1bdfe3431ecdd92ed9899710d784b6b))
+-   **deps-dev:** bump tslint from 6.0.0 to 6.1.0 ([6d64fb8](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/6d64fb86a16cf347fc7534a856b959d70f5fc1de))
+
 ### [0.8.1-beta.0](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.0...v0.8.1-beta.0) (2020-03-06)
 
 ### Features

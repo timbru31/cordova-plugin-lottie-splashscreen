@@ -47,8 +47,5 @@
                 <pod name="lottie-ios" spec="~> 3.1.6" />
             </pods>
         </podspec>
-
-        <hook type="before_plugin_install" src="hooks/ios/update_pod_repo.sh"/>
-        <hook type="before_platform_add" src="hooks/ios/update_pod_repo.sh"/>
     </platform>
 </plugin>
