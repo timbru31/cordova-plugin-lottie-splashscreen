@@ -74,5 +74,6 @@
   "repository": "timbru31/cordova-plugin-lottie-splashscreen",
   "bugs": {
     "url": "https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues"
-  }
+  },
+  "funding": "https://github.com/sponsors/timbru31"
 }
