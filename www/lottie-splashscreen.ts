@@ -65,4 +65,21 @@ LottieSplashScreen.on('lottieAnimationStart', () => (LottieSplashScreen.animatio
 LottieSplashScreen.on('lottieAnimationCancel', () => (LottieSplashScreen.animationEnded = true));
 LottieSplashScreen.on('lottieAnimationEnd', () => (LottieSplashScreen.animationEnded = true));
 
+document.addEventListener('deviceready', () => {
+    exec(
+        (data: string | boolean) => {
+            const payload = Boolean(data);
+            if (!LottieSplashScreen.animationEnded && payload) {
+                document.dispatchEvent(new Event('lottieAnimationEnd'));
+            }
+            LottieSplashScreen.animationEnded = payload;
+        },
+        // tslint:disable-next-line: no-console
+        console.error,
+        'LottieSplashScreen',
+        'initialAnimationEnded',
+        []
+    );
+});
+
 export = LottieSplashScreen;

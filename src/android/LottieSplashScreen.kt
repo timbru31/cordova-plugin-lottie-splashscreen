@@ -23,6 +23,7 @@ import java.util.Locale
 class LottieSplashScreen : CordovaPlugin() {
     private lateinit var splashDialog: Dialog
     private lateinit var animationView: LottieAnimationView
+    private var animationEnded = false
 
     override fun pluginInitialize() {
         super.initialize(cordova, webView)
@@ -65,6 +66,10 @@ class LottieSplashScreen : CordovaPlugin() {
             } catch (e: Exception) {
                 callbackContext.error(e.message)
                 false
+            }
+            "initialAnimationEnded" -> {
+                callbackContext.success(animationEnded.toString())
+                return true
             }
             else -> return false
         }
@@ -169,6 +174,7 @@ class LottieSplashScreen : CordovaPlugin() {
                         when {
                             hideAfterAnimationDone -> dismissDialog()
                         }
+                        animationEnded = true
                     }
 
                     override fun onAnimationCancel(animation: Animator) {
@@ -189,6 +195,7 @@ class LottieSplashScreen : CordovaPlugin() {
                 }
 
                 animationView.playAnimation()
+                animationEnded = false
 
                 val delay = preferences.getInteger("LottieHideTimeout", 0)
                 if (delay > 0) {

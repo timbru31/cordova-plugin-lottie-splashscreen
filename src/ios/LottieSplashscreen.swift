@@ -4,6 +4,7 @@ import Lottie
     var animationView: AnimationView?
     var animationViewContainer: UIView?
     var visible = false
+    var animationEnded = false
     var callbackId: String?
 
     override func pluginInitialize() {
@@ -30,6 +31,10 @@ import Lottie
         let autoHide = commandDelegate?.settings["LottieAutoHideSplashScreen".lowercased()] as? NSString ?? "false"
         if autoHide.boolValue {
             destroyView()
+        }
+
+        if animationEnded {
+            self.webViewEngine.evaluateJavaScript("document.dispatchEvent(new Event('lottieAnimationEnd'))", completionHandler: nil)
         }
     }
 
@@ -210,8 +215,10 @@ import Lottie
             if hideAfterAnimationDone {
                 self.destroyView()
             }
+            self.animationEnded = true
         }
         self.webViewEngine.evaluateJavaScript("document.dispatchEvent(new Event('lottieAnimationStart'))", completionHandler: nil)
+        animationEnded = false
         sendCallback()
     }
 
