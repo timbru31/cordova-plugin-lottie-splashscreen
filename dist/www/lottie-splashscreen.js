@@ -37,4 +37,13 @@ var LottieSplashScreen = (function () {
 LottieSplashScreen.on('lottieAnimationStart', function () { return (LottieSplashScreen.animationEnded = false); });
 LottieSplashScreen.on('lottieAnimationCancel', function () { return (LottieSplashScreen.animationEnded = true); });
 LottieSplashScreen.on('lottieAnimationEnd', function () { return (LottieSplashScreen.animationEnded = true); });
+document.addEventListener('deviceready', function () {
+    cordova_1.exec(function (data) {
+        var payload = Boolean(data);
+        if (!LottieSplashScreen.animationEnded && payload) {
+            document.dispatchEvent(new Event('lottieAnimationEnd'));
+        }
+        LottieSplashScreen.animationEnded = payload;
+    }, console.error, 'LottieSplashScreen', 'initialAnimationEnded', []);
+});
 module.exports = LottieSplashScreen;
