@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.1-beta.2](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.1-beta.1...v0.8.1-beta.2) (2020-03-30)
+
+### Bug Fixes
+
+-   actually remove hook file for ios ([ca1bb51](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/ca1bb51d67a5cb23bcca88afaa059752bca000f7))
+
+### Code Refactoring
+
+-   ensure to call lottieAnimationEnd if deviceready is fired afterwards ([f9c20a5](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/f9c20a5b09975c8a5c458d721af1873818f2acbb))
+
+### Build System
+
+-   adds new dist folder ([bda2e0b](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/bda2e0bd4550418c76008b2f840034a273857437))
+-   **deps-dev:** bump lint-staged from 10.0.9 to 10.0.10 ([23bc6e3](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/23bc6e37985ece2196da49148c2c3d708dc016c7))
+-   adds funding link to npm ([befcd55](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/befcd552a0eeff395f33e353748c7cee15ba8b52))
+-   simplifiy .npmignore ([8eb8f9a](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/8eb8f9a8a16a15c9397633674a794e49ea7a1afc))
+
 ### [0.8.1-beta.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.1-beta.0...v0.8.1-beta.1) (2020-03-29)
 
 ### Build System
