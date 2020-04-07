@@ -27,14 +27,16 @@ import Lottie
         createView(location: location as? String, remote: remote as? Bool, width: width as? Int, height: height as? Int, callbackId: command.callbackId)
     }
 
+    @objc(initialAnimationEnded:)
+    func initialAnimationEnded(command: CDVInvokedUrlCommand) {
+        let result = CDVPluginResult.init(status: CDVCommandStatus_OK, messageAs: animationEnded)
+        commandDelegate.send(result, callbackId: command.callbackId)
+    }
+
     @objc func pageDidLoad() {
         let autoHide = commandDelegate?.settings["LottieAutoHideSplashScreen".lowercased()] as? NSString ?? "false"
         if autoHide.boolValue {
             destroyView()
-        }
-
-        if animationEnded {
-            self.webViewEngine.evaluateJavaScript("document.dispatchEvent(new Event('lottieAnimationEnd'))", completionHandler: nil)
         }
     }
 
