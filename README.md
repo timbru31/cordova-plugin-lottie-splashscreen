@@ -20,7 +20,7 @@
 
 ### Planned platforms
 
--   **macOS**
+-   **macOS** (currently on hold until cordova-osx has a better Swift and CocoaPods support)
 
 #### Prerequisites/Warnings
 
