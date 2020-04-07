@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.1-beta.3](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.1-beta.2...v0.8.1-beta.3) (2020-04-07)
+
+### Bug Fixes
+
+-   adds missing method for Swift ([74998a5](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/74998a5db8f00b070d627fa897e3d1c22b7f2771))
+
+### Build System
+
+-   **deps:** **security** rebuilds lockfile to fix npm audit warning ([a47cf8d](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/a47cf8d03736a1efc9c122b997bee938903a4abb))
+-   **deps-dev:** bump lint-staged from 10.0.10 to 10.1.0 ([8c84d4c](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/8c84d4c00d485120b9544fa55e57c332b38d6163))
+-   **deps-dev:** bump lint-staged from 10.1.0 to 10.1.1 ([878ca80](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/878ca8021f4bf932f859aca949b0299d5e30d6a2))
+-   **deps-dev:** bump lint-staged from 10.1.1 to 10.1.2 ([a764096](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/a7640966f3c2d278d9281b435d52a5c26b3ae690))
+-   **deps-dev:** bump prettier from 2.0.2 to 2.0.4 ([46a4050](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/46a405042fb5cb7ce693a297ee0c10f2a98b20e4))
+
 ### [0.8.1-beta.2](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.1-beta.1...v0.8.1-beta.2) (2020-03-30)
 
 ### Bug Fixes
