@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.1-beta.3...v0.8.1) (2020-04-08)
+
+### Bug Fixes
+
+-   ensure that lottieAnimationEnd is always called. closes [#175](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/175) ([15a8cea](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/15a8cea0a1c27106298782fbc9037948137efaa7))
+
+### Build System
+
+-   updates dependencies ([caf919a](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/caf919a3fd9b2a36fe230af26fb0ce028cd28a4f))
+
 ### [0.8.1-beta.3](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.8.1-beta.2...v0.8.1-beta.3) (2020-04-07)
 
 ### Bug Fixes
