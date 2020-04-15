@@ -15,7 +15,7 @@ jobs:
       before_script:
         - nvm install lts/erbium
       script:
-        # Create a dummy project to see if the application successfully builds
+        # Create a dummy plain Cordova project to see if the application successfully builds
         - npm i -g cordova
         - cordova create lottie-smoke-test
         - cd lottie-smoke-test
@@ -24,6 +24,25 @@ jobs:
         - cordova plugin add cordova-plugin-androidx-adapter
         - cordova plugin add $TRAVIS_BUILD_DIR --link
         - cordova build android
+
+    - language: android
+      android:
+        components:
+          - tools
+          - build-tools-28.0.3
+          - android-28
+      before_script:
+        - nvm install lts/dubnium
+      script:
+        # Create a dummy Ionic project to see if the application successfully builds
+        - npm install -g @ionic/cli cordova
+        - ionic start lottie-smoke-test tabs --type angular --no-interactive --no-confirm
+        - cd lottie-smoke-test
+        - ionic cordova platform add android --no-interactive --confirm
+        - ionic cordova plugin add cordova-plugin-androidx --no-interactive --confirm
+        - ionic cordova plugin add cordova-plugin-androidx-adapter --no-interactive --confirm
+        - ionic cordova plugin add $TRAVIS_BUILD_DIR --no-interactive --confirm -- --link
+        - ionic cordova build android --no-interactive --confirm
 
     - os: osx
       osx_image: xcode11.3
