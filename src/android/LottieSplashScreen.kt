@@ -47,26 +47,28 @@ class LottieSplashScreen : CordovaPlugin() {
 
     override fun execute(action: String, args: CordovaArgs, callbackContext: CallbackContext): Boolean {
         when (action) {
-            "hide" -> return try {
-                destroyView(callbackContext)
-                true
-            } catch (e: Exception) {
-                callbackContext.error(e.message)
-                false
-            }
-            "show" -> return try {
-                createView(
+            "hide" ->
+                return try {
+                    destroyView(callbackContext)
+                    true
+                } catch (e: Exception) {
+                    callbackContext.error(e.message)
+                    false
+                }
+            "show" ->
+                return try {
+                    createView(
                         if (args.isNull(0)) null else args.getString(0),
                         if (args.isNull(1)) null else args.getBoolean(1),
                         if (args.isNull(2)) null else args.getDouble(2),
                         if (args.isNull(3)) null else args.getDouble(3),
                         callbackContext
-                )
-                true
-            } catch (e: Exception) {
-                callbackContext.error(e.message)
-                false
-            }
+                    )
+                    true
+                } catch (e: Exception) {
+                    callbackContext.error(e.message)
+                    false
+                }
             "initialAnimationEnded" -> {
                 callbackContext.success(animationEnded.toString())
                 return true
@@ -94,14 +96,14 @@ class LottieSplashScreen : CordovaPlugin() {
 
                 animationView = LottieAnimationView(context)
                 val useHardwareAcceleration = remote
-                        ?: preferences.getBoolean("LottieEnableHardwareAcceleration", false)
+                    ?: preferences.getBoolean("LottieEnableHardwareAcceleration", false)
                 if (useHardwareAcceleration) {
                     animationView.setRenderMode(RenderMode.HARDWARE)
                 }
 
                 val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)
                 val animationLocation = location
-                        ?: preferences.getString("LottieAnimationLocation", "")
+                    ?: preferences.getString("LottieAnimationLocation", "")
                 if (animationLocation.isNullOrBlank()) {
                     Log.e(LOG_TAG, "LottieAnimationLocation has to be configured!")
                     this.destroyView()
@@ -117,16 +119,22 @@ class LottieSplashScreen : CordovaPlugin() {
                 val cacheDisabled = preferences.getBoolean("LottieCacheDisabled", false)
                 when {
                     remoteEnabled -> {
-                        comp = LottieCompositionFactory.fromUrl(context, animationLocation, when {
-                            cacheDisabled -> null
-                            else -> "url_$animationLocation"
-                        })
+                        comp = LottieCompositionFactory.fromUrl(
+                            context, animationLocation,
+                            when {
+                                cacheDisabled -> null
+                                else -> "url_$animationLocation"
+                            }
+                        )
                     }
                     else -> {
-                        comp = LottieCompositionFactory.fromAsset(context, animationLocation, when {
-                            cacheDisabled -> null
-                            else -> "asset_$animationLocation"
-                        })
+                        comp = LottieCompositionFactory.fromAsset(
+                            context, animationLocation,
+                            when {
+                                cacheDisabled -> null
+                                else -> "asset_$animationLocation"
+                            }
+                        )
                         animationView.imageAssetsFolder = preferences.getString("LottieImagesLocation", animationLocation.substring(0, animationLocation.lastIndexOf('/')))
                     }
                 }
@@ -152,10 +160,13 @@ class LottieSplashScreen : CordovaPlugin() {
                 animationView.setBackgroundColor(color)
 
                 val fullScreen = preferences.getBoolean("LottieFullScreen", false)
-                splashDialog = Dialog(context, when {
-                    fullScreen -> style.Theme_NoTitleBar_Fullscreen
-                    else -> style.Theme_Translucent_NoTitleBar
-                })
+                splashDialog = Dialog(
+                    context,
+                    when {
+                        fullScreen -> style.Theme_NoTitleBar_Fullscreen
+                        else -> style.Theme_Translucent_NoTitleBar
+                    }
+                )
                 splashDialog.window?.setBackgroundDrawable(ColorDrawable(color))
                 splashDialog.setContentView(animationView)
                 splashDialog.setCancelable(false)
@@ -212,17 +223,29 @@ class LottieSplashScreen : CordovaPlugin() {
             val relativeSize = preferences.getBoolean("LottieRelativeSize", false)
             if (relativeSize) {
                 val metrics = webView.context.resources.displayMetrics
-                val animationHeight = (metrics.heightPixels * (width
-                        ?: preferences.getDouble("LottieWidth", 0.2))).toInt()
-                val animationWidth = (metrics.widthPixels * (height
-                        ?: preferences.getDouble("LottieHeight", 0.2))).toInt()
+                val animationHeight = (
+                    metrics.heightPixels * (
+                        width
+                            ?: preferences.getDouble("LottieWidth", 0.2)
+                        )
+                    ).toInt()
+                val animationWidth = (
+                    metrics.widthPixels * (
+                        height
+                            ?: preferences.getDouble("LottieHeight", 0.2)
+                        )
+                    ).toInt()
                 splashDialog.window?.setLayout(animationHeight, animationWidth)
             } else {
                 splashDialog.window?.setLayout(
-                        convertPixelsToDp(width
-                                ?: preferences.getDouble("LottieWidth", 200.0)),
-                        convertPixelsToDp(height
-                                ?: preferences.getDouble("LottieHeight", 200.0))
+                    convertPixelsToDp(
+                        width
+                            ?: preferences.getDouble("LottieWidth", 200.0)
+                    ),
+                    convertPixelsToDp(
+                        height
+                            ?: preferences.getDouble("LottieHeight", 200.0)
+                    )
                 )
             }
         }
