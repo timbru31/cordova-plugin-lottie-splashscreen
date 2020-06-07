@@ -45,6 +45,24 @@ jobs:
         - ionic cordova build android --no-interactive --confirm
 
     - os: osx
+      osx_image: xcode11.3
+      before_script:
+        - brew install ktlint
+        - brew install gnu-sed
+        - swiftlint version
+      script:
+        - npm run lint
+
+        # Create a dummy project to see if the application successfully builds
+        - npm i -g cordova
+        - cordova create lottie-smoke-test
+        - cd lottie-smoke-test
+        - gsed -i '4i\    <preference name="SwiftVersion" value="5" />' config.xml
+        - cordova platform add ios
+        - cordova plugin add $TRAVIS_BUILD_DIR --link
+        - cordova build ios
+
+    - os: osx
       osx_image: xcode11.5
       before_script:
         - brew install gnu-sed
