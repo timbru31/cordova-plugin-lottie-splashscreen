@@ -15,7 +15,7 @@
     "release": "standard-version -s -a"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
+    "@commitlint/cli": "^9.0.1",
     "@commitlint/config-angular": "^8.3.4",
     "@types/cordova": "^0.0.34",
     "husky": "^4.2.5",
