@@ -7,6 +7,8 @@
 5. [error: SWIFT_VERSION '5.0' is unsupported, supported versions are: 3.0, 4.0, 4.2. (in target 'lottie-ios')](#error-swift_version-50-is-unsupported-supported-versions-are-30-40-42-in-target-lottie-ios)
 6. [Error: pod: Command failed with exit code 1 Error output:](#error-pod-command-failed-with-exit-code-1-error-output)
 7. [Hook failed with error code 1](#hook-failed-with-error-code-1)
+8. [FAILURE: Build failed with an exception.](#failure-build-failed-with-an-exception)
+9. [E/AndroidRuntime: FATAL EXCEPTION: main](#eandroidruntime-fatal-exception-main)
 
 ---
 
@@ -123,7 +125,7 @@ Cloning into 'cocoapods-'...
 
 ### Answer
 
-Your CocoaPods installation is outdated and can't use the much faster CDN. Update it with: `sudo gem install cocoapods`
+Your CocoaPods installation is outdated and can't use the much faster CDN. Update it with: `sudo gem install cocoapods`.
 
 ## error: Hook failed with error code 1
 
@@ -141,3 +143,29 @@ It seems that the `pod` gem (the [package manager for Swift and Objective-C](htt
 $ sudo gem install cocoapods
 $ cordova plugin add cordova-plugin-lottie-splashscreen
 ```
+
+## FAILURE: Build failed with an exception.
+
+```
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:mergeDebugResources'.
+> This project uses AndroidX dependencies, but the 'android.useAndroidX' property is not enabled. Set this property to true in the gradle.properties file and retry.
+```
+
+### Answer
+
+Use cordova-android >=9.0.0. Set `AndroidXEnabled` to `true` in your config.xml.
+
+## E/AndroidRuntime: FATAL EXCEPTION: main
+
+```
+2020-06-29 11:20:54.578 10355-10355/de.dustplanet.lottie E/AndroidRuntime: FATAL EXCEPTION: main
+    Process: de.dustplanet.lottie, PID: 10355
+    java.lang.RuntimeException: Unable to start activity ComponentInfo{de.dustplanet.lottie/de.dustplanet.lottie.MainActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'void org.apache.cordova.CordovaPlugin.privateInitialize(java.lang.String, org.apache.cordova.CordovaInterface, org.apache.cordova.CordovaWebView, org.apache.cordova.CordovaPreferences)' on a null object reference
+```
+
+### Answer
+
+Use cordova-android >=9.0.0. Set `GradlePluginKotlinEnabled` to `true` in your config.xml.
