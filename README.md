@@ -16,7 +16,7 @@
 ### Supported platforms
 
 -   **iOS (10+) (with cordova-ios >= 5.0.0 only)**
--   **Android (with cordova-android >= 8.0.0 only)**
+-   **Android (with cordova-android >= 9.0.0 only)**
 
 ### Planned platforms
 
@@ -36,13 +36,12 @@ $ pod setup
 ##### Caveats
 
 Only **cordova >= 9.0.0** and **cordova-ios >= 5.0.0** are supported.  
-You need to specify a valid SwiftVersion (minimum is 4.2) in your `config.xml` (see https://cordova.apache.org/docs/en/latest/config_ref/)
+You need to specify a valid `SwiftVersion` (minimum is 4.2) in your `config.xml`. (see https://cordova.apache.org/docs/en/latest/config_ref/)
 
 #### Android
 
-AndroidX support is required for lottie-android >= 2.8.0.  
-In order to use version >= v0.7.0 you need to configure AndroidX support.  
-In case you do not manually build the project and edit the files in Android Studio, these two plugins might be required: https://github.com/dpa99c/cordova-plugin-androidx and https://github.com/dpa99c/cordova-plugin-androidx-adapter.  
+AndroidX and Kotlin support is required. Therefore only **cordova-android >= 9.0.0** is supported.  
+You need to enable Kotlin and AndroidX in your `config.xml` by setting `GradlePluginKotlinEnabled` **and** `AndroidXEnabled` to `true`.  
 In the [FAQ](FAQ.md) are some examples with common error messages and how to fix them.
 
 ### Installation
