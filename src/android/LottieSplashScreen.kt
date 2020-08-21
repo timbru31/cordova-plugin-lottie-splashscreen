@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.ImageView
+import android.widget.LinearLayout
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieComposition
 import com.airbnb.lottie.LottieCompositionFactory
@@ -20,7 +21,9 @@ import org.apache.cordova.CordovaArgs
 import org.apache.cordova.CordovaPlugin
 import java.util.Locale
 
+
 class LottieSplashScreen : CordovaPlugin() {
+    private lateinit var linearLayout: LinearLayout
     private lateinit var splashDialog: Dialog
     private lateinit var animationView: LottieAnimationView
     private var animationEnded = false
@@ -95,6 +98,7 @@ class LottieSplashScreen : CordovaPlugin() {
                 val context = webView.context
 
                 animationView = LottieAnimationView(context)
+                linearLayout = LinearLayout(context)
                 val useHardwareAcceleration = remote
                     ?: preferences.getBoolean("LottieEnableHardwareAcceleration", false)
                 if (useHardwareAcceleration) {
@@ -168,8 +172,9 @@ class LottieSplashScreen : CordovaPlugin() {
                     }
                 )
                 splashDialog.window?.setBackgroundDrawable(ColorDrawable(color))
-                splashDialog.setContentView(animationView)
+                splashDialog.setContentView(linearLayout)
                 splashDialog.setCancelable(false)
+                linearLayout.addView(animationView)
 
                 calculateAnimationSize(width, height)
                 splashDialog.show()
@@ -223,6 +228,7 @@ class LottieSplashScreen : CordovaPlugin() {
             val relativeSize = preferences.getBoolean("LottieRelativeSize", false)
             if (relativeSize) {
                 val metrics = webView.context.resources.displayMetrics
+
                 val animationHeight = (
                     metrics.heightPixels * (
                         width
@@ -235,7 +241,15 @@ class LottieSplashScreen : CordovaPlugin() {
                             ?: preferences.getDouble("LottieWidth", 0.2)
                         )
                     ).toInt()
+
                 splashDialog.window?.setLayout(animationWidth, animationHeight)
+                splashDialog.window?.setLayout(metrics.widthPixels, metrics.heightPixels)
+                animationView.layoutParams.width = animationWidth;
+                animationView.layoutParams.height = animationHeight;
+                animationView.scaleType = ImageView.ScaleType.FIT_CENTER;
+                linearLayout.setPadding(((metrics.widthPixels - animationWidth) / 2).toInt(), ((metrics.heightPixels - animationHeight) / 2).toInt(), ((metrics.widthPixels - animationWidth) / 2).toInt(), ((metrics.heightPixels - animationHeight) / 2).toInt())
+                Log.i("MyActivity", "Höhe " + metrics.heightPixels + " - " + animationHeight + " - " + ((metrics.heightPixels - animationHeight) / 2).toInt())
+                Log.i("MyActivity", "Breite " + metrics.widthPixels + " " + animationWidth + " - " + ((metrics.widthPixels - animationWidth) / 2).toInt())
             } else {
                 splashDialog.window?.setLayout(
                     convertPixelsToDp(
