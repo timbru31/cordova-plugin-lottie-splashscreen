@@ -45,7 +45,7 @@ jobs:
         - ionic cordova build android --no-interactive --confirm
 
     - os: osx
-      osx_image: xcode11.5
+      osx_image: xcode11.6
       before_script:
         - brew install ktlint
         - brew install gnu-sed
