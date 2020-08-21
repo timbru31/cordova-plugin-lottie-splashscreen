@@ -226,16 +226,16 @@ class LottieSplashScreen : CordovaPlugin() {
                 val animationHeight = (
                     metrics.heightPixels * (
                         width
-                            ?: preferences.getDouble("LottieWidth", 0.2)
+                            ?: preferences.getDouble("LottieHeight", 0.2)
                         )
                     ).toInt()
                 val animationWidth = (
                     metrics.widthPixels * (
                         height
-                            ?: preferences.getDouble("LottieHeight", 0.2)
+                            ?: preferences.getDouble("LottieWidth", 0.2)
                         )
                     ).toInt()
-                splashDialog.window?.setLayout(animationHeight, animationWidth)
+                splashDialog.window?.setLayout(animationWidth, animationHeight)
             } else {
                 splashDialog.window?.setLayout(
                     convertPixelsToDp(
