@@ -120,7 +120,8 @@ class LottieSplashScreen : CordovaPlugin() {
                 when {
                     remoteEnabled -> {
                         comp = LottieCompositionFactory.fromUrl(
-                            context, animationLocation,
+                            context,
+                            animationLocation,
                             when {
                                 cacheDisabled -> null
                                 else -> "url_$animationLocation"
@@ -129,7 +130,8 @@ class LottieSplashScreen : CordovaPlugin() {
                     }
                     else -> {
                         comp = LottieCompositionFactory.fromAsset(
-                            context, animationLocation,
+                            context,
+                            animationLocation,
                             when {
                                 cacheDisabled -> null
                                 else -> "asset_$animationLocation"
@@ -174,28 +176,30 @@ class LottieSplashScreen : CordovaPlugin() {
                 calculateAnimationSize(width, height)
                 splashDialog.show()
 
-                animationView.addAnimatorListener(object : Animator.AnimatorListener {
-                    override fun onAnimationStart(animation: Animator) {
-                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationStart'))") { }
-                    }
-
-                    override fun onAnimationEnd(animation: Animator) {
-                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))") { }
-                        val hideAfterAnimationDone = preferences.getBoolean("LottieHideAfterAnimationEnd", false)
-                        when {
-                            hideAfterAnimationDone -> dismissDialog()
+                animationView.addAnimatorListener(
+                    object : Animator.AnimatorListener {
+                        override fun onAnimationStart(animation: Animator) {
+                            webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationStart'))") { }
                         }
-                        animationEnded = true
-                    }
 
-                    override fun onAnimationCancel(animation: Animator) {
-                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationCancel'))") { }
-                    }
+                        override fun onAnimationEnd(animation: Animator) {
+                            webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))") { }
+                            val hideAfterAnimationDone = preferences.getBoolean("LottieHideAfterAnimationEnd", false)
+                            when {
+                                hideAfterAnimationDone -> dismissDialog()
+                            }
+                            animationEnded = true
+                        }
 
-                    override fun onAnimationRepeat(animation: Animator) {
-                        webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationRepeat'))") { }
+                        override fun onAnimationCancel(animation: Animator) {
+                            webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationCancel'))") { }
+                        }
+
+                        override fun onAnimationRepeat(animation: Animator) {
+                            webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationRepeat'))") { }
+                        }
                     }
-                })
+                )
 
                 animationView.setOnClickListener {
                     val cancelOnTap = preferences.getBoolean("LottieCancelOnTap", false)
@@ -263,16 +267,18 @@ class LottieSplashScreen : CordovaPlugin() {
                 fadeOut.duration = fadeDuration.toLong()
                 animationView.animation = fadeOut
                 animationView.startAnimation(fadeOut)
-                fadeOut.setAnimationListener(object : Animation.AnimationListener {
-                    override fun onAnimationStart(animation: Animation?) {}
+                fadeOut.setAnimationListener(
+                    object : Animation.AnimationListener {
+                        override fun onAnimationStart(animation: Animation?) {}
 
-                    override fun onAnimationEnd(animation: Animation?) {
-                        splashDialog.dismiss()
-                        callbackContext?.success()
+                        override fun onAnimationEnd(animation: Animation?) {
+                            splashDialog.dismiss()
+                            callbackContext?.success()
+                        }
+
+                        override fun onAnimationRepeat(animation: Animation?) {}
                     }
-
-                    override fun onAnimationRepeat(animation: Animation?) {}
-                })
+                )
             }
             else -> {
                 splashDialog.dismiss()
