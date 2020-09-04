@@ -30,7 +30,7 @@ class LottieSplashScreen : CordovaPlugin() {
         try {
             createView()
         } catch (e: Exception) {
-            Log.e(LOG_TAG, e.message)
+            Log.e(LOG_TAG, e.message!!)
             e.printStackTrace()
         }
     }
