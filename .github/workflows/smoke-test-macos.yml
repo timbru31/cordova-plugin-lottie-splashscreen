@@ -1,0 +1,52 @@
+name: Smoke test on macOS
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        xcode: [11, 12]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Environment Information
+        run: |
+          node --version
+          npm --version
+
+      - uses: maxim-lobanov/setup-xcode@v1.1
+        with:
+          xcode-version: ${{ matrix.xcode }}
+
+      - name: Setup
+        run: |
+          brew install gnu-sed
+
+      - name: Setup Project
+        run: |
+          npm i -g cordova
+          cordova create lottie-smoke-test
+          cd lottie-smoke-test
+          cordova platform add ios
+          gsed -i '4i\    <preference name="SwiftVersion" value="5" />' config.xml
+          cordova platform add android
+          gsed -i '4i\    <preference name="GradlePluginKotlinEnabled" value="true" />' config.xml
+          gsed -i '4i\    <preference name="AndroidXEnabled" value="true" />' config.xml
+
+      - name: Install Plugins
+        run: |
+          cd lottie-smoke-test
+          cordova plugin add $GITHUB_WORKSPACE --link
+
+      - name: Build Project
+        run: |
+          cd lottie-smoke-test
+          cordova build android
+          cordova build ios
