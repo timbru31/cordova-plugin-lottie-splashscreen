@@ -1,0 +1,28 @@
+name: Linting
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Environment Information
+        run: |
+          node --version
+          npm --version
+
+      - name: Setup
+        run: |
+          brew install ktlint
+          swiftlint version
+          npm ci
+
+      - name: Linting
+        run: npm run lint

@@ -1,10 +1,11 @@
-name: Smoke test on Windows
+name: Smoke test on Ubuntu
 
 on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: windows-latest
+    name: Cordova CLI
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -30,13 +31,13 @@ jobs:
           cordova create lottie-smoke-test
           cd lottie-smoke-test
           cordova platform add android
+          sed -i '4i\    <preference name="GradlePluginKotlinEnabled" value="true" />' config.xml
+          sed -i '4i\    <preference name="AndroidXEnabled" value="true" />' config.xml
 
       - name: Install Plugins
         run: |
           cd lottie-smoke-test
-          cordova plugin add cordova-plugin-androidx
-          cordova plugin add cordova-plugin-androidx-adapter
-          cordova plugin add $env:GITHUB_WORKSPACE --link
+          cordova plugin add $GITHUB_WORKSPACE --link
 
       - name: Build Project
         run: |
