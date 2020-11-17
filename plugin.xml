@@ -21,7 +21,7 @@
         <source-file src="src/android/ColorHelper.kt" target-dir="app/src/main/kotlin/de/dustplanet/cordova/lottie" />
         <source-file src="src/android/LottieSplashScreenExceptions.kt" target-dir="app/src/main/kotlin/de/dustplanet/cordova/lottie" />
 
-        <framework src="com.airbnb.android:lottie:3.4.4" />
+        <framework src="com.airbnb.android:lottie:3.5.0" />
     </platform>
 
     <platform name="ios">
