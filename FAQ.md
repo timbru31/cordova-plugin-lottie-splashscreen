@@ -9,6 +9,7 @@
 7. [Hook failed with error code 1](#hook-failed-with-error-code-1)
 8. [FAILURE: Build failed with an exception.](#failure-build-failed-with-an-exception)
 9. [E/AndroidRuntime: FATAL EXCEPTION: main](#eandroidruntime-fatal-exception-main)
+10. [Help my background color is not displayed correctly on Android](#help-my-background-color-is-not-displayed-correctly-on-android)
 
 ---
 
@@ -169,3 +170,19 @@ Use cordova-android >=9.0.0. Set `AndroidXEnabled` to `true` in your config.xml.
 ### Answer
 
 Use cordova-android >=9.0.0. Set `GradlePluginKotlinEnabled` to `true` in your config.xml.
+
+## Help my background color is not displayed correctly on Android
+
+If you experience wrong background colors on Android, especially with leading zeros, you've probably ran into an internal Android issue (AAPT2 parsing bug) that _swallows_ leading zeros and changes the color value.
+
+### Answer
+
+You can add a `build-extras.gradle` file in the `platforms/android` folder with the following content to workaround the issue:
+
+```gradle
+android {
+    aaptOptions {
+        additionalParameters "--keep-raw-values"
+    }
+}
+```
