@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: Cordova CLI
+    name: Apache Cordova CLI
     runs-on: ubuntu-latest
 
     steps:
