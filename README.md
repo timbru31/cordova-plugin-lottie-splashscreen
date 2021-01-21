@@ -114,7 +114,19 @@ await lottie.splashscreen.once(event: LottieEvent).then(event => console.log(eve
     <preference name="LottieRemoteEnabled" value="true" />
 ```
 
--   `LottieAnimationLocation` (String, default `""`). Location of the Lottie JSON file that should be loaded. Can either be a URL (if `LottieRemoteEnabled` is `true`) or a local JSON or ZIP file (e.g. `www/lottie/error.json`).
+-   `LottieAnimationLocationLight` (String, default `""`). Location of the Lottie JSON file that should be loaded in light mode. Can either be a URL (if `LottieRemoteEnabled` is `true`) or a local JSON or ZIP file (e.g. `www/lottie/error.json`).
+
+```xml
+    <preference name="LottieAnimationLocationLight" value="https://assets.lottiefiles.com/datafiles/99nA1a7mkSF3Oz8/data.json" />
+```
+
+-   `LottieAnimationLocationDark` (String, default `""`). Location of the Lottie JSON file that should be loaded in dark mode. Can either be a URL (if `LottieRemoteEnabled` is `true`) or a local JSON or ZIP file (e.g. `www/lottie/error.json`).
+
+```xml
+    <preference name="LottieAnimationLocationDark" value="https://assets.lottiefiles.com/datafiles/99nA1a7mkSF3Oz8/data.json" />
+```
+
+-   `LottieAnimationLocation` (String, default `""`). Location of the Lottie JSON file that should be loaded as a fallback if there are no dark or light mode animations defined or if one of them is an invalid location. Can either be a URL (if `LottieRemoteEnabled` is `true`) or a local JSON or ZIP file (e.g. `www/lottie/error.json`).
 
 ```xml
     <preference name="LottieAnimationLocation" value="https://assets.lottiefiles.com/datafiles/99nA1a7mkSF3Oz8/data.json" />

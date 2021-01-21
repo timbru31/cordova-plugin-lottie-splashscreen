@@ -3,6 +3,7 @@ package de.dustplanet.cordova.lottie
 import android.R.style
 import android.animation.Animator
 import android.app.Dialog
+import android.content.res.Configuration
 import android.graphics.drawable.ColorDrawable
 import android.os.Handler
 import android.util.Log
@@ -86,7 +87,13 @@ class LottieSplashScreen : CordovaPlugin() {
         }
     }
 
-    private fun createView(location: String? = null, remote: Boolean? = null, width: Double? = null, height: Double? = null, callbackContext: CallbackContext? = null) {
+    private fun createView(
+        location: String? = null,
+        remote: Boolean? = null,
+        width: Double? = null,
+        height: Double? = null,
+        callbackContext: CallbackContext? = null
+    ) {
         if (::splashDialog.isInitialized && splashDialog.isShowing) {
             throw LottieSplashScreenAnimationAlreadyPlayingException("An animation is already playing, please first hide the current one")
         }
@@ -102,8 +109,22 @@ class LottieSplashScreen : CordovaPlugin() {
                 }
 
                 val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)
-                val animationLocation = location
-                    ?: preferences.getString("LottieAnimationLocation", "")
+
+                var animationLocation = location
+                if (animationLocation.isNullOrBlank()) {
+                    val nightMode: Boolean = cordova.context.resources.configuration.uiMode and
+                        Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+
+                    animationLocation = when {
+                        nightMode -> preferences.getString("LottieAnimationLocationDark", "")
+                        else -> preferences.getString("LottieAnimationLocationLight", "")
+                    }
+
+                    if (animationLocation.isNullOrBlank()) {
+                        preferences.getString("LottieAnimationLocation", "")
+                    }
+                }
+
                 if (animationLocation.isNullOrBlank()) {
                     Log.e(LOG_TAG, "LottieAnimationLocation has to be configured!")
                     this.destroyView()
@@ -137,7 +158,13 @@ class LottieSplashScreen : CordovaPlugin() {
                                 else -> "asset_$animationLocation"
                             }
                         )
-                        animationView.imageAssetsFolder = preferences.getString("LottieImagesLocation", animationLocation.substring(0, animationLocation.lastIndexOf('/')))
+                        animationView.imageAssetsFolder = preferences.getString(
+                            "LottieImagesLocation",
+                            animationLocation.substring(
+                                0,
+                                animationLocation.lastIndexOf('/')
+                            )
+                        )
                     }
                 }
 
@@ -157,8 +184,18 @@ class LottieSplashScreen : CordovaPlugin() {
                     animationView.repeatCount = LottieDrawable.INFINITE
                 }
 
-                animationView.scaleType = ImageView.ScaleType.valueOf(preferences.getString("LottieScaleType", "FIT_CENTER").toUpperCase(Locale.ENGLISH))
-                val color = ColorHelper.parseColor(preferences.getString("LottieBackgroundColor", "#ffffff"))
+                animationView.scaleType = ImageView.ScaleType.valueOf(
+                    preferences.getString(
+                        "LottieScaleType",
+                        "FIT_CENTER"
+                    ).toUpperCase(Locale.ENGLISH)
+                )
+                val color = ColorHelper.parseColor(
+                    preferences.getString(
+                        "LottieBackgroundColor",
+                        "#ffffff"
+                    )
+                )
                 animationView.setBackgroundColor(color)
 
                 val fullScreen = preferences.getBoolean("LottieFullScreen", false)
@@ -184,7 +221,10 @@ class LottieSplashScreen : CordovaPlugin() {
 
                         override fun onAnimationEnd(animation: Animator) {
                             webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))") { }
-                            val hideAfterAnimationDone = preferences.getBoolean("LottieHideAfterAnimationEnd", false)
+                            val hideAfterAnimationDone = preferences.getBoolean(
+                                "LottieHideAfterAnimationEnd",
+                                false
+                            )
                             when {
                                 hideAfterAnimationDone -> dismissDialog()
                             }

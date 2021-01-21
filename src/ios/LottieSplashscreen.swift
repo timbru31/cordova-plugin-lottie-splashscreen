@@ -130,7 +130,15 @@ import Lottie
         if location != nil {
             animationLocation = location!
         } else {
-            animationLocation = commandDelegate?.settings["LottieAnimationLocation".lowercased()] as? String ?? ""
+            if viewController.traitCollection.userInterfaceStyle == .dark {
+                animationLocation = commandDelegate?.settings["LottieAnimationLocationDark".lowercased()] as? String ?? ""
+            } else {
+                animationLocation = commandDelegate?.settings["LottieAnimationLocationLight".lowercased()] as? String ?? ""
+            }
+
+            if animationLocation.isEmpty {
+                animationLocation = commandDelegate?.settings["LottieAnimationLocation".lowercased()] as? String ?? ""
+            }
         }
 
         if isRemote(remote: remote) {
