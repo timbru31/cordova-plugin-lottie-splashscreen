@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.3](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.9.2...v0.9.3) (2021-01-21)
+
+### Features
+
+-   adds dark mode support, closes [#270](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/270) ([01dba28](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/01dba28ac37fadb431e28e2284da911caa325e4f))
+
+### Build System
+
+-   **deps-dev:** bump husky from 4.3.7 to 4.3.8 ([5ff8981](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/5ff89813cbe8dcc0e84c727a4cdc9705211d3863))
+
 ### [0.9.2](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.9.1...v0.9.2) (2021-01-10)
 
 ### Build System
