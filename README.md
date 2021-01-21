@@ -1,6 +1,10 @@
 # cordova-plugin-lottie-splashscreen
 
-[![Build Status](https://travis-ci.org/timbru31/cordova-plugin-lottie-splashscreen.svg?branch=master)](https://travis-ci.org/timbru31/cordova-plugin-lottie-splashscreen)
+[![Run a security audit](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/workflows/Run%20a%20security%20audit/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions?query=workflow%3A%22Run+a+security+audit%22)
+[![Linting](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/workflows/Linting/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions?query=workflow%3ALinting)
+[![Smoke test on Ubuntu](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/workflows/Smoke%20test%20on%20Ubuntu/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions?query=workflow%3A%22Smoke+test+on+Ubuntu%22)
+[![Smoke test on macOS](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/workflows/Smoke%20test%20on%20macOS/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions?query=workflow%3A%22Smoke+test+on+macOS%22)
+[![Smoke test on Windows](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/workflows/Smoke%20test%20on%20Windows/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions?query=workflow%3A%22Smoke+test+on+Windows%22)
 
 [![Dependency Status](https://david-dm.org/timbru31/cordova-plugin-lottie-splashscreen.svg)](https://david-dm.org/timbru31/cordova-plugin-lottie-splashscreen)
 [![devDependency Status](https://david-dm.org/timbru31/cordova-plugin-lottie-splashscreen/dev-status.svg)](https://david-dm.org/timbru31/cordova-plugin-lottie-splashscreen#info=devDependencies)
