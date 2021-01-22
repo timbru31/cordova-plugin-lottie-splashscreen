@@ -126,14 +126,16 @@ import Lottie
     }
 
     private func createAnimationView(location: String? = nil, remote: Bool? = nil, width: Int? = nil, height: Int? = nil) throws {
-        var animationLocation: String
+        var animationLocation = ""
         if location != nil {
             animationLocation = location!
         } else {
-            if viewController.traitCollection.userInterfaceStyle == .dark {
-                animationLocation = commandDelegate?.settings["LottieAnimationLocationDark".lowercased()] as? String ?? ""
-            } else {
-                animationLocation = commandDelegate?.settings["LottieAnimationLocationLight".lowercased()] as? String ?? ""
+            if #available(iOS 12.0, *) {
+                if viewController.traitCollection.userInterfaceStyle == .dark {
+                    animationLocation = commandDelegate?.settings["LottieAnimationLocationDark".lowercased()] as? String ?? ""
+                } else {
+                    animationLocation = commandDelegate?.settings["LottieAnimationLocationLight".lowercased()] as? String ?? ""
+                }
             }
 
             if animationLocation.isEmpty {
