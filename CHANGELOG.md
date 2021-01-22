@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.4](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.9.3...v0.9.4) (2021-01-22)
+
+### Bug Fixes
+
+-   guard dark mode check with #available ([5d3e950](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/5d3e95073ee35bf15592ad36df03c8c249e74253))
+
+### Code Refactoring
+
+-   **android:** split code into smaller functions ([6cd7b62](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/6cd7b623404f8c0427f08bbd4dfdb5528bd0f6fb))
+
 ### [0.9.3](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.9.2...v0.9.3) (2021-01-21)
 
 ### Features
