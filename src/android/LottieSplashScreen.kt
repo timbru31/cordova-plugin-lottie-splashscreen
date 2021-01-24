@@ -153,7 +153,7 @@ class LottieSplashScreen : CordovaPlugin() {
             }
 
             if (animationLocation.isNullOrBlank()) {
-                preferences.getString("LottieAnimationLocation", "")
+                animationLocation = preferences.getString("LottieAnimationLocation", "")
             }
         }
         return animationLocation
