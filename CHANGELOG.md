@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.5](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.9.4...v0.9.5) (2021-01-24)
+
+### Bug Fixes
+
+-   **android:** ensure fallback location works correctly. Closes [#272](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/272) ([b493212](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/b4932120238a21989f6aac45784aead636684023))
+
 ### [0.9.4](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.9.3...v0.9.4) (2021-01-22)
 
 ### Bug Fixes
