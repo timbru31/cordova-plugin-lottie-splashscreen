@@ -22,7 +22,8 @@
         <preference name="GradlePluginKotlinEnabled" value="true" />
         <preference name="AndroidXEnabled" value="true" />
         <!-- Lottie specific config -->
-        <preference name="LottieAnimationLocation" value="https://assets.lottiefiles.com/datafiles/PEt3QhOjDXHDIGH/data.json" />
+        <preference name="LottieAnimationLocationLight" value="https://assets.lottiefiles.com/datafiles/PEt3QhOjDXHDIGH/data.json" />
+        <preference name="LottieAnimationLocationDark" value="https://assets1.lottiefiles.com/packages/lf20_iebai3g6.json" />
         <preference name="LottieBackgroundColor" value="#fff000a3" />
         <preference name="LottieEnableHardwareAcceleration" value="true" />
         <preference name="LottieWidth" value="350" />
