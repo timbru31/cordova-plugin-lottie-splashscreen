@@ -27,7 +27,7 @@ jobs:
 
       - name: Setup Project
         run: |
-          npm i -g cordova @ionic/cli cordova
+          npm i -g cordova @ionic/cli
           ionic start lottie-smoke-test tabs --type angular --no-interactive --no-confirm
           cd lottie-smoke-test
           ionic cordova platform add android --no-interactive --confirm
@@ -42,4 +42,6 @@ jobs:
       - name: Build Project
         run: |
           cd lottie-smoke-test
+          # Workaround https://github.com/ionic-team/ionic-cli/issues/4614 
+          npm i -D @angular-devkit/build-angular@latest
           ionic cordova build android --no-interactive --confirm
