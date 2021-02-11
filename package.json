@@ -6,7 +6,7 @@
   "license": "MIT",
   "types": "./types/index.d.ts",
   "scripts": {
-    "postinstall": "husky install",
+    "postinstall": "husky install || echo \"Warning: unable to add Git hooks, I hope you know what you are doing!\"",
     "build": "tsc",
     "lint": "npm run lint:android && npm run lint:ios && npm run lint:typescript",
     "lint:android": "ktlint src/android",
