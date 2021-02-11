@@ -56,7 +56,7 @@ In the [FAQ](FAQ.md) are some examples with common error messages and how to fix
 
 #### from git (unstable)
 
-`$ cordova plugin add https://github.com/timbru31/cordova-plugin-cordova-plugin-lottie-splashscreen.git`
+`$ cordova plugin add https://github.com/timbru31/cordova-plugin-lottie-splashscreen.git`
 
 ### Usage
 
