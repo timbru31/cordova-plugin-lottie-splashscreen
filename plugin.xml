@@ -22,6 +22,7 @@
         <source-file src="src/android/LottieSplashScreenExceptions.kt" target-dir="app/src/main/kotlin/de/dustplanet/cordova/lottie" />
 
         <framework src="com.airbnb.android:lottie:3.5.0" />
+        <framework src="src/android/build-aapt-extras.gradle" custom="true" type="gradleReference" />
     </platform>
 
     <platform name="ios">

@@ -1,0 +1,5 @@
+android {
+    aaptOptions {
+        additionalParameters "--keep-raw-values"
+    }
+}
