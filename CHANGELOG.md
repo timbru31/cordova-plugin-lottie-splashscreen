@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.6](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.9.5...v0.9.6) (2021-03-04)
+
+### Bug Fixes
+
+-   change file name for case sensitive file systems ([#291](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/291)) ([8a5fe34](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/8a5fe34b08213f3ef2388f70b8d3487072cdec6e))
+
+### Build System
+
+-   **ci:** workaround Ionic CLI failure ([5260544](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/5260544b1b4473f74f65e7465dd2d9402d7e0b5d))
+-   **ci:** workaround Ionic CLI failure ([81e1347](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/81e13478cdaf76c25f1e53faf10201d63cab4f8d))
+-   **deps:** updates lottie-ios to 3.2.0 ([b2103fb](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/b2103fb38304f8a94a057b0d28755dda53a02194))
+-   **deps:** updates lottie-ios to 3.2.1 ([8e96c92](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/8e96c92332258820ee2aad1f8aa66e62b6ffb027))
+-   **deps-dev:** bump @commitlint/cli from 11.0.0 to 12.0.0 ([#281](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/281)) ([55ff4a9](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/55ff4a92fc568b094e3362f6b1ad417d4f69cc66))
+-   **deps-dev:** bump @commitlint/cli from 12.0.0 to 12.0.1 ([183f0a4](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/183f0a4c32d90f4729325537e7298c83ef33b12b))
+-   **deps-dev:** bump @commitlint/config-angular from 11.0.0 to 12.0.0 ([#283](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/283)) ([453a132](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/453a132f1c16acae4b4c705e75b1ef32c211bb27))
+-   **deps-dev:** bump @commitlint/config-angular from 12.0.0 to 12.0.1 ([98074f1](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/98074f1f63a79602f8731ec8b49af9eb5e0f2631))
+-   **deps-dev:** bump husky from 4.3.8 to 5.0.9 ([#275](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/275)) ([e4e9f10](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/e4e9f101703ca32ddea4674c97a423c2de46f35d))
+-   **deps-dev:** bump husky from 5.0.9 to 5.1.0 ([50528a5](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/50528a5d016c7fadaa5b50c4f4e52d9921986ea5))
+-   **deps-dev:** bump husky from 5.1.0 to 5.1.1 ([0f54df6](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/0f54df65fa92f8186df2db8c25b646a90140834c))
+-   **deps-dev:** bump husky from 5.1.1 to 5.1.2 ([044a812](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/044a812074076c03d75d92e81b847b9babe5fc4c))
+-   **deps-dev:** bump husky from 5.1.2 to 5.1.3 ([6d658c2](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/6d658c2c4cd61b945e7077f7623a38150bc8a3a9))
+-   **deps-dev:** bump lint-staged from 10.5.3 to 10.5.4 ([#274](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/274)) ([4f42ed3](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/4f42ed3fd6441935f7d496c8883156aa4a8e6d0b))
+-   **deps-dev:** bump pinst from 2.1.4 to 2.1.6 ([830015d](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/830015d034c8ea790aef3150eaeee41d36812ee8))
+-   **deps-dev:** bump standard-version from 9.1.0 to 9.1.1 ([1c0ab6e](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/1c0ab6e8149c1da85dc37ccab14ca06f6eb023f2))
+-   **deps-dev:** bump typescript from 4.1.3 to 4.1.4 ([#276](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/276)) ([bcec398](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/bcec3987f41b640bf30ef69563a26aadc90e2bb9))
+-   **deps-dev:** bump typescript from 4.1.4 to 4.1.5 ([c6a05d9](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/c6a05d91731484f55894938467b5513328eff755))
+-   **deps-dev:** bump typescript from 4.1.5 to 4.2.2 ([b105e70](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/b105e70549dcdf7b6e222781cb64c1bf3767d17a))
+-   rebuild lockfile ([b8d2c8e](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/commit/b8d2c8e9bc36bcdf50c69f8560c0fdb5f8a5e571))
+
 ### [0.9.5](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/compare/v0.9.4...v0.9.5) (2021-01-24)
 
 ### Bug Fixes
