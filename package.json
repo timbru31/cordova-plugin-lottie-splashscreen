@@ -6,14 +6,13 @@
   "license": "MIT",
   "types": "./types/index.d.ts",
   "scripts": {
-    "postinstall": "husky install || echo \"Warning: unable to add Git hooks, I hope you know what you are doing!\"",
+    "prepare": "husky install",
     "build": "tsc",
     "lint": "npm run lint:android && npm run lint:ios && npm run lint:typescript",
     "lint:android": "ktlint src/android",
     "lint:ios": "swiftlint",
     "lint:typescript": "tslint -c tslint.json 'www/**/*.ts'",
-    "prepublishOnly": "pinst --disable && npm run build",
-    "postpublish": "pinst --enable",
+    "prepublishOnly": "npm run build",
     "release": "standard-version -s -a"
   },
   "devDependencies": {
@@ -22,7 +21,6 @@
     "@types/cordova": "^0.0.34",
     "husky": "^5.0.9",
     "lint-staged": "^10.5.4",
-    "pinst": "^2.1.4",
     "prettier": "^2.2.1",
     "replace": "^1.2.0",
     "standard-version": "^9.1.0",
