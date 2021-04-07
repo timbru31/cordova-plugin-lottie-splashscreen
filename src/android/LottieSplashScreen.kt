@@ -95,9 +95,6 @@ class LottieSplashScreen : CordovaPlugin() {
         height: Double? = null,
         callbackContext: CallbackContext? = null
     ) {
-        if (::splashDialog.isInitialized && splashDialog.isShowing) {
-            throw LottieSplashScreenAnimationAlreadyPlayingException("An animation is already playing, please first hide the current one")
-        }
         cordova.activity.runOnUiThread {
             if (cordova.activity.isFinishing.not()) {
                 val context = webView.context
