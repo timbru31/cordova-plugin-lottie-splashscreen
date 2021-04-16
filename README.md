@@ -24,7 +24,7 @@
 
 ### Planned platforms
 
--   **macOS** (currently on hold until cordova-osx has a better Swift and CocoaPods support)
+-   **macOS** (currently on hold until cordova-osx has a better Swift and CocoaPods support or cordova-ios gains Catalyst support)
 
 #### Prerequisites/Warnings
 
