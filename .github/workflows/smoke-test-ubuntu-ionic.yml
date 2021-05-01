@@ -2,6 +2,9 @@ name: Smoke test on Ubuntu
 
 on: [push, pull_request]
 
+env:
+  MAVEN_OPTS: -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.httpconnectionManager.ttlSeconds=120
+
 jobs:
   build:
     name: Ionic CLI
@@ -13,6 +16,7 @@ jobs:
       - name: set up JDK 1.8
         uses: actions/setup-java@v2
         with:
+          distro: 'adopt'
           java-version: 1.8
 
       - uses: actions/setup-node@v1
@@ -42,6 +46,6 @@ jobs:
       - name: Build Project
         run: |
           cd lottie-smoke-test
-          # Workaround https://github.com/ionic-team/ionic-cli/issues/4614 
+          # Workaround https://github.com/ionic-team/ionic-cli/issues/4614
           npm i -D @angular-devkit/build-angular@latest @ionic/angular-toolkit@latest
           ionic cordova build android --no-interactive --confirm
