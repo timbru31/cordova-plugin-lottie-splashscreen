@@ -2,9 +2,6 @@ name: Smoke test on Windows
 
 on: [push, pull_request]
 
-env:
-  MAVEN_OPTS: -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.httpconnectionManager.ttlSeconds=120
-
 jobs:
   build:
     runs-on: windows-latest
