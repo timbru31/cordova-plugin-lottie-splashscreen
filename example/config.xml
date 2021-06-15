@@ -39,8 +39,8 @@
         <!-- Lottie specific config -->
         <!-- <preference name="LottieAnimationLocation" value="https://assets.lottiefiles.com/datafiles/40aX5db74VvGPWw/data.json" /> -->
         <!-- Alternatively -->
-        <preference name="LottieRemoteEnabled" value="true" />
-        <preference name="LottieAnimationLocation" value="http://172.16.253.79:5000/data.json" />
+        <preference name="LottieRemoteEnabled" value="false" />
+        <preference name="LottieAnimationLocation" value="www/lottie/data.json" />
         <preference name="LottieCancelOnTap" value="true" />
         <preference name="LottieFullScreen" value="true" />
         <preference name="LottieHideTimeout" value="0" />
