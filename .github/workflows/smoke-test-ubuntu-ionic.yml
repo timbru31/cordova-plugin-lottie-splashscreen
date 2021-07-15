@@ -1,4 +1,4 @@
-name: Smoke test on Ubuntu
+name: Smoke test on Ubuntu (Ionic)
 
 on: [push, pull_request]
 

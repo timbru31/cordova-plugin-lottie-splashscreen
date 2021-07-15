@@ -1,4 +1,4 @@
-name: Smoke test on Ubuntu
+name: Smoke test on Ubuntu (Apache Cordova)
 
 on: [push, pull_request]
 
