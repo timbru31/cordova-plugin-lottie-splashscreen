@@ -8,5 +8,5 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-node@v2.2.0
+      - uses: actions/setup-node@v2.3.0
       - run: npm audit
