@@ -31,7 +31,7 @@ jobs:
           npm i -g cordova
           cordova create lottie-smoke-test
           cd lottie-smoke-test
-          cordova platform add android
+          cordova platform add android@latest
           sed -i '4i\    <preference name="GradlePluginKotlinEnabled" value="true" />' config.xml
           sed -i '4i\    <preference name="AndroidXEnabled" value="true" />' config.xml
 
