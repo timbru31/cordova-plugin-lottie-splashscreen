@@ -36,6 +36,7 @@ jobs:
       - name: Install Plugins
         run: |
           cd lottie-smoke-test
+          ionic cordova plugin rm cordova-plugin-whitelist --no-interactive --confirm
           ionic cordova plugin add cordova-plugin-androidx --no-interactive --confirm
           ionic cordova plugin add cordova-plugin-androidx-adapter --no-interactive --confirm
           ionic cordova plugin add $GITHUB_WORKSPACE --no-interactive --confirm -- --link
