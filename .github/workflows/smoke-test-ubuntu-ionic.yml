@@ -31,7 +31,7 @@ jobs:
           npm i -g cordova @ionic/cli
           ionic start lottie-smoke-test tabs --type angular --no-interactive --no-confirm
           cd lottie-smoke-test
-          ionic cordova platform add android --no-interactive --confirm
+          ionic cordova platform add android@latest --no-interactive --confirm
 
       - name: Install Plugins
         run: |
