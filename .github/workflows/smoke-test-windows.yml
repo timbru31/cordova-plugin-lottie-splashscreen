@@ -30,7 +30,7 @@ jobs:
           npm i -g cordova
           cordova create lottie-smoke-test
           cd lottie-smoke-test
-          cordova platform add android
+          cordova platform add android@latest
 
       - name: Install Plugins
         run: |
