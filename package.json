@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
-    "@commitlint/config-angular": "^13.1.0",
+    "@commitlint/config-angular": "^14.1.0",
     "@types/cordova": "^0.0.34",
     "husky": "^7.0.0",
     "lint-staged": "^11.0.0",
