@@ -268,7 +268,7 @@ import Lottie
         )
     }
 
-    private func getUIModeDependentPreference(basePreferenceName: String, defaultValue: String? = "") -> String {
+    private func getUIModeDependentPreference(basePreferenceName: String, defaultValue: String = "") -> String {
         var preferenceValue = ""
         if #available(iOS 12.0, *) {
             if viewController.traitCollection.userInterfaceStyle == .dark {

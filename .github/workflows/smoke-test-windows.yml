@@ -17,7 +17,7 @@ jobs:
 
       - uses: actions/setup-node@v2.5.0
         with:
-          node-version: '16.x'
+          node-version: '12.x'
 
       - name: Environment Information
         run: |
@@ -35,8 +35,6 @@ jobs:
       - name: Install Plugins
         run: |
           cd lottie-smoke-test
-          cordova plugin add cordova-plugin-androidx
-          cordova plugin add cordova-plugin-androidx-adapter
           cordova plugin add $env:GITHUB_WORKSPACE --link
 
       - name: Build Project

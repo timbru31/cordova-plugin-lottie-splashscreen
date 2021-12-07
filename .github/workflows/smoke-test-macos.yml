@@ -38,7 +38,6 @@ jobs:
           gsed -i '4i\    <preference name="SwiftVersion" value="5" />' config.xml
           cordova platform add android@latest
           gsed -i '4i\    <preference name="GradlePluginKotlinEnabled" value="true" />' config.xml
-          gsed -i '4i\    <preference name="AndroidXEnabled" value="true" />' config.xml
 
       - name: Install Plugins
         run: |
