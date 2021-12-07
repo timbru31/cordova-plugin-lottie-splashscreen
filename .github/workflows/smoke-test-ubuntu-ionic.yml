@@ -32,6 +32,7 @@ jobs:
           ionic start lottie-smoke-test tabs --cordova --type angular --no-interactive --no-confirm
           cd lottie-smoke-test
           ionic cordova platform add android@latest --no-interactive --confirm
+          ionic cordova plugin rm cordova-plugin-whitelist
           sed -i '4i\    <preference name="GradlePluginKotlinEnabled" value="true" />' config.xml
 
       - name: Install Plugins
