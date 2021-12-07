@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.graphics.drawable.ColorDrawable
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -112,7 +113,7 @@ class LottieSplashScreen : CordovaPlugin() {
                 val remoteEnabled = remote ?: preferences.getBoolean("LottieRemoteEnabled", false)
                 val animationLocation = getAnimationLocation(location)
 
-                if (animationLocation.isNullOrBlank()) {
+                if (animationLocation.isBlank()) {
                     Log.e(LOG_TAG, "LottieAnimationLocation has to be configured!")
                     this.destroyView()
                     val invalidURLException = LottieSplashScreenInvalidURLException("The provided animation is invalid")
@@ -134,14 +135,14 @@ class LottieSplashScreen : CordovaPlugin() {
 
                 val delay = preferences.getInteger("LottieHideTimeout", 0)
                 if (delay > 0) {
-                    val handler = Handler()
+                    val handler = Handler(Looper.getMainLooper())
                     handler.postDelayed({ dismissDialog() }, delay.toLong())
                 }
             }
         }
     }
 
-    private fun getAnimationLocation(location: String?): String? {
+    private fun getAnimationLocation(location: String?): String {
         var animationLocation = location
         if (animationLocation.isNullOrBlank()) {
             animationLocation = getUIModeDependentPreference("LottieAnimationLocation")
