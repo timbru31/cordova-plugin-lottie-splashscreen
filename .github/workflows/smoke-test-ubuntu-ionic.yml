@@ -36,7 +36,6 @@ jobs:
       - name: Install Plugins
         run: |
           cd lottie-smoke-test
-          ionic cordova plugin rm cordova-plugin-whitelist --no-interactive --confirm
           ionic cordova plugin add cordova-plugin-androidx --no-interactive --confirm
           ionic cordova plugin add cordova-plugin-androidx-adapter --no-interactive --confirm
           ionic cordova plugin add $GITHUB_WORKSPACE --no-interactive --confirm -- --link
@@ -45,5 +44,5 @@ jobs:
         run: |
           cd lottie-smoke-test
           # Workaround https://github.com/ionic-team/ionic-cli/issues/4614
-          npm i -D @angular-devkit/build-angular@12 @ionic/angular-toolkit@latest
+          npm i -D @angular-devkit/build-angular@v12-lts @ionic/angular-toolkit@latest
           ionic cordova build android --no-interactive --confirm
