@@ -144,17 +144,7 @@ class LottieSplashScreen : CordovaPlugin() {
     private fun getAnimationLocation(location: String?): String? {
         var animationLocation = location
         if (animationLocation.isNullOrBlank()) {
-            val nightMode: Boolean = cordova.context.resources.configuration.uiMode and
-                Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
-
-            animationLocation = when {
-                nightMode -> preferences.getString("LottieAnimationLocationDark", "")
-                else -> preferences.getString("LottieAnimationLocationLight", "")
-            }
-
-            if (animationLocation.isNullOrBlank()) {
-                animationLocation = preferences.getString("LottieAnimationLocation", "")
-            }
+            animationLocation = getUIModeDependentPreference("LottieAnimationLocation")
         }
         return animationLocation
     }
@@ -223,7 +213,7 @@ class LottieSplashScreen : CordovaPlugin() {
         )
 
         val color = ColorHelper.parseColor(
-            preferences.getString(
+            getUIModeDependentPreference(
                 "LottieBackgroundColor",
                 "#ffffff"
             )
@@ -345,6 +335,22 @@ class LottieSplashScreen : CordovaPlugin() {
                 callbackContext?.success()
             }
         }
+    }
+
+    private fun getUIModeDependentPreference(preferenceBaseName: String, defaultValue: String? = ""): String {
+        val nightMode: Boolean = cordova.context.resources.configuration.uiMode and
+            Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+
+        var preferenceValue: String
+        preferenceValue = when {
+            nightMode -> preferences.getString("""${preferenceBaseName}Dark""", defaultValue)
+            else -> preferences.getString("""${preferenceBaseName}Light""", defaultValue)
+        }
+
+        if (preferenceValue.isBlank()) {
+            preferenceValue = preferences.getString(preferenceBaseName, defaultValue)
+        }
+        return preferenceValue
     }
 
     companion object {

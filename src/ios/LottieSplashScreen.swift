@@ -118,7 +118,8 @@ import Lottie
         animationViewContainer = UIView(frame: (parentView?.bounds)!)
         animationViewContainer?.layer.zPosition = 1
 
-        let backgroundColor = commandDelegate?.settings["LottieBackgroundColor".lowercased()] as? String
+        let backgroundColor = getUIModeDependentPreference(basePreferenceName: "LottieBackgroundColor", defaultValue: "#ffffff")
+
         animationViewContainer?.autoresizingMask = [
             .flexibleWidth, .flexibleHeight, .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin
         ]
@@ -130,17 +131,7 @@ import Lottie
         if location != nil {
             animationLocation = location!
         } else {
-            if #available(iOS 12.0, *) {
-                if viewController.traitCollection.userInterfaceStyle == .dark {
-                    animationLocation = commandDelegate?.settings["LottieAnimationLocationDark".lowercased()] as? String ?? ""
-                } else {
-                    animationLocation = commandDelegate?.settings["LottieAnimationLocationLight".lowercased()] as? String ?? ""
-                }
-            }
-
-            if animationLocation.isEmpty {
-                animationLocation = commandDelegate?.settings["LottieAnimationLocation".lowercased()] as? String ?? ""
-            }
+            animationLocation = getUIModeDependentPreference(basePreferenceName: "LottieAnimationLocation")
         }
 
         if isRemote(remote: remote) {
@@ -275,6 +266,22 @@ import Lottie
             name: UIDevice.orientationDidChangeNotification,
             object: nil
         )
+    }
+
+    private func getUIModeDependentPreference(basePreferenceName: String, defaultValue: String? = "") -> String {
+        var preferenceValue = ""
+        if #available(iOS 12.0, *) {
+            if viewController.traitCollection.userInterfaceStyle == .dark {
+                preferenceValue = commandDelegate?.settings[(basePreferenceName + "Dark").lowercased()] as? String ?? defaultValue
+            } else {
+                preferenceValue = commandDelegate?.settings[(basePreferenceName + "Light").lowercased()] as? String ?? defaultValue
+            }
+        }
+
+        if preferenceValue.isEmpty {
+            preferenceValue = commandDelegate?.settings[basePreferenceName.lowercased()] as? String ?? defaultValue
+        }
+        return preferenceValue
     }
 
     @objc private func deviceOrientationChanged() {

@@ -150,7 +150,19 @@ await lottie.splashscreen.once(event: LottieEvent).then(event => console.log(eve
     <preference name="LottieHideTimeout" value="?" /> <!-- CAUTION: iOS reads this value in **SECONDS**, Android reads this value in **MILLISECONDS**>
 ```
 
--   `LottieBackgroundColor` (String, default `#ffffff`). Background color of the overlay. Can be used with alpha values, too. (For more information see the [8 digits notation of RGB notation](https://drafts.csswg.org/css-color/#hex-notation))
+-   `LottieBackgroundColorLight` (String, default `#ffffff`). Background color of the overlay in light. Can be used with alpha values, too. (For more information see the [8 digits notation of RGB notation](https://drafts.csswg.org/css-color/#hex-notation))
+
+```xml
+    <preference name="LottieBackgroundColorLight" value="#fff000a3" />
+```
+
+-   `LottieBackgroundColorDark` (String, default `#ffffff`). Background color of the overlay in dark mode. Can be used with alpha values, too. (For more information see the [8 digits notation of RGB notation](https://drafts.csswg.org/css-color/#hex-notation))
+
+```xml
+    <preference name="LottieBackgroundColorDark" value="#fff000a3" />
+```
+
+-   `LottieBackgroundColor` (String, default `#ffffff`). Background color of the overlay as a fallback if there are no dark or light mode colors defined. Can be used with alpha values, too. (For more information see the [8 digits notation of RGB notation](https://drafts.csswg.org/css-color/#hex-notation))
 
 ```xml
     <preference name="LottieBackgroundColor" value="#fff000a3" />
