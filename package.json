@@ -47,6 +47,12 @@
         "cordova-android": ">=9.0.0",
         "cordova-ios": ">=5.0.0",
         "apple-ios": ">=9.0.0"
+      },
+      ">=0.10.0": {
+        "cordova": ">= 9.0.0",
+        "cordova-android": ">=9.0.0",
+        "cordova-ios": ">=5.0.0",
+        "apple-ios": ">=11.0.0"
       }
     }
   },

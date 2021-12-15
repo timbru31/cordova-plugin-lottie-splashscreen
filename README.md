@@ -19,7 +19,7 @@
 
 ### Supported platforms
 
--   **iOS (10+) (with cordova-ios >= 5.0.0 only)**
+-   **iOS (11+) (with cordova-ios >= 5.0.0 only)**
 -   **Android (with cordova-android >= 9.0.0 only)**
 
 ### Planned platforms
