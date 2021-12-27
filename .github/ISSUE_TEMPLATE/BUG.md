@@ -24,7 +24,7 @@ about: Something's broken and you want to report it
 
 ## Checklist
 
-<!-- Please check the items below with x and remv the space. [x] NOT [x ] or [+] -->
+<!-- Please check the items below with x and remove the space. [x] NOT [x ] or [+] -->
 
 -   [ ] If there is a (potential) plugin conflict, I've identified the conflicting plugin
 -   [ ] I have added a valid version output
