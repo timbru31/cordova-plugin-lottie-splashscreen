@@ -45,5 +45,5 @@ jobs:
         run: |
           cd lottie-smoke-test
           # Workaround https://github.com/ionic-team/ionic-cli/issues/4614
-          npm i -D @angular-devkit/build-angular@v12-lts @ionic/angular-toolkit@latest
+          # npm i -D @angular-devkit/build-angular@v12-lts @ionic/angular-toolkit@latest
           ionic cordova build android --no-interactive --confirm
