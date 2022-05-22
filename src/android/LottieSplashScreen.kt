@@ -272,11 +272,11 @@ class LottieSplashScreen : CordovaPlugin() {
         animationView.addAnimatorListener(
             object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {
-                    webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationStart'))") { }
+                    webView.engine?.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationStart'))") { }
                 }
 
                 override fun onAnimationEnd(animation: Animator) {
-                    webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))") { }
+                    webView.engine?.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))") { }
                     val hideAfterAnimationDone = preferences.getBoolean(
                         "LottieHideAfterAnimationEnd",
                         false
@@ -288,11 +288,11 @@ class LottieSplashScreen : CordovaPlugin() {
                 }
 
                 override fun onAnimationCancel(animation: Animator) {
-                    webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationCancel'))") { }
+                    webView.engine?.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationCancel'))") { }
                 }
 
                 override fun onAnimationRepeat(animation: Animator) {
-                    webView.engine.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationRepeat'))") { }
+                    webView.engine?.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationRepeat'))") { }
                 }
             }
         )
