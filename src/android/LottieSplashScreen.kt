@@ -269,23 +269,15 @@ class LottieSplashScreen : CordovaPlugin() {
         }
     }
 
-    private fun evalJs(code : String) {
-        if (webView.engine != null) {
-            webView.engine.evaluateJavascript(code) { };
-        } else {
-            (webView.getView() as WebView).evaluateJavascript(code) { };
-        }
-    }
-
     private fun addAnimationListeners() {
         animationView.addAnimatorListener(
             object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {
-                    evalJs("document.dispatchEvent(new Event('lottieAnimationStart'))");
+                    (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationStart'))") { }
                 }
 
                 override fun onAnimationEnd(animation: Animator) {
-                    evalJs("document.dispatchEvent(new Event('lottieAnimationEnd'))");
+                    (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))") { }
                     val hideAfterAnimationDone = preferences.getBoolean(
                         "LottieHideAfterAnimationEnd",
                         false
@@ -297,11 +289,11 @@ class LottieSplashScreen : CordovaPlugin() {
                 }
 
                 override fun onAnimationCancel(animation: Animator) {
-                    evalJs("document.dispatchEvent(new Event('lottieAnimationCancel'))");
+                    (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationCancel'))") { }
                 }
 
                 override fun onAnimationRepeat(animation: Animator) {
-                    evalJs("document.dispatchEvent(new Event('lottieAnimationRepeat'))");
+                    (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationRepeat'))") { }
                 }
             }
         )
