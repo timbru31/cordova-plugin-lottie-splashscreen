@@ -11,6 +11,7 @@ import android.os.Looper
 import android.util.Log
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import android.webkit.WebView
 import android.widget.ImageView
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieComposition
@@ -272,11 +273,11 @@ class LottieSplashScreen : CordovaPlugin() {
         animationView.addAnimatorListener(
             object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {
-                    webView.engine?.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationStart'))") { }
+                    (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationStart'))") { }
                 }
 
                 override fun onAnimationEnd(animation: Animator) {
-                    webView.engine?.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))") { }
+                    (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))") { }
                     val hideAfterAnimationDone = preferences.getBoolean(
                         "LottieHideAfterAnimationEnd",
                         false
@@ -288,11 +289,11 @@ class LottieSplashScreen : CordovaPlugin() {
                 }
 
                 override fun onAnimationCancel(animation: Animator) {
-                    webView.engine?.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationCancel'))") { }
+                    (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationCancel'))") { }
                 }
 
                 override fun onAnimationRepeat(animation: Animator) {
-                    webView.engine?.evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationRepeat'))") { }
+                    (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationRepeat'))") { }
                 }
             }
         )
