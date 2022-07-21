@@ -31,7 +31,7 @@ jobs:
           npm i -g cordova @ionic/cli
           ionic start lottie-smoke-test tabs --cordova --type angular --no-interactive --no-confirm
           cd lottie-smoke-test
-          npx ng add @ionic/cordova-builders
+          npx ng add @ionic/cordova-builders --skip-confirmation
           ionic cordova platform add android@latest --no-interactive --confirm
           sed -i '4i\    <preference name="GradlePluginKotlinEnabled" value="true" />' config.xml
 
