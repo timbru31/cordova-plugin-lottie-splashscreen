@@ -10,15 +10,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: set up JDK 1.8
+      - name: set up JDK 11
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: 8
+          java-version: 11
 
       - uses: actions/setup-node@v3
         with:
-          node-version: '12.x'
+          node-version: '14.x'
 
       - name: Environment Information
         run: |
@@ -31,6 +31,7 @@ jobs:
           npm i -g cordova @ionic/cli
           ionic start lottie-smoke-test tabs --cordova --type angular --no-interactive --no-confirm
           cd lottie-smoke-test
+          npx ng add @ionic/cordova-builders --skip-confirmation
           ionic cordova platform add android@latest --no-interactive --confirm
           sed -i '4i\    <preference name="GradlePluginKotlinEnabled" value="true" />' config.xml
 
