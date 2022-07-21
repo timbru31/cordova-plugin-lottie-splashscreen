@@ -31,11 +31,7 @@ jobs:
           npm i -g cordova @ionic/cli
           ionic start lottie-smoke-test tabs --cordova --type angular --no-interactive --no-confirm
           cd lottie-smoke-test
-          # Fix Angular 14 issues
-          rm -rf node_modules package-lock.json
-          sed -i -E "s/14.0.0/13.0.0/g" package.json
-          sed -i -E "s/4.7/4.6/g" package.json
-          npm i
+          npx ng add @ionic/cordova-builders
           ionic cordova platform add android@latest --no-interactive --confirm
           sed -i '4i\    <preference name="GradlePluginKotlinEnabled" value="true" />' config.xml
 
