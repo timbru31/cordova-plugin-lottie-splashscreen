@@ -21,4 +21,4 @@ indent_size = 2
 trim_trailing_whitespace = false
 
 [*.{kt,kts}]
-disabled_rules=import-ordering
+ktlint_standard_import-ordering = disabled
