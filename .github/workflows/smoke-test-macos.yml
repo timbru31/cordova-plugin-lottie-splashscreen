@@ -7,7 +7,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        xcode: [12, 13]
+        xcode: [13, 14]
 
     steps:
       - uses: actions/checkout@v3
