@@ -55,7 +55,7 @@ class LottieSplashScreen {
      * @param event - The desired event to listen to.
      */
     static once(event: LottieEvent) {
-        return new Promise((resolve, _) => {
+        return new Promise((resolve) => {
             document.addEventListener(event, resolve);
         });
     }
