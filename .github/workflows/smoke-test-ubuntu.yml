@@ -36,7 +36,7 @@ jobs:
           cd lottie-smoke-test
           cordova platform add android@10
           sed -i '4i\    <preference name="GradlePluginKotlinEnabled" value="true" />' config.xml
-          sed -i '4i\    <preference name="GradlePluginKotlinVersion" value="1.8.0" />' config.xml
+          sed -i '4i\    <preference name="GradlePluginKotlinVersion" value="1.7.22" />' config.xml
 
       - name: Install Plugins
         run: |
