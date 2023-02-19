@@ -2,6 +2,9 @@ name: Smoke test on Ubuntu (Ionic)
 
 on: [push, pull_request]
 
+env:
+  HUSKY: 0
+
 jobs:
   build:
     name: Ionic CLI

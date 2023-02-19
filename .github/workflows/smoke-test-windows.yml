@@ -2,6 +2,9 @@ name: Smoke test on Windows
 
 on: [push, pull_request]
 
+env:
+  HUSKY: 0
+
 jobs:
   build:
     runs-on: windows-latest
