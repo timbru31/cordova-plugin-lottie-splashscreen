@@ -35,7 +35,8 @@ jobs:
           ionic start lottie-smoke-test tabs --cordova --type angular --no-interactive --no-confirm
           cd lottie-smoke-test
           npx ng add @ionic/cordova-builders --skip-confirmation
-          ionic cordova platform add android@latest --no-interactive --confirm
+          ionic cordova platform add android@10 --no-interactive --confirm
+          sed -i '4i\    <preference name="GradlePluginKotlinVersion" value="1.8.0" />' config.xml
           sed -i '4i\    <preference name="GradlePluginKotlinEnabled" value="true" />' config.xml
 
       - name: Install Plugins

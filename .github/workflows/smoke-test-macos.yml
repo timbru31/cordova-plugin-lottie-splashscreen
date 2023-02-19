@@ -46,8 +46,9 @@ jobs:
           cd lottie-smoke-test
           cordova platform add ios@latest
           gsed -i '4i\    <preference name="SwiftVersion" value="5" />' config.xml
-          cordova platform add android@latest
+          cordova platform add android@10
           gsed -i '4i\    <preference name="GradlePluginKotlinEnabled" value="true" />' config.xml
+          gsed -i '4i\    <preference name="GradlePluginKotlinVersion" value="1.8.0" />' config.xml
 
       - name: Install Plugins
         run: |
