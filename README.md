@@ -2,7 +2,8 @@
 
 [![Run a security audit](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/workflows/Run%20a%20security%20audit/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions?query=workflow%3A%22Run+a+security+audit%22)
 [![Linting](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/workflows/Linting/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions?query=workflow%3ALinting)
-[![Smoke test on Ubuntu](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/workflows/Smoke%20test%20on%20Ubuntu/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions?query=workflow%3A%22Smoke+test+on+Ubuntu%22)
+[![Smoke test on Ubuntu (Apache Cordova)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions/workflows/smoke-test-ubuntu.yml/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions/workflows/smoke-test-ubuntu.yml)
+[![Smoke test on Ubuntu (Ionic)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions/workflows/smoke-test-ubuntu-ionic.yml/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions/workflows/smoke-test-ubuntu-ionic.yml)
 [![Smoke test on macOS](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/workflows/Smoke%20test%20on%20macOS/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions?query=workflow%3A%22Smoke+test+on+macOS%22)
 [![Smoke test on Windows](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/workflows/Smoke%20test%20on%20Windows/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions?query=workflow%3A%22Smoke+test+on+Windows%22)
 
@@ -11,7 +12,6 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/timbru31/cordova-plugin-lottie-splashscreen/badge.svg)](https://snyk.io/test/github/timbru31/cordova-plugin-lottie-splashscreen)
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://commitizen.github.io/cz-cli/)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=timbru31/cordova-plugin-lottie-splashscreen)](https://dependabot.com)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![npm](https://img.shields.io/npm/v/cordova-plugin-lottie-splashscreen.svg)](https://www.npmjs.com/package/cordova-plugin-lottie-splashscreen)
 
