@@ -6,10 +6,11 @@
 4. [error: Value for SWIFT_VERSION cannot be empty](#error-value-for-swift_version-cannot-be-empty)
 5. [error: SWIFT_VERSION '5.0' is unsupported, supported versions are: 3.0, 4.0, 4.2. (in target 'lottie-ios')](#error-swift_version-50-is-unsupported-supported-versions-are-30-40-42-in-target-lottie-ios)
 6. [Error: pod: Command failed with exit code 1 Error output:](#error-pod-command-failed-with-exit-code-1-error-output)
-7. [Hook failed with error code 1](#hook-failed-with-error-code-1)
+7. [Hook failed with error code 1](#error-hook-failed-with-error-code-1)
 8. [FAILURE: Build failed with an exception.](#failure-build-failed-with-an-exception)
 9. [E/AndroidRuntime: FATAL EXCEPTION: main](#eandroidruntime-fatal-exception-main)
 10. [Help my background color is not displayed correctly on Android](#help-my-background-color-is-not-displayed-correctly-on-android)
+11. [xcode-select is a command line tools instance](#xcode-select-is-a-command-line-tools-instance)
 
 ---
 
@@ -186,3 +187,14 @@ android {
     }
 }
 ```
+
+## xcode-select is a command line tools instance
+
+```
+xcodebuild: Command failed with exit code 1 Error output:
+xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instance
+```
+
+### Answer
+
+You need to make sure to install Xcode and re-link the command line tools: `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer`
