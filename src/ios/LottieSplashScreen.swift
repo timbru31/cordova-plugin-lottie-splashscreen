@@ -1,7 +1,7 @@
 import Lottie
 
 @objc(LottieSplashScreen) class LottieSplashScreen: CDVPlugin {
-    var animationView: AnimationView?
+    var animationView: LottieAnimationView?
     var animationViewContainer: UIView?
     var visible = false
     var animationEnded = false
@@ -137,17 +137,17 @@ import Lottie
         if isRemote(remote: remote) {
             let cacheDisabled = (commandDelegate?.settings["LottieCacheDisabled".lowercased()] as? NSString ?? "false").boolValue
             guard let url = URL(string: animationLocation) else { throw LottieSplashScreenError.invalidURL }
-            animationView = AnimationView(url: url, closure: { error in
+            animationView = LottieAnimationView(url: url, closure: { error in
                 if error == nil {
                     self.playAnimation()
                 } else {
                     self.destroyView()
                     self.processInvalidURLError(error: error!)
                 }
-            }, animationCache: cacheDisabled ? nil : LRUAnimationCache.sharedCache)
+            }, animationCache: cacheDisabled ? nil : DefaultAnimationCache.sharedCache)
         } else {
             animationLocation = Bundle.main.bundleURL.appendingPathComponent(animationLocation).path
-            animationView = AnimationView(filePath: animationLocation)
+            animationView = LottieAnimationView(filePath: animationLocation)
         }
 
         calculateAnimationSize(width: width, height: height)
