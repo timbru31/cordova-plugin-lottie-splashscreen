@@ -19,7 +19,7 @@
 ### Supported platforms
 
 -   **iOS (11+) (with cordova-ios >= 5.0.0 only)**
--   **Android (with cordova-android >= 9.0.0 only)**
+-   **Android (with cordova-android >= 10.0.0 only)**
 
 ### Planned platforms
 
@@ -44,7 +44,7 @@ You need to specify a valid `SwiftVersion` (minimum is 4.2) in your `config.xml`
 #### Android
 
 AndroidX and Kotlin support is required. Therefore only **cordova-android >= 9.0.0** is supported.  
-You need to enable Kotlin and AndroidX in your `config.xml` by setting `GradlePluginKotlinEnabled` **and** `AndroidXEnabled` to `true`.  
+If you use `cordova-android` <10.0.0 then you need to enable Kotlin and AndroidX in your `config.xml` by setting `GradlePluginKotlinEnabled` **and** `AndroidXEnabled` to `true`.  
 In the [FAQ](FAQ.md) are some examples with common error messages and how to fix them.
 
 ### Installation
