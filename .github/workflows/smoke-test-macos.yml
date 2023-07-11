@@ -17,14 +17,14 @@ jobs:
         xcode: [13, 14]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.3
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3.7.0
         with:
-          node-version: 16
+          node-version: 18
 
       - name: set up JDK 11
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v3.11.0
         with:
           distribution: "temurin"
           java-version: 11
@@ -50,7 +50,7 @@ jobs:
           cd lottie-smoke-test
           cordova platform add ios@latest
           gsed -i '4i\    <preference name="SwiftVersion" value="5" />' config.xml
-          cordova platform add android@10
+          cordova platform add android@12
           gsed -i '4i\    <preference name="GradlePluginKotlinEnabled" value="true" />' config.xml
           gsed -i '4i\    <preference name="GradlePluginKotlinVersion" value="1.7.22" />' config.xml
 
