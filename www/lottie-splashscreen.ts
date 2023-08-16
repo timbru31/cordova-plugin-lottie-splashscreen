@@ -78,7 +78,7 @@ document.addEventListener('deviceready', () => {
         console.error,
         'LottieSplashScreen',
         'initialAnimationEnded',
-        []
+        [],
     );
 });
 
