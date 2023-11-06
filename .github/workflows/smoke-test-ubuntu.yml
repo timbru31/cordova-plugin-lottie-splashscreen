@@ -20,7 +20,7 @@ jobs:
       - name: set up JDK 11
         uses: actions/setup-java@v3.13.0
         with:
-          distribution: 'temurin'
+          distribution: "temurin"
           java-version: 11
 
       - uses: actions/setup-node@v4.0.0
@@ -38,7 +38,7 @@ jobs:
           npm i -g cordova
           cordova create lottie-smoke-test
           cd lottie-smoke-test
-          cordova platform add android@10
+          cordova platform add android@11
           sed -i '4i\    <preference name="GradlePluginKotlinEnabled" value="true" />' config.xml
           sed -i '4i\    <preference name="GradlePluginKotlinVersion" value="1.7.22" />' config.xml
 
