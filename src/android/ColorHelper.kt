@@ -11,11 +11,14 @@ class ColorHelper {
 }
 
 @ColorInt
-fun ColorHelper.Companion.parseColor(@Size(min = 1) colorString: String): Int {
-    var xColorString = when {
-        colorString[0] == '#' -> colorString.substring(1)
-        else -> colorString
-    }
+fun ColorHelper.Companion.parseColor(
+    @Size(min = 1) colorString: String,
+): Int {
+    var xColorString =
+        when {
+            colorString[0] == '#' -> colorString.substring(1)
+            else -> colorString
+        }
 
     // Reverse alpha value
     if (xColorString.length == 8) {

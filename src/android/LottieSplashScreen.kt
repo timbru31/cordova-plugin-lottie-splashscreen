@@ -39,7 +39,10 @@ class LottieSplashScreen : CordovaPlugin() {
         }
     }
 
-    override fun onMessage(id: String?, data: Any?): Any? {
+    override fun onMessage(
+        id: String?,
+        data: Any?,
+    ): Any? {
         if ("onPageFinished" == id) {
             val autoHide = preferences.getBoolean("LottieAutoHideSplashScreen", false)
             if (autoHide) {
@@ -49,7 +52,11 @@ class LottieSplashScreen : CordovaPlugin() {
         return null
     }
 
-    override fun execute(action: String, args: CordovaArgs, callbackContext: CallbackContext): Boolean {
+    override fun execute(
+        action: String,
+        args: CordovaArgs,
+        callbackContext: CallbackContext,
+    ): Boolean {
         when (action) {
             "hide" ->
                 return try {
@@ -105,8 +112,9 @@ class LottieSplashScreen : CordovaPlugin() {
                 val context = webView.context
 
                 animationView = LottieAnimationView(context)
-                val useHardwareAcceleration = remote
-                    ?: preferences.getBoolean("LottieEnableHardwareAcceleration", false)
+                val useHardwareAcceleration =
+                    remote
+                        ?: preferences.getBoolean("LottieEnableHardwareAcceleration", false)
                 if (useHardwareAcceleration) {
                     animationView.setRenderMode(RenderMode.HARDWARE)
                 }
@@ -161,31 +169,34 @@ class LottieSplashScreen : CordovaPlugin() {
         val cacheDisabled = preferences.getBoolean("LottieCacheDisabled", false)
         when {
             remoteEnabled -> {
-                comp = LottieCompositionFactory.fromUrl(
-                    context,
-                    animationLocation,
-                    when {
-                        cacheDisabled -> null
-                        else -> "url_$animationLocation"
-                    },
-                )
+                comp =
+                    LottieCompositionFactory.fromUrl(
+                        context,
+                        animationLocation,
+                        when {
+                            cacheDisabled -> null
+                            else -> "url_$animationLocation"
+                        },
+                    )
             }
             else -> {
-                comp = LottieCompositionFactory.fromAsset(
-                    context,
-                    animationLocation,
-                    when {
-                        cacheDisabled -> null
-                        else -> "asset_$animationLocation"
-                    },
-                )
-                animationView.imageAssetsFolder = preferences.getString(
-                    "LottieImagesLocation",
-                    animationLocation.substring(
-                        0,
-                        animationLocation.lastIndexOf('/'),
-                    ),
-                )
+                comp =
+                    LottieCompositionFactory.fromAsset(
+                        context,
+                        animationLocation,
+                        when {
+                            cacheDisabled -> null
+                            else -> "asset_$animationLocation"
+                        },
+                    )
+                animationView.imageAssetsFolder =
+                    preferences.getString(
+                        "LottieImagesLocation",
+                        animationLocation.substring(
+                            0,
+                            animationLocation.lastIndexOf('/'),
+                        ),
+                    )
             }
         }
 
@@ -207,50 +218,58 @@ class LottieSplashScreen : CordovaPlugin() {
             animationView.repeatCount = LottieDrawable.INFINITE
         }
 
-        animationView.scaleType = ImageView.ScaleType.valueOf(
-            preferences.getString(
-                "LottieScaleType",
-                "FIT_CENTER",
-            ).uppercase(Locale.ENGLISH),
-        )
+        animationView.scaleType =
+            ImageView.ScaleType.valueOf(
+                preferences.getString(
+                    "LottieScaleType",
+                    "FIT_CENTER",
+                ).uppercase(Locale.ENGLISH),
+            )
 
-        val color = ColorHelper.parseColor(
-            getUIModeDependentPreference(
-                "LottieBackgroundColor",
-                "#ffffff",
-            ),
-        )
+        val color =
+            ColorHelper.parseColor(
+                getUIModeDependentPreference(
+                    "LottieBackgroundColor",
+                    "#ffffff",
+                ),
+            )
         animationView.setBackgroundColor(color)
 
         val fullScreen = preferences.getBoolean("LottieFullScreen", false)
-        splashDialog = Dialog(
-            context,
-            when {
-                fullScreen -> style.Theme_NoTitleBar_Fullscreen
-                else -> style.Theme_Translucent_NoTitleBar
-            },
-        )
+        splashDialog =
+            Dialog(
+                context,
+                when {
+                    fullScreen -> style.Theme_NoTitleBar_Fullscreen
+                    else -> style.Theme_Translucent_NoTitleBar
+                },
+            )
         splashDialog.window?.setBackgroundDrawable(ColorDrawable(color))
         splashDialog.setContentView(animationView)
         splashDialog.setCancelable(false)
     }
 
-    private fun calculateAnimationSize(width: Double? = null, height: Double? = null) {
+    private fun calculateAnimationSize(
+        width: Double? = null,
+        height: Double? = null,
+    ) {
         val fullScreen = preferences.getBoolean("LottieFullScreen", false)
         if (!fullScreen) {
             val relativeSize = preferences.getBoolean("LottieRelativeSize", false)
             if (relativeSize) {
                 val metrics = webView.context.resources.displayMetrics
-                val animationHeight = (
-                    metrics.heightPixels * (
-                        width
-                            ?: preferences.getDouble("LottieWidth", 0.2)
+                val animationHeight =
+                    (
+                        metrics.heightPixels * (
+                            width
+                                ?: preferences.getDouble("LottieWidth", 0.2)
                         )
                     ).toInt()
-                val animationWidth = (
-                    metrics.widthPixels * (
-                        height
-                            ?: preferences.getDouble("LottieHeight", 0.2)
+                val animationWidth =
+                    (
+                        metrics.widthPixels * (
+                            height
+                                ?: preferences.getDouble("LottieHeight", 0.2)
                         )
                     ).toInt()
                 splashDialog.window?.setLayout(animationHeight, animationWidth)
@@ -278,10 +297,11 @@ class LottieSplashScreen : CordovaPlugin() {
 
                 override fun onAnimationEnd(animation: Animator) {
                     (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))") { }
-                    val hideAfterAnimationDone = preferences.getBoolean(
-                        "LottieHideAfterAnimationEnd",
-                        false,
-                    )
+                    val hideAfterAnimationDone =
+                        preferences.getBoolean(
+                            "LottieHideAfterAnimationEnd",
+                            false,
+                        )
                     when {
                         hideAfterAnimationDone -> dismissDialog()
                     }
@@ -339,15 +359,20 @@ class LottieSplashScreen : CordovaPlugin() {
         }
     }
 
-    private fun getUIModeDependentPreference(preferenceBaseName: String, defaultValue: String? = ""): String {
-        val nightMode: Boolean = cordova.context.resources.configuration.uiMode and
-            Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+    private fun getUIModeDependentPreference(
+        preferenceBaseName: String,
+        defaultValue: String? = "",
+    ): String {
+        val nightMode: Boolean =
+            cordova.context.resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
 
         var preferenceValue: String
-        preferenceValue = when {
-            nightMode -> preferences.getString("""${preferenceBaseName}Dark""", defaultValue)
-            else -> preferences.getString("""${preferenceBaseName}Light""", defaultValue)
-        }
+        preferenceValue =
+            when {
+                nightMode -> preferences.getString("""${preferenceBaseName}Dark""", defaultValue)
+                else -> preferences.getString("""${preferenceBaseName}Light""", defaultValue)
+            }
 
         if (preferenceValue.isBlank()) {
             preferenceValue = preferences.getString(preferenceBaseName, defaultValue)
