@@ -35,7 +35,7 @@ jobs:
           npm --version
           java --version
 
-      - uses: maxim-lobanov/setup-xcode@v1.5.1
+      - uses: maxim-lobanov/setup-xcode@v1.6.0
         with:
           xcode-version: ${{ matrix.xcode }}
 
