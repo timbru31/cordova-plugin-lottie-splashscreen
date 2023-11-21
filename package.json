@@ -28,7 +28,7 @@
     "prettier": "^3.1.0",
     "replace": "^1.2.2",
     "standard-version": "^9.5.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.3.2"
   },
   "cordova": {
     "id": "cordova-plugin-lottie-splashscreen",
