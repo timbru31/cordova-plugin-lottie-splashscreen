@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.4",
-    "@commitlint/config-angular": "^18.4.3",
+    "@commitlint/config-angular": "^18.4.4",
     "@types/cordova": "^11.0.3",
     "@typescript-eslint/eslint-plugin": "^6.17.0",
     "@typescript-eslint/parser": "^6.17.0",
