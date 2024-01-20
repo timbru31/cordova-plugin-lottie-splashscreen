@@ -31,7 +31,6 @@
         <config-file target="config.xml" parent="/*">
             <feature name="LottieSplashScreen">
                 <param name="ios-package" value="LottieSplashScreen" />
-                <param name="onload" value="true" />
             </feature>
         </config-file>
 
