@@ -43,7 +43,7 @@
                 <source url="https://cdn.cocoapods.org/"/>
             </config>
             <pods use-frameworks="true">
-                <pod name="lottie-ios" spec="~> 4.3.4" />
+                <pod name="lottie-ios" spec="~> 4.4.0" />
             </pods>
         </podspec>
     </platform>
