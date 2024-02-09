@@ -41,6 +41,6 @@ jobs:
 
     steps:
       - name: Automatically merge dependabot upgrades
-        uses: fastify/github-action-merge-dependabot@v3.9.1
+        uses: fastify/github-action-merge-dependabot@v3.10.0
         with:
           target: minor
