@@ -25,6 +25,7 @@ jobs:
       - name: Setup
         run: |
           brew install ktlint
+          brew install swiftlint
           swiftlint version
           npm ci
 
