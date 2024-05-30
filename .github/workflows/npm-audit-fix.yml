@@ -14,4 +14,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.6
 
-      - uses: ybiquitous/npm-audit-fix-action@v6.1.1
+      - uses: ybiquitous/npm-audit-fix-action@v6.1.2
