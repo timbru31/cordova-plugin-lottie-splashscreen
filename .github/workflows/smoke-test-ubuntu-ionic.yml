@@ -32,7 +32,7 @@ jobs:
           node --version
           npm --version
           java -version
-          android list sdk --all
+          sdkmanager --list
 
       - name: Setup Project
         run: |
