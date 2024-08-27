@@ -18,17 +18,18 @@
   "devDependencies": {
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-angular": "^19.3.0",
+    "@eslint/js": "^9.9.1",
     "@types/cordova": "^11.0.3",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.57.0",
+    "@types/eslint__js": "^8.42.3",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.5",
     "lint-staged": "^15.2.2",
     "prettier": "^3.3.3",
     "replace": "^1.2.2",
     "standard-version": "^9.5.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.3.0"
   },
   "cordova": {
     "id": "cordova-plugin-lottie-splashscreen",
