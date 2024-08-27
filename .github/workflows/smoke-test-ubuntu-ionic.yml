@@ -32,7 +32,7 @@ jobs:
           node --version
           npm --version
           java -version
-          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "build-tools;30.0.3"
 
       - name: Setup Project
         run: |
