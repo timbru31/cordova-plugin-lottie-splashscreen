@@ -35,8 +35,8 @@ jobs:
 
       - name: Setup Project
         run: |
-          ls $ANDROID_HOME/cmdline-tools/latest/bin
-          ls $ANDROID_HOME\cmdline-tools\latest\bin
+          ls "$ANDROID_HOME/cmdline-tools/latest/bin"
+          ls "$ANDROID_HOME\cmdline-tools\latest\bin"
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager.exe"
           npm i -g cordova
           cordova create lottie-smoke-test
