@@ -32,7 +32,8 @@ jobs:
           node --version
           npm --version
           java -version
-          ls $ANDROID_HOME/tools/
+          ls -lsa $ANDROID_HOME
+          ls -lsa $ANDROID_HOME/tools
           $ANDROID_HOME/tools/sdkmanager --list
 
       - name: Setup Project
