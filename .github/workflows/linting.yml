@@ -27,6 +27,9 @@ jobs:
           brew install ktlint
           brew install swiftlint
           swiftlint version
+
+      - name: Install dependencies
+        run: |
           npm ci
 
       - name: Linting

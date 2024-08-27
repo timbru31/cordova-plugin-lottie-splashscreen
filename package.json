@@ -6,7 +6,7 @@
   "license": "MIT",
   "types": "./types/index.d.ts",
   "scripts": {
-    "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\"",
+    "prepare": "husky",
     "build": "tsc",
     "lint": "npm run lint:android && npm run lint:ios && npm run lint:typescript",
     "lint:android": "ktlint src/android",
