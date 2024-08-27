@@ -21,7 +21,7 @@
     "@types/cordova": "^11.0.3",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.9.1",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.5",
     "lint-staged": "^15.2.2",
