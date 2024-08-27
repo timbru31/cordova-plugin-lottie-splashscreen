@@ -220,10 +220,11 @@ class LottieSplashScreen : CordovaPlugin() {
 
         animationView.scaleType =
             ImageView.ScaleType.valueOf(
-                preferences.getString(
-                    "LottieScaleType",
-                    "FIT_CENTER",
-                ).uppercase(Locale.ENGLISH),
+                preferences
+                    .getString(
+                        "LottieScaleType",
+                        "FIT_CENTER",
+                    ).uppercase(Locale.ENGLISH),
             )
 
         val color =
@@ -327,9 +328,7 @@ class LottieSplashScreen : CordovaPlugin() {
         }
     }
 
-    private fun convertPixelsToDp(px: Double): Int {
-        return (px * webView.context.resources.displayMetrics.density).toInt()
-    }
+    private fun convertPixelsToDp(px: Double): Int = (px * webView.context.resources.displayMetrics.density).toInt()
 
     private fun dismissDialog(callbackContext: CallbackContext? = null) {
         val fadeDuration = preferences.getInteger("LottieFadeOutDuration", 0)
