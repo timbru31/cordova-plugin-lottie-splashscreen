@@ -34,7 +34,7 @@ jobs:
           java -version
           ls -lsa $ANDROID_HOME
           ls -lsa $ANDROID_HOME/build-tools
-          ls -lsa $ANDROID_HOME/cmdline-tools
+          ls -lsa $ANDROID_HOME/cmdline-tools/latest
           $ANDROID_HOME/tools/sdkmanager --list
 
       - name: Setup Project
