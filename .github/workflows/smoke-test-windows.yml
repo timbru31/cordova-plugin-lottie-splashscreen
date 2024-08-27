@@ -35,6 +35,9 @@ jobs:
 
       - name: Setup Project
         run: |
+          ls "C:\Android\android-sdk\cmdline-tools"
+          ls "C:\Android\android-sdk\cmdline-tools\latest"
+          ls "C:\Android\android-sdk\cmdline-tools\latest\bin"
           ls "$ANDROID_HOME/cmdline-tools/latest/bin"
           ls "$ANDROID_HOME\cmdline-tools\latest\bin"
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager.exe"
