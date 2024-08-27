@@ -33,10 +33,13 @@ jobs:
           npm --version
           java -version
 
-      - name: Setup Project
+      - name: Setup Android Build Tools
         shell: cmd
         run: |
           "%ANDROID_HOME%\cmdline-tools\latest\bin\sdkmanager" "build-tools;30.0.3"
+
+      - name: Setup Project
+        run: |
           npm i -g cordova
           cordova create lottie-smoke-test
           cd lottie-smoke-test
