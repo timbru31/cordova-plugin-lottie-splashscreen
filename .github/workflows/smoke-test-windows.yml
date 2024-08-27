@@ -35,9 +35,7 @@ jobs:
 
       - name: Setup Project
         run: |
-          echo "ANDROID_HOME is set to: %ANDROID_HOME%"
-          echo "ANDROID_HOME is set to: $ANDROID_HOME"
-          "%ANDROID_HOME%\cmdline-tools\latest\bin\sdkmanager"
+          %ANDROID_HOME%\cmdline-tools\latest\bin\sdkmanager "build-tools;30.0.3"
           npm i -g cordova
           cordova create lottie-smoke-test
           cd lottie-smoke-test
