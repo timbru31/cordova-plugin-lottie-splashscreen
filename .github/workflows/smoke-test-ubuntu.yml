@@ -23,7 +23,7 @@ jobs:
           distribution: "temurin"
           java-version: 11
 
-      - uses: actions/setup-node@v4.0.2
+      - uses: actions/setup-node@v4.0.3
         with:
           node-version: 18
 
