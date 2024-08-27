@@ -34,6 +34,7 @@ jobs:
           java -version
 
       - name: Setup Project
+        shell: cmd
         run: |
           "%ANDROID_HOME%\cmdline-tools\latest\bin\sdkmanager" "build-tools;30.0.3"
           npm i -g cordova
