@@ -39,7 +39,7 @@ class LottieSplashScreen {
      * @param event - The desired event to listen to. If a falsy value, such as null or "", is passed, the method will listen to all Lottie events.
      * @param callback - The callback function.
      */
-    static on(event: LottieEvent, callback: (ev: Event) => void) {
+    static on(event: LottieEvent | undefined, callback: (ev: Event) => void) {
         if (event) {
             document.addEventListener(event, callback);
         } else {
