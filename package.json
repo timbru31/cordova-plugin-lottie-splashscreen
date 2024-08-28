@@ -16,7 +16,7 @@
     "release": "standard-version -s -a"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.4.0",
+    "@commitlint/cli": "^19.4.1",
     "@commitlint/config-angular": "^19.3.0",
     "@eslint/js": "^9.9.1",
     "@types/cordova": "^11.0.3",
