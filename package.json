@@ -24,7 +24,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.5",
-    "lint-staged": "^15.2.2",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "replace": "^1.2.2",
     "standard-version": "^9.5.0",
