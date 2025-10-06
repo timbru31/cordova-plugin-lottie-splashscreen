@@ -120,9 +120,7 @@ import Lottie
 
         let backgroundColor = getUIModeDependentPreference(basePreferenceName: "LottieBackgroundColor", defaultValue: "#ffffff")
 
-        animationViewContainer?.autoresizingMask = [
-            .flexibleWidth, .flexibleHeight, .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin
-        ]
+        animationViewContainer?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         animationViewContainer?.backgroundColor = UIColor(hex: backgroundColor)
     }
 
@@ -259,22 +257,15 @@ import Lottie
             name: NSNotification.Name.CDVPageDidLoad,
             object: nil
         )
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(deviceOrientationChanged),
-            name: UIDevice.orientationDidChangeNotification,
-            object: nil
-        )
     }
 
     private func getUIModeDependentPreference(basePreferenceName: String, defaultValue: String = "") -> String {
         var preferenceValue = ""
         if #available(iOS 12.0, *) {
             if viewController.traitCollection.userInterfaceStyle == .dark {
-                preferenceValue = commandDelegate?.settings[(basePreferenceName + "Dark").lowercased()] as? String ?? defaultValue
+                preferenceValue = commandDelegate?.settings[(basePreferenceName + "Dark").lowercased()] as? String ?? ""
             } else {
-                preferenceValue = commandDelegate?.settings[(basePreferenceName + "Light").lowercased()] as? String ?? defaultValue
+                preferenceValue = commandDelegate?.settings[(basePreferenceName + "Light").lowercased()] as? String ?? ""
             }
         }
 
@@ -282,10 +273,6 @@ import Lottie
             preferenceValue = commandDelegate?.settings[basePreferenceName.lowercased()] as? String ?? defaultValue
         }
         return preferenceValue
-    }
-
-    @objc private func deviceOrientationChanged() {
-        animationView?.center = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY)
     }
 }
 
